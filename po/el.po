@@ -1,0 +1,447 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mailfilter 0.3.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-31 21:45+0100\n"
+"PO-Revision-Date: 2002-10-08 17:14+0200\n"
+"Last-Translator: Dimitris Kamenopoulos <d.kamenopoulos_nospam@mail.ntua.gr>\n"
+"Language-Team: Greek <i18ngr@hellug.gr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-7\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/mailfilter.cc:94
+msgid "The rcfile could not be opened."
+msgstr ""
+
+#: src/mailfilter.cc:107
+msgid "Loading the rcfile failed."
+msgstr ""
+
+#: src/mailfilter.cc:113 src/mailfilter.cc:182
+msgid "Runtime exception occured: "
+msgstr ""
+
+#: src/mailfilter.cc:124
+msgid "Could not open log file '"
+msgstr ""
+
+#: src/mailfilter.cc:125
+msgid "' for writing."
+msgstr ""
+
+#: src/mailfilter.cc:127
+msgid "Could not locate log file."
+msgstr ""
+
+#: src/mailfilter.cc:138
+#, fuzzy
+msgid "Signal handler could not be installed."
+msgstr ": Σφάλμα: Signal handler could not be installed."
+
+#: src/mailfilter.cc:166
+msgid " querying "
+msgstr " ερώτηση "
+
+#: src/mailfilter.cc:168
+msgid " on "
+msgstr " στο "
+
+#: src/mailfilter.cc:173
+msgid "Skipping account "
+msgstr ""
+
+#: src/mailfilter.cc:176
+msgid " due to earlier errors.\n"
+msgstr ""
+
+#: src/mailfilter.cc:226
+#, fuzzy
+msgid "Mailfilter filters e-mail and removes spam in one "
+msgstr ""
+"Το mailfilter φιλτράρει την ηλεκτρονική αλληλογραφία και αφαιρεί το spam σε "
+"έναν ή περισσότερους λογαρισμούς POP"
+
+#: src/mailfilter.cc:227
+msgid "or many POP accounts."
+msgstr ""
+
+#: src/mailfilter.cc:229
+msgid "Usage: "
+msgstr "Χρήση: "
+
+#: src/mailfilter.cc:229
+msgid " [OPTION]..."
+msgstr " [ΕΠΙΛΟΓΗ]..."
+
+#: src/mailfilter.cc:231
+#, fuzzy
+msgid "If a long option shows an argument as mandatory, "
+msgstr ""
+"Αν μια μεγάλη επιλογή δείχνει ένα όρισμα σαν υποχρεωτικό, τότε είναι "
+"υποχρεωτικό"
+
+#: src/mailfilter.cc:232
+msgid "then "
+msgstr ""
+
+#: src/mailfilter.cc:233
+#, fuzzy
+msgid "it is mandatory for the equivalent short option "
+msgstr "και για την ισοδύναμη σύντομη επιλογή"
+
+#: src/mailfilter.cc:234
+msgid "also."
+msgstr ""
+
+#: src/mailfilter.cc:236
+msgid "Options:"
+msgstr "Επιλογές:"
+
+#: src/mailfilter.cc:237
+#, fuzzy
+msgid "  -h, --help                 "
+msgstr "  -h, --help                 Εμφάνιση αυτής της βοήθειας"
+
+#: src/mailfilter.cc:238
+#, fuzzy
+msgid "Display this help information"
+msgstr "  -h, --help                 Εμφάνιση αυτής της βοήθειας"
+
+#: src/mailfilter.cc:239
+#, fuzzy
+msgid "  -L, --logfile=FILE         "
+msgstr "  -L, --logfile=ΑΡΧΕΙΟ       Καθορισμός του αρχείου καταγραφής"
+
+#: src/mailfilter.cc:240
+#, fuzzy
+msgid "Specify logfile location"
+msgstr "  -L, --logfile=ΑΡΧΕΙΟ       Καθορισμός του αρχείου καταγραφής"
+
+#: src/mailfilter.cc:241
+#, fuzzy
+msgid "  -M, --mailfilterrc=FILE    "
+msgstr "  -M, --mailfilterrc=ΑΡΧΕΙΟ  Καθορισμός αρχείου ρυθμίσεων"
+
+#: src/mailfilter.cc:242
+#, fuzzy
+msgid "Specify rcfile location"
+msgstr "  -M, --mailfilterrc=ΑΡΧΕΙΟ  Καθορισμός αρχείου ρυθμίσεων"
+
+#: src/mailfilter.cc:243
+msgid "  -r, --return-value         "
+msgstr ""
+
+#: src/mailfilter.cc:244
+msgid "Enable additional return values"
+msgstr ""
+
+#: src/mailfilter.cc:245
+#, fuzzy
+msgid "  -t, --test                 "
+msgstr "  -h, --help                 Εμφάνιση αυτής της βοήθειας"
+
+#: src/mailfilter.cc:246
+msgid "Simulate deletes"
+msgstr ""
+
+#: src/mailfilter.cc:247
+#, fuzzy
+msgid "  -v, --verbose=LEVEL        "
+msgstr ""
+"  -v, --verbose=LEVEL        Καθορισμός επιπέδου λεπτομέρειας της καταγραφής"
+
+#: src/mailfilter.cc:248
+#, fuzzy
+msgid "Specify level of verbosity"
+msgstr ""
+"  -v, --verbose=LEVEL        Καθορισμός επιπέδου λεπτομέρειας της καταγραφής"
+
+#: src/mailfilter.cc:249
+#, fuzzy
+msgid "  -V, --version              "
+msgstr "  -V, --version              Εμφάνιση έκδοσης του προγράμματος"
+
+#: src/mailfilter.cc:250
+#, fuzzy
+msgid "Display version information"
+msgstr "  -V, --version              Εμφάνιση έκδοσης του προγράμματος"
+
+#: src/mailfilter.cc:252
+msgid "Report bugs to "
+msgstr ""
+
+#: src/mailfilter.cc:263
+#, fuzzy
+msgid "This is free software; see the source for copying "
+msgstr ""
+"Αυτό είναι ελεύθερο λογισμικό· δείτε τον πηγαίο κώδικα για τους κανόνες που "
+"διέπουν την αντιγραφή. Δεν υπάρχει ΚΑΜΙΑ"
+
+#: src/mailfilter.cc:264
+msgid "conditions.  There is NO warranty; not even for "
+msgstr ""
+
+#: src/mailfilter.cc:265
+#, fuzzy
+msgid "MERCHANTABILITY or FITNESS FOR A PARTICULAR "
+msgstr ""
+"εγγύηση· ούτε καν για ΕΜΠΟΡΙΚΟΤΗΤΑ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑ ΓΙΑ ΕΝΑΝ ΣΥΓΚΕΚΡΙΜΕΝΟ "
+"ΣΚΟΠΟ"
+
+#: src/mailfilter.cc:266
+msgid "PURPOSE."
+msgstr ""
+
+#: src/mailfilter.cc:291
+msgid "Try '"
+msgstr "Δοκιμάστε '"
+
+#: src/mailfilter.cc:292
+msgid " --help' for more information."
+msgstr " --help' για περισσότερες πληροφορίες."
+
+#: src/mailfilter.cc:314
+#, fuzzy
+msgid "Could not compile regular expression (allow)."
+msgstr ": Could not pre-compile this Regular Expression '"
+
+#: src/mailfilter.cc:325
+#, fuzzy
+msgid "Could not compile regular expression (deny)."
+msgstr ": Could not pre-compile this Regular Expression '"
+
+#: src/mailfilter.cc:337
+#, fuzzy
+msgid "Could not compile regular expression (score)."
+msgstr ": Could not pre-compile this Regular Expression '"
+
+#: src/mailfilter.cc:388
+#, fuzzy
+msgid "popen failed."
+msgstr ". Το login απέτυχε.\n"
+
+#: src/mailfilter.cc:398
+#, fuzzy
+msgid "pclose failed."
+msgstr ". Το login απέτυχε.\n"
+
+#: src/getopt.c:688 src/getopt.c:698
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: η επιλογή '%s' είναι αόριστη\n"
+
+#: src/getopt.c:730 src/getopt.c:734
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: η επιλογή '--%s' δεν επιτρέπει ορίσματα\n"
+
+#: src/getopt.c:743 src/getopt.c:748
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: η επιλογή '%c%s' δεν επιτρέπει ορίσματα\n"
+
+#: src/getopt.c:782 src/getopt.c:793 src/getopt.c:1070 src/getopt.c:1082
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: η επιλογή ''%s απαιτεί ένα όρισμα\n"
+
+#: src/getopt.c:830 src/getopt.c:833
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: μη αναγνωριζόμενη επιλογή '--%s'\n"
+
+#: src/getopt.c:841 src/getopt.c:844
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: μη αναγνωριζόμενη επιλογή '%c%s'\n"
+
+#: src/getopt.c:887 src/getopt.c:890
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: παράνομη επιλογή -- %c\n"
+
+#: src/getopt.c:896 src/getopt.c:899
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: άκυρη επιλογή -- %c\n"
+
+#: src/getopt.c:942 src/getopt.c:952 src/getopt.c:1136 src/getopt.c:1147
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: η επιλογή απαιτεί ένα όρισμα -- %c\n"
+
+#: src/getopt.c:1004 src/getopt.c:1014
+#, fuzzy, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: η επιλογή '%s' είναι αόριστη\n"
+
+#: src/getopt.c:1038 src/getopt.c:1049
+#, fuzzy, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: η επιλογή '--%s' δεν επιτρέπει ορίσματα\n"
+
+#, fuzzy
+#~ msgid "  -H FILE                    "
+#~ msgstr "  -h, --help                 Εμφάνιση αυτής της βοήθειας"
+
+#~ msgid "Report bugs to <baueran@users.sourceforge.net>."
+#~ msgstr "Αναφέρετε σφάλματα στο <baueran@users.sourceforge.net"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (c) 2000 - 2003  Andreas Bauer  <baueran@users.sourceforge.net>"
+#~ msgstr ""
+#~ "Copyright (c) 2000 - 2002  Andreas Bauer  <baueran@users.sourceforge.net>"
+
+#~ msgid ": Error: The level of verbosity must contain values between "
+#~ msgstr ": Σφάλμα: Το επίπεδο λεπτομέρειας πρέπει να περιέχει τιμές μεταξύ "
+
+#~ msgid " and "
+#~ msgstr " και "
+
+#~ msgid ": Error: Could not login to server "
+#~ msgstr ": Σφάλμα: Δε μπόρεσα να κάνω login στο διακομιστή "
+
+#~ msgid ". Unknown error.\n"
+#~ msgstr ". Άγνωστο σφάλμα.\n"
+
+#~ msgid ": Error: DNS lookup failure for "
+#~ msgstr ": Error: DNS lookup failure για "
+
+#~ msgid ": Error: Network connection could not be established.\n"
+#~ msgstr ": Σφάλμα: Δε μπόρεσα να εγκαταστήσω δικτυακή σύνδεση.\n"
+
+#~ msgid ": Error: Authentication failed. Login canceled.\n"
+#~ msgstr ": Σφάλμα: Η διαπίστευση απέτυχε. Το login ακυρώθηκε.\n"
+
+#~ msgid ": Error: Mail server not responding. Login canceled.\n"
+#~ msgstr ": Σφάλμα: Ο διακομιστής mail δεν αποκρίνεται. Το login ακυρώθηκε.\n"
+
+#~ msgid ": Error: Could not establish mail server connection.\n"
+#~ msgstr ""
+#~ ": Σφάλμα: Δε μπόρεσα να εγκαταστήσω σύνδεση με το διακομιστή mail.\n"
+
+#~ msgid ": Error: Sent STAT, but server responded with an error.\n"
+#~ msgstr ": Σφάλμα: Έστειλα STAT, αλλά ο διακομιστής απάντησε με σφάλμα.\n"
+
+#~ msgid ": Error: Sent TOP, but server responded with an error.\n"
+#~ msgstr ": Σφάλμα: Έστειλα TOP, αλλά ο διακομιστής απάντησε με σφάλμα.\n"
+
+#~ msgid ": Error: Sent LIST, but server responded with an error.\n"
+#~ msgstr ": Σφάλμα: Έστειλα LIST, αλλά ο διακομιστής απάντησε με σφάλμα.\n"
+
+#~ msgid ""
+#~ ": Error: Sent DELE, but server responded with an error. Delete failed.\n"
+#~ msgstr ": Σφάλμα: Έστειλα DELE, αλλά ο διακομιστής απάντησε με σφάλμα.\n"
+
+#~ msgid ""
+#~ ": Error: Encountered a malformed e-mail header which could not be handled "
+#~ "by Mailfilter. "
+#~ msgstr ""
+#~ ": Σφάλμα: Προέκυψε μια προβληματική επικεφαλίδα e-mail που το Mailfilter "
+#~ "δε "
+
+#~ msgid "Program aborted.\n"
+#~ msgstr "Το πρόγραμμα διεκόπη.\n"
+
+#~ msgid ": Error: Operation timed out.\n"
+#~ msgstr ": Σφάλμα: Τέλος χρόνου για την ενέργεια.\n"
+
+#~ msgid ": Error: Signal handler could not be installed.\n"
+#~ msgstr ": Σφάλμα: Signal handler could not be installed.\n"
+
+#~ msgid ""
+#~ ": Error: The rcfile for preferences has wrong number of arguments or "
+#~ "malformed syntax."
+#~ msgstr ""
+#~ ": Σφάλμα: Το αρχείο ρυθμίσεων για τις προτιμήσεις έχει λάθος αριθμό "
+#~ "ορισμάτων ή κακά διατυπωμένη σύνταξη."
+
+#~ msgid ""
+#~ ": Error: The rcfile for preferences (usually $HOME/.mailfilterrc) could "
+#~ "not be read."
+#~ msgstr ""
+#~ ": Σφάλμα: Δεν ήταν δυνατή η ανάγνωση του αρχείου ρυθμίσεων για τις "
+#~ "προτιμήσεις (συνήθως $HOME/.mailfilterrc)."
+
+#~ msgid ""
+#~ ": Error: Aborted pre-compilation of Regular Expressions. Check the syntax "
+#~ "of your filters and rules."
+#~ msgstr ""
+#~ ": Error: Aborted pre-compilation of Regular Expressions. Ελέγξτε τη "
+#~ "σύνταξη των φίλτρων και κανόνων σας."
+
+#~ msgid ""
+#~ ": Error: Could not access the logfile. Check the file permissions of your "
+#~ "logfile and make sure the rcfile contains the correct path."
+#~ msgstr ""
+#~ ": Σφάλμα: Αδύνατη η πρόσβαση στο αρχείο καταγραφής. Ελέγξτε τις άδειες "
+#~ "πρόσβασης του αρχείου και βεβαιωθείτε ότι το αρχείο ρυθμίσεων περιέχει τη "
+#~ "σωστή τοποθεσία του αρχείου καταγραφής."
+
+#~ msgid ""
+#~ ": Error: Communication failure. Either the server closed the connection "
+#~ "due to a time-out problem, or the entire network connection has dropped."
+#~ msgstr ""
+#~ ": Σφάλμα: Πρόβλημα επικοινωνιών. Είτε ο διακομιστής έκλεισε τη σύνδεση "
+#~ "λόγω τέλους χρονικής διορίας, ή έχει πέσει ολόκληρη η δικτυακή σύνδεση."
+
+#~ msgid ": Error: Connection to the mail server has timed out."
+#~ msgstr ""
+#~ ": Σφάλμα: Έληξε η χρονική διορία για τη σύνδεση με το διακομιστή email."
+
+#~ msgid ""
+#~ ": Error: Unknown communication error occured. Please consider reporting a "
+#~ "bug. Thank you."
+#~ msgstr ""
+#~ ": Σφάλμα: Προέκυψε άγνωστο σφάλμα επικοινωνίας. Παρακαλώ σκεφτείτε το "
+#~ "ενδεχόμενο να αναφέρετε το πρόβλμα. Ευχαριστώ."
+
+#~ msgid ": Error: Malformed e-mail header."
+#~ msgstr ": Σφάλμα: Προβληματική επικεφαλίδα e-mail"
+
+#~ msgid ": Error: "
+#~ msgstr ": Σφάλμα: "
+
+#~ msgid ""
+#~ ": Error: This is an unknown error. Please consider reporting a bug. Thank "
+#~ "you."
+#~ msgstr ""
+#~ ": Σφάλμα: Άγνωστο σφάλμα. Παρακαλώ σκεφτείτε το ενδεχόμενο να αναφέρετε "
+#~ "το πρόβλημα. Ευχαριστώ."
+
+#~ msgid ": Signal SIGINT caught. Terminating with signal "
+#~ msgstr ": Έπιασα το σήμα SIGINT. Τερματίζω με το σήμα "
+
+#~ msgid ": Internal error code from the Regular Expression library: "
+#~ msgstr ": Εσωτερικό σφάλμα από τη βιβλιοθήκη Regular Expression: "
+
+#~ msgid ": Deprecated keyword '"
+#~ msgstr ": Ξεπερασμένη λέξη-κλειδί '"
+
+#~ msgid "' in '"
+#~ msgstr "' στο "
+
+#~ msgid ": Instead use the keyword 'REG_CASE' from now on."
+#~ msgstr ": Χρησιμοποιείτε τη λέξη-κλειδί 'REG_CASE' στο εξής."
+
+#~ msgid ": Instead use the keyword 'VERBOSE' from now on."
+#~ msgstr ": Χρησιμοποιείτε τη λέξη-κλειδί 'VERBOSE' στο εξής."
+
+#~ msgid ": Consult the mailfilterrc(5) man page for further details."
+#~ msgstr ": Συμβολευτείτε τη σελίδα man mailfilter(5) για λεπτομέρειες."
+
+#~ msgid ": A keyword in '"
+#~ msgstr ": Μια λέξη-κλειδί στο '"
+
+#~ msgid "' contains invalid parameters."
+#~ msgstr "' περιέχει άκυρες παραμέτρους."
+
+#~ msgid "%s: Examining %d message(s).\n"
+#~ msgstr "%s: Εξετάζονται %d μήνυμα/μηνύματα.\n"

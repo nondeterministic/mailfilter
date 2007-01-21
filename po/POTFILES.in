@@ -1,0 +1,5 @@
+# List of files which contain translatable strings.
+# Copyright (c) 2000 - 2002  Andreas Bauer  <baueran@users.sourceforge.net>
+
+src/mailfilter.cc
+src/getopt.c

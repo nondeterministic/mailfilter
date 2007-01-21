@@ -1,0 +1,330 @@
+.TH MAILFILTERRC "5" "June 2004" Mailfilter "File Format Descriptions"
+.SH NAME
+mailfilterrc \- Mailfilter configuration file
+.SH SYNOPSIS
+.B $HOME/.mailfilterrc
+.SH DESCRIPTION
+For a quick start read the INSTALL file provided with the Mailfilter
+distribution and copy its example configuration. This is enough to run the
+program with some basic features.
+.PP
+Generally the rcfile contains all of Mailfilter's settings and information on
+the mail accounts that should be checked for spam. It is possible to place
+remarks in that file by beginning a line with `#'.
+.PP
+It does not matter in which order keywords are inserted, except for the account
+set-up. To define an account you
+.B must
+use this whole block of commands:
+.PP
+.RS
+SERVER = "your.pop.server.com"
+.br
+USER = "your.username"
+.br
+PASS = "your.password"
+.br
+PROTOCOL = "pop3"
+.br
+PORT = 110
+.RE
+.PP
+Currently Mailfilter supports the POP3, and APOP protocols which usually
+communicate over port 110.  However, port 995 is required, if Mailfilter
+is instructed to communicate using the SSL layer as in:
+.PP
+.RS
+SERVER = "your.pop.ssl.server.com"
+.br
+USER = "your.username"
+.br
+PASS = "your.password"
+.br
+PROTOCOL = "pop3/ssl"
+.br
+PORT = 995
+.RE
+.PP
+.SH "KEYWORDS"
+Generally the rcfile is not case-sensitive, which means it does not matter
+whether the keywords are spelled in capitals or not. You can place white
+space characters before and in between a command and its parameters.
+.PP
+.RS
+# This is a typical comment
+.br
+DENY = "^Subject:.*Get rich fast"
+.RE
+.PP
+To see some example applications of the engaged keywords, please refer to the
+.BR mailfilterex(5)
+man page.
+.PP
+.SM ALLOW = """\fBexpression\fR"""
+.RS
+This keyword can be used to override spam filters i.e. to define `friends'. A
+message that matches any ALLOW rules will not be filtered or deleted. ALLOW
+takes a Regular Expression as argument.
+.RE
+.PP
+.SM DEL_DUPLICATES = """\fB[yes|no]\fR"""
+.RS
+This keyword can be used to delete duplicates of messages sent to one or
+several accounts at once, i.e. it removes redundant e-mails. DEL_DUPLICATES
+takes either `yes' or `no' as argument. The default value is `no'.
+.RE
+.PP
+.SM DENY = """\fBexpression\fR"""
+.RS
+This keyword can be used to define spam filters. Messages that match spam
+filters (unless they match an ALLOW rule at the same time) are being deleted
+from the mail server. DENY takes a Regular Expression as argument.
+.RE
+.PP
+.SM DENY <> """\fBexpression\fR"""
+.RS
+This keyword can be used to define a negative spam filter. Messages that do not
+match the negative filters are being deleted from the server. DENY<> takes a
+Regular Expression as argument, e.g. `DENY<>^To:.*my_username'.
+.RE
+.PP
+.SM DENY_CASE = """\fBexpression\fR"""
+.RS
+This keyword can be used to define case-sensitive spam filters. It overrides
+the default settings for case-sensivity (see REG_CASE for details). DENY_CASE
+takes a Regular Expression as argument.
+.RE
+.PP
+.SM DENY_CASE <> """\fBexpression\fR"""
+.RS
+This keyword can be used to define negative case-sensitive spam filters.
+It overrides the default settings for case-sensivity (see REG_CASE for
+details). DENY_CASE<> takes a Regular Expression as argument.
+.RE
+.PP
+.SM DENY_NOCASE = """\fBexpression\fR"""
+.RS
+This keyword can be used to define case-insensitive spam filters. It overrides
+the default settings for case-sensivity (see REG_CASE for details). DENY_NOCASE
+takes a Regular Expression as argument.
+.RE
+.PP
+.SM DENY_NOCASE <> """\fBexpression\fR"""
+.RS
+This keyword can be used to define negative case-insensitive spam filters.
+It overrides the default settings for case-sensivity (see REG_CASE for
+details). DENY_NOCASE<> takes a Regular Expression as argument.
+.RE
+.PP
+.SM HIGHSCORE = \fBvalue\fR
+.RS
+This keyword can be used to define a discrete threshold upon which messages
+should be deleted.  Individual scores are accumulated by assigning values
+and filters with the SCORE or MAXSIZE_SCORE keywords.  Its default value is 100.
+.RE
+.PP
+.SM INCLUDE = """\fBpath\fR"""
+.RS
+This keyword can be used to include additional configuration files into the
+main Mailfilter rcfile. That is, the program settings may be conveniently
+split into several different files. INCLUDE expects a path and file
+name as argument.
+.RE
+.PP
+.SM LOGFILE = """\fBpath\fR"""
+.RS
+This keyword can be used to define a log file for Mailfilter. The log file is
+being used to store error messages and information on deleted messages. LOGFILE
+expects a path and file name as argument.
+.RE
+.PP
+.SM MAXLENGTH = \fBvalue\fR
+.RS
+This keyword can be used to define a maximum string length that must not
+be exceeded by any field of a message header. The according Internet standard
+RFC 822 suggests a limit of 998 characters per field. This option even
+overrides any `friendly' ALLOW rules, i.e. deletes them if they exceed the
+limit. Assigning a `0' disables the feature.
+.RE
+.PP
+.SM MAXSIZE_ALLOW = \fBvalue\fR
+.RS
+This keyword can be used to define a maximum message size that must not be
+exceeded by all messages that match any ALLOW rule. (One could say, this is the
+size limit `friends' should not exceed.) The limit does not affect other
+messages. To define a more general message size limit, use MAXSIZE_DENY
+instead. MAXSIZE_ALLOW takes the number of bytes as argument. Assigning a `0'
+disables this feature.
+.RE
+.PP
+.SM MAXSIZE_DENY = \fBvalue\fR
+.RS
+This keyword can be used to define a general message size limit that must not
+be exceeded. (Unless the incoming message matches an ALLOW rule. In that case
+MAXSIZE_ALLOW would apply.) MAXSIZE_DENY takes the number of bytes as argument.
+Assigning a `0' disables this feature.
+.RE
+.PP
+.SM MAXSIZE_SCORE \fBvalue\fR = \fBvalue\fR
+.RS
+This keyword can be used to attach a score to a size limit.  If that limit is
+exceeded, then the score will be added to the accumulated score from applying
+other scored filters (see the SCORE keyword below).  The first value (before `=')
+is the score, the second value (after `=') is the size limit.  Assigning a `0'
+to either the score or the size limit disables this feature.
+.RE
+.PP
+.SM NORMAL = """\fB[yes|no]\fR"""
+.RS
+This keyword tells Mailfilter to `normalise' the subject strings in messages. A
+normalised string consists only of alpha-numeric characters. When normalisation
+is turned on, Mailfilter tries to apply its filters first to the original
+subject line, before it tries to match the normalised one. NORMAL takes
+either `yes' or `no' as argument. The default value is `no'.
+.RE
+.PP
+.SM REG_CASE = """\fB[yes|no]\fR"""
+.RS
+This keyword can be used to define how Mailfilter should treat its Regular
+Expressions, case-sensitive or case-insensitive. REG_CASE takes either `yes' as
+argument to enable case-sensivity or otherwise `no' to disable it.  The default
+behaviour is to ignore the case.
+.RE
+.PP
+.SM REG_TYPE = """\fB[basic|extended]\fR"""
+.RS
+This keyword can be used to define which type of Regular Expression Mailfilter
+should use. REG_TYPE can either be switched to `extended' or `basic'. The
+default value is `basic'.
+.RE
+.PP
+.SM SCORE \fBvalue\fR = """\fBexpression\fR"""
+.RS
+This keyword can be used to assign a score to a filter.  It expects a discrete
+number and a Regular Expression filter as input.  If the filter matches a line
+of the message header, the score is being accumulated to previously matched
+filters. (See mailfilterex (5) for an example.)
+.RE
+.PP
+.SM SCORE \fBvalue\fR <> """\fBexpression\fR"""
+.RS
+This keyword can be used in the same fashion as SCORE, but it assigns the
+score only if the filter can not be matched to any line of the message
+header.
+.RE
+.PP
+.SM SCORE_CASE \fBvalue\fR = """\fBexpression\fR"""
+.RS
+This keyword is similar to SCORE, but it treats the Regular Expression as
+case sensitive filter, regardless of other program settings.
+.RE
+.PP
+.SM SCORE_CASE \fBvalue\fR <> """\fBexpression\fR"""
+.RS
+This keyword can be used in the same fashion as SCORE_CASE, but it assigns the
+score only if the filter can not be matched to any line of the message header.
+.RE
+.PP
+.SM SCORE_NOCASE \fBvalue\fR = """\fBexpression\fR"""
+.RS
+This keyword is similar to SCORE, but it treats the Regular Expression as
+case insensitive filter, regardless of other program settings.
+.RE
+.PP 
+.SM SCORE_NOCASE \fBvalue\fR <> """\fBexpression\fR"""
+.RS
+This keyword can be used in the same fashion as SCORE_NOCASE, but it assigns the
+score only if the filter can not be matched to any line of the message header.
+.RE
+.PP
+.SM SERVER / USER / PASS / PROTOCOL / PORT
+.RS
+These keywords can only be used as a whole and in the given order. Such a block
+defines an e-mail account to be checked for spam by Mailfilter. A typical block
+looks like this:
+.PP
+.RS
+SERVER = "your.pop.server.com"
+.br
+USER = "your.username"
+.br
+PASS = "your.password"
+.br
+PROTOCOL = "protocol"
+.br
+PORT = 110
+.RE
+.PP
+It is especially important to not change the arrangement of this block.
+At the moment, PROTOCOL supports either `pop3' (`pop3/ssl'), or `apop'
+(`apop/ssl').  The normal variant usually corresponds to port 110, while
+encrypted communication via SSL, typically, requires port 995.
+.RE
+.PP
+.SM SHOW_HEADERS = """\fBpath\fR"""
+.RS
+This keyword can be used to store the message headers of absolutely all
+filtered e-mails of an account. SHOW_HEADERS expects a path and a file
+name as argument indicating where to store the headers in.
+.RE
+.PP
+.SM TEST = """\fB[yes|no]\fR"""
+.RS
+This keyword prevents Mailfilter from deleting any messages on any e-mail
+accounts. It is useful to experiment with filters and Regular Expressions and
+to see how Mailfilter reacts to the user's changes. The option can be turned on
+by assigning `yes' to TEST. The default value is `no'.
+.RE
+.PP
+.SM TIMEOUT = \fBvalue\fR
+.RS
+This keyword can be used to define a server response time out in seconds.
+That is, the mail server has to respond to an issued command within a
+given time span, otherwise Mailfilter will drop the connection and issue
+an error. TIMEOUT takes an integer value as argument. The default is set to
+30 (seconds).
+.RE
+.PP
+.SM VERBOSE = \fBvalue\fR
+.RS
+This keyword can be used to define the level of verbosity. It takes an integer
+as argument.
+.IP 0
+Silent, show nothing at all
+.IP 1
+Only show errors
+.IP 2
+Only show "Deleted..." messages and errors
+.IP 3
+Default; Show "Deleted..." messages,  errors and "Examining..." messages
+.IP 4
+Like (3), except this also shows the current account's username
+.IP 5
+Like (4), except this also shows which filter matched which string of
+an e-mail header
+.IP 6
+Debugging mode; prints out almost everything
+.RE
+.SH "DEPRECATED KEYWORDS"
+There are a few keywords from older versions of Mailfilter that are not
+supported anymore. The following list contains all these keywords and
+recommends substitutes.
+.IP ICASE
+Use REG_CASE instead.
+.IP MAXSIZE
+Use MAXSIZE_ALLOW and MAXSIZE_DENY instead.
+.IP MODE
+Use VERBOSE instead.
+.PP
+Even though Mailfilter still `silently' supports some of these words, you can
+not rely on that for future versions. It is highly recommended to update old
+configuration files.
+.SH SEE ALSO
+.BR mailfilter (1),
+.BR mailfilterex (5),
+.BR regex (7)
+.SH COPYRIGHT
+Copyright \(co 2000-2007 Andreas Bauer <baueran@in.tum.de>
+.PP
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

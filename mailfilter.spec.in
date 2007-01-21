@@ -1,0 +1,121 @@
+# mailfilter.spec: used for building rpms.
+# $Id: mailfilter.spec.in,v 1.18.2.4.2.1 2004/06/02 19:45:37 baueran Exp $
+# -*- rpm-spec -*-
+
+%define name mailfilter
+%define version 0.7.1
+%define release 1
+
+Name: %{name}
+Version: %{version}
+Release: %{release}
+Summary: A program that filters your incoming e-mail to help remove spam.
+Copyright: GPL
+Group: Applications/Internet
+Source: %{name}-%{version}.tar.gz
+Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root
+URL: http://mailfilter.sourceforge.net/
+Packager: Andreas Bauer <baueran@users.sourceforge.net>
+
+%description
+Mailfilter is very flexible utility for UNIX (-like) operating systems to get
+rid of unwanted e-mail messages, before having to go through the trouble of
+downloading them to the local computer. It offers support for one or many
+POP accounts and is especially useful for dialup connections via modem,
+ISDN, etc. Install Mailfilter if you'd like to remove spam from your POP mail
+accounts.
+
+%prep
+%setup -q
+
+%build
+%configure
+make
+
+%install
+%makeinstall
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-, root, root)
+%doc contrib
+%doc AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS TODO ABOUT-NLS
+%doc doc/FAQ doc/README.Slackware doc/README.Windows doc/rcfile.example1 doc/rcfile.example2 doc/rcfile.example2.ru doc/rcfile.example1.it doc/win_Makefile.am doc/win_configure.in doc/win_src_Makefile.am doc/supported_servers
+%{_bindir}/mailfilter
+%{_datadir}/locale/*/LC_MESSAGES/mailfilter.mo
+%{_mandir}/man1/mailfilter.1*
+%{_mandir}/man5/mailfilterrc.5*
+%{_mandir}/man5/mailfilterex.5*
+
+%changelog
+* Sat Oct 26 2002 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Added contrib/ to the list of files being packaged
+
+* Tue Feb 20 2002 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Added doc/supported_servers
+
+* Sat Dec 01 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Chucked out the "misplaced" make install-strip
+
+* Sat Jul 28 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Added translations
+
+* Mon Jul 09 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Changed version number and added rcfile-examples
+
+* Thu May 31 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Changed to %configure, make install-strip, %makeinstall
+
+* Wed Apr 25 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Removed BUGS from the distribution and added ABOUT-NLS
+
+- Changed installation part to %make and %makeinstall
+
+* Fri Jan 26 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Removed api/ from the doc/ directory
+
+- Added more man pages
+
+- Added INSTALL file
+
+- Added wildcards to man page file names
+
+* Wed Jan 24 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Added new man path
+
+* Thu Jan 18 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Changed to standard paths defined in /usr/lib/rpm/macros
+
+* Tue Jan 09 2001 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Adjusted to new version and moved location of doc files
+
+* Fri Dec 22 2000 Andreas Bauer <baueran@users.sourceforge.net>
+
+- Adjusted to a new version and fixed a couple of small things 
+
+* Sat Dec 09 2000 Matthew R. MacIntyre <matt@matty.dyndns.org>
+
+- Added api documentation to rpm
+
+* Wed Dec 06 2000 Matthew R. MacIntyre <matt@matty.dyndns.org>
+
+- Added missing THANKS file to documentation files list
+
+* Mon Dec 04 2000 Matthew R. MacIntyre <mrmacint@chat.carleton.ca>
+
+- Initial creation of rpm package
+
+- Added manual page

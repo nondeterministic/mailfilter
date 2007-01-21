@@ -1,0 +1,800 @@
+Mailfilter Frequently Asked Questions and Answers
+
+General Questions:
+
+     * What is Mailfilter?
+     * Who needs Mailfilter?
+     * How does Mailfilter interact with my current e-mail environment?
+     * Where do I find out more about Mailfilter?
+     * I think, I found a bug in Mailfilter. Will you fix it?
+     * I have good ideas for new features. Will you implement them?
+     * Mailfilter is wonderful. How can I support this project?
+
+Installation:
+
+     * What are the system's requirements to install and run Mailfilter?
+     * What should I know to make Mailfilter run on Windows
+       9x/2000/NT/XP?
+     * How do I install Mailfilter?
+     * Running 'configure' doesn't work.
+     * Running 'make' doesn't work.
+     * Running 'make' was easy, but running 'make install' doesn't work.
+     * Why doesn't the compiler like my flex output, or complains about
+       wrong declarations?
+     * Is there any way to decrease the size of the mailfilter binary?
+
+Configuration:
+
+     * Mailfilter complains that its rcfile ($HOME/.mailfilterrc) is
+       missing.
+     * Mailfilter complains that its logfile can't be accessed.
+     * Mailfilter complains about the syntax of my rcfile.
+     * How do these filters work? What are Regular Expressions anyway?
+     * Is it possible to define what should be delivered, rather than
+       vice versa?
+     * Can I override some filters? (How to define 'friends'/trusted
+       lists)
+     * Is it possible to split the rcfile into several smaller files?
+     * How do I get rid of messages sent in exotic (e.g. Asian) languages
+       (unknown to me)?
+     * How do I fine tune other programs to work with Mailfilter?
+     * I'm using multidrop mail collection with fetchmail and can't get
+       Mailfilter to work.
+     * Are there any sample rcfiles ($HOME/.mailfilterrc) ?
+     * I am scared to try out Mailfilter, cause I might accidently delete
+       everything!
+
+Run-time Errors:
+
+     * Because of some missing libraries, Mailfilter won't start.
+     * Mailfilter complains that a specific file couldn't be accessed.
+     * I get DNS lookup errors.
+     * Mailfilter says it sent a specific command to the server, but it
+       responded with an error.
+     * Mailfilter says that some keyword is deprecated.
+     * The compilation of Regular Expressions failed.
+     * I frequently get an error message saying that my mail server is
+       not responding.
+     * Help, Mailfilter hangs!
+
+Special Features:
+
+     * Can Mailfilter check more than one account?
+     * Does Mailfilter support any other protocols besides POP3?
+     * Is there a way to send encrypted password information to the
+       server?
+     * Mailfilter logs are so plain; I'd like to have better
+       spam-statistics!
+     * How can I get Mailfilter to auto-reply to spam?
+
+Miscellaneous:
+
+     * I think I accidently deleted an important e-mail with Mailfilter.
+       Can I get it back somehow?
+     * If I make changes to rcfile, does it affect immediately?
+     * Sometimes a few (spam-) messages slip through. How come?
+     * What's this cron business?
+     * My question is not covered by this FAQ. Help!!
+     _________________________________________________________________
+
+General Questions:
+
+What is Mailfilter?
+
+   Mailfilter is a flexible utility for UNIX (-like) operating systems to
+   get rid of unwanted spam mails, before having to go through the
+   trouble of downloading them into the local computer. It offers support
+   for one or many POP accounts and is especially useful for dialup
+   connections via modem, ISDN, etc.
+   Mailfilter connects to any POP mail box and compares part of its
+   content to a set of user defined filter rules. That way the spam gets
+   deleted directly on the mail server.
+   With Mailfilter you can define your own filters (rules) to determine
+   which e-mails should be delivered and which are considered waste.
+   Rules are Regular Expressions, so you can make use of familiar options
+   from other mail delivery programs such as e.g. procmail.
+   Mailfilter is released under the terms of the GNU General Public
+   License. For more information, see the README and COPYING documents
+   provided with the Mailfilter program.
+
+Who needs Mailfilter?
+
+   If you do not pick up your e-mail from a POP server, then there is no
+   need to install Mailfilter. But if you do get your e-mail from one or
+   many POP accounts and if you are sick and tired of downloading
+   megabytes of worthless spam (usually those are anonymous
+   advertisements, chain mails, etc.), then you should give Mailfilter a
+   try.
+   It will help save you band width and time by deleting spam directly on
+   your server, before you have to download and read those messages. By
+   defining your own personal filter rules, you can tell Mailfilter which
+   e-mails should be deleted.
+
+How does Mailfilter interact with my current e-mail environment?
+
+   It doesn't matter which programs you use to fetch your mail with,
+   because Mailfilter is an independent application. It will not
+   interfere with your favourite e-mail client. You may just want to
+   start Mailfilter every time you are about to download new e-mail from
+   a POP server, or maybe just once a day. That's entirely up to you.
+   However, if you are using highly configurable mail programs such as
+   fetchmail, then there are some clever ways to get Mailfilter cooperate
+   with them directly. Section "How do I fine tune other programs to work
+   with Mailfilter?" describes this in more detail.
+
+Where do I find out more about Mailfilter?
+
+   All relevant documentation for Mailfilter (including this FAQ) is
+   provided with the Mailfilter distribution. Online versions of some of
+   these documents are available on the official Mailfilter homepage:
+
+   http://mailfilter.sourceforge.net/
+
+   On this homepage you may also find additional information on Regular
+   Expressions and related links to other programs that work well with
+   Mailfilter. If you have already installed the program, be sure to read
+   the man pages mailfilter(1), mailfilterrc(5) and mailfilterex(5).
+
+I think, I found a bug in Mailfilter. Will you fix it?
+
+   If it's really a bug that you found (and not a feature), then I will
+   of course try to do something about it. Generally it's a good idea to
+   report bugs to the mailing list mailfilter-dev@lists.sourceforge.net,
+   but you can also directly contact the author of Mailfilter. When you
+   report bugs, please provide as much additional information as possible
+   on what may have caused the problems and what consequences you
+   suffered. Such information always includes the name of your operating
+   system and hardware platform, description of your network connection
+   and excerpts from the Mailfilter log files. When creating a log file,
+   please use the highest level of verbosity available.
+   mailfilter --verbose=6
+
+   Older versions of Mailfilter do not hide your passwords in the logs.
+   Remove these entries before posting anything to the mailing list!
+
+I have good ideas for new features. Will you implement them?
+
+   Of course that depends on the feature you are asking for. There are
+   some frequently requested features ('autoreply' ranks very high) that
+   will most likely never make it into the source code, but at this point
+   I am sure Mailfilter could be expanded with dozens of useful additions
+   and I'm glad to hear about them (if they are not too far 'off the
+   track'). I'm even more glad if you're able to help implement them.
+
+Mailfilter is wonderful. How can I support this project?
+
+   There are many ways to express your appreciation: you could join
+   forces and submit code, but even if you are not a programmer, you
+   could still contribute by sending bug reports, suggestions or useful
+   add-on scripts to our mailing list(s). Every contribution is welcome!
+   Albeit, there is also a web page to donate money to the project. The
+   money would help immensely in keeping the web pages up to date (i.e.
+   cover ISP costs), in answering user feedback and questions via e-mail
+   or mailing lists and in affording additional hardware for testing
+   purposes (i.e. extra hard disks with alternative operating systems).
+   Mailfilter is free software, which means it also depends on the
+   support it gets from the community.
+     _________________________________________________________________
+
+Installation:
+
+What are the system's requirements to install and run Mailfilter?
+
+   Here is an excerpt from the INSTALL file that is part of the source
+   archive of Mailfilter:
+
+   "To run Mailfilter it's best to have a UNIX (-like) operating system,
+   but it also compiles fine with Windows 9x/NT/2000 if additional
+   libraries and tools are installed (e.g. Cygwin or DJGPP). So far
+   Mailfilter has been successfully compiled and tested with
+     * Solaris 8 / SunOS 5.8
+     * Irix 6.5
+     * FreeBSD 4.1.1-RELEASE, 4.5-RELEASE
+     * Mac OS X 10.0
+     * NetBSD 1.5
+     * Linux: Mandrake 7.0 - 8.2, Debian 2.1 - 3.0, RedHat 6.2 - 7.1,
+       Slackware 3.9 (See doc/README.Slackware for further details), SuSE
+       6.2, LinuxPPC
+     * Windows NT, 2000, XP (using Cygwin)
+
+   but it may well work on other platforms, too. (Please report success
+   if you have managed to compile it on any other system - thanks.)
+
+   To compile/install Mailfilter you also need to have a fairly recent
+   version of a (GNU) C++ compiler (e. g. GCC >= 2.95.2) and your system
+   must support BSD-type sockets (in general all UNIX systems do meet
+   this criterion). For compilation you will also need some of the GNU
+   autotools (gettext, m4) and the programs flex (http://lex.sf.net/) and
+   yacc (or the GNU substitute bison
+   (http://www.gnu.org/software/bison/)).
+
+   Attention: GNU flex is unlikely to work with recent compiler releases.
+   So, if you experience compile problems, please use flex from
+   http://lex.sf.net/. GNU flex is broken!
+
+What should I know to make Mailfilter run on Windows 9x/2000/NT/XP?
+
+   Mailfilter was originally designed to only support UNIX (-like)
+   operating systems. But if you have additional libraries such as the
+   Cygwin environment, DJGPP or MinGW installed, then you should also be
+   able to translate the program on your Windows 9x/2000/NT/XP platform.
+
+How do I install Mailfilter?
+
+   If you have downloaded the compressed Mailfilter source code archive,
+   then please refer to the INSTALL file provided by that archive. Binary
+   packages (if available for a particular program version) should be
+   installed as any other package of that kind. For example you could use
+   the command 'rpm -U packagename.rpm' for the RedHat packages.
+   Note: even if you did not encounter any problems installing the
+   program, I strongly recommend reading the INSTALL file anyway in order
+   to find out about the set-up of Mailfilter. The program does not work
+   without spending a little bit of time on configuration first.
+
+Running 'configure' doesn't work.
+
+   If your system lacks some of the requested
+   features/libraries/compilers, then try installing them and run
+   'configure' again. But don't forget to remove the file config.cache
+   first, or the new components can not be found. If it's a more serious
+   problem that can't be fixed that way, consider reporting it as bug.
+
+Running 'make' doesn't work.
+
+   On Linux systems the command 'make' typically refers to GNU's gmake.
+   Various BSD- and Unix-systems ship with different (non-GNU) versions
+   of make though. In that case you need to be sure that the right
+   version of make is invoked by typing 'gmake', instead of just 'make'
+   (and later 'gmake install' instead of 'make install').
+
+   Another common reason why 'make' might fail could be related to your
+   system's C++ compiler and its libraries. It's easiest to use GNU CC
+   (gcc), even though other C++ and C compilers should work as well. But
+   keep in mind that GNU CC releases prior 2.95.x don't know C++
+   namespaces and therefore choke on Mailfilter's source code. So, be up
+   to date.
+
+   A not so obvious reason why compilation abords could be related to
+   broken versions of the program flex. Please read section 2.7 of this
+   document for further information on this issue.
+
+Running 'make' was easy, but running 'make install' doesn't work.
+
+   The most common cause for this behaviour is that you are trying to
+   install Mailfilter into a directory where you do not have the
+   necessary permissions to write in. Either reconfigure your Makefile
+   with these options
+   make clean
+   ./configure --prefix=/newdir
+
+   where 'newdir' points to the new location for Mailfilter, or simply
+   become 'root' and then run 'make install' again. By default this will
+   install the software in /usr/local/bin.
+
+Why doesn't the compiler like my flex output, or complains about wrong
+declarations?
+
+   Because most likely you are using a broken version of GNU flex.
+   Basically, you have two choices to resolve the problem: a) you can
+   stick with GNU flex and try using an outdated release of GCC, or b)
+   you try replacing the (broken) GNU flex with a more compatible version
+   available from http://lex.sf.net/.
+
+Is there any way to decrease the size of the Mailfilter binary?
+
+   For users of UNIX-like systems, yes. When installing the program,
+   running 'make install-strip' instead of 'make install' will strip the
+   binary as it installs it, drastically decreasing its size.
+   If you've already installed mailfilter, but still wish to strip the
+   binary, become root, and use the strip command. See the manual page of
+   strip(1) for more information.
+     _________________________________________________________________
+
+Configuration:
+
+Mailfilter complains that its rcfile ($HOME/.mailfilterrc) is missing.
+
+   Read the INSTALL file provided with Mailfilter, in which you will find
+   an example rcfile set-up. Copy and paste this example, modify it to
+   suit your own needs and restart Mailfilter. (Alternatively you can
+   also look up the official homepage to find a basic set-up that gets
+   you started very conveniently.) If the program still complains, then
+   try to start it with the '--mailfilterrc' switch, pointing directly to
+   the new location of your rcfile.
+   Note: you must have a rcfile file installed somewhere.
+
+Mailfilter complains that its logfile can't be accessed.
+
+   Every rcfile must set the LOGFILE option. Check the given path of your
+   logfile in the rcfile, or simply start Mailfilter with the '--logfile'
+   switch pointing directly to the desired location. If that doesn't
+   help, then check the permissions of the directory where you want
+   Mailfilter to store its logs in. It has to be writable.
+
+Mailfilter complains about the syntax of my rcfile.
+
+   Not to worry, you probably misspelled a word or two in the rcfile, or
+   you have a couple of blanks hidden at the end of your command's
+   parameters. Read through your settings carefully and check for
+   redundant white space characters. Typically an entry in
+   $HOME/.mailfilterrc looks like this
+   COMMAND_NAME = MyParameter
+
+   The command (not necessarily written in capitals) is followed by the
+   '=' and there are no white space symbols (blanks, tabs, etc.) hidden
+   after the parameter. Each command has to be in a separate line of the
+   config file.
+
+How do these filters work? What are Regular Expressions anyway?
+
+   With Mailfilter you can define your own filter rules to determine
+   which e-mails are considered waste and what should be downloaded into
+   your local computer. Such rules are defined by using Regular
+   Expressions. It is very common for these kinds of programs to employ
+   this technique because of its great flexibility. Consider this simple
+   example: if you are not interested to get the 200th advertisement
+   containing information about Viagra, you might want to add this to the
+   end of your rcfile
+   DENY = "^Subject:.*Viagra"
+
+   Now every e-mail that contains anything about Viagra in the subject
+   line gets deleted right away. You can create similar rules for all of
+   the other header fields (cc, To, From, etc.), but be aware of the fact
+   that Mailfilter does not allow more than one line per rule. So each
+   new filter must be placed in its own line starting with 'DENY'. If you
+   don't want the filter rules to be case-sensitive then you also have to
+   add this line to your rcfile:
+   REG_CASE = "no"
+
+   A comprehensive list of all supported keywords can be found in the
+   mailfilterrc(5) man page. More examples and real-life use cases can be
+   looked up in the mailfilterex(5) man page. Study these documents
+   carefully! If you're eager to know how Regular Expressions work in
+   general, use your favourite UNIX book or have a look at the official
+   Mailfilter homepage. There you will find some enlightening links on
+   this subject.
+
+Is it possible to define what should be delivered, rather than vice versa?
+
+   Yes, by creating a negative filter. Negative Filters are quite
+   restrictive, so you should make sure that you have fully understood
+   how these are set up and how they work.
+   DENY<>"^(To|Cc):.*my-email@address\.com"
+
+   Having a simple rule like this added to your rcfile, Mailfilter will
+   delete every message which is not directly sent to your e-mail
+   account. That is, if there is a message that can't be matched to the
+   above, then it automatically qualifies as spam.
+
+Can I override some filters? (How to define 'friends'/trusted lists)
+
+   Yes, using the keyword ALLOW you can define which messages should be
+   delivered, regardless of any spam filters that might match. This way
+   you can not only define 'friends' lists, but also create a very
+   restrictive rule set. Consider this example:
+
+   DENY = "^From:.*@spam_isp.org"
+   ALLOW = "^From:.*my_friend@spam_isp.org"
+
+   Adding these two lines to your rcfile will filter all messages coming
+   from the domain 'spam_isp.org', except for those from your friend
+   'my_friend' (who should obviously change his ISP). A comprehensive
+   list of all supported keywords can be found in the mailfilterrc(5) and
+   mailfilterex(5) man pages. Study them carefully!
+
+Is it possible to split the rcfile into several smaller files?
+
+   This is a feature, officially supported since version 0.3.3 of
+   Mailfilter. Use the keyword INCLUDE in your main rcfile to load
+   additional program configuration. However, the nesting may only be one
+   level deep, i.e. the files included must not include further files.
+   Consider this example:
+   # From within $HOME/.mailfilterrc we load three
+   # additional config files
+   INCLUDE = "/home/myusername/.mailfilter/servers"
+   INCLUDE = "/home/myusername/.mailfilter/filters"
+   INCLUDE = "/home/myusername/.mailfilter/friends"
+
+How do I get rid of messages sent in exotic (e.g. Asian) languages (unknown
+to me)?
+
+   Spam is not only a European or American illness. In fact a lot of it
+   comes from Asia and a lot of that reaches people who can not read nor
+   understand what arrives in their mail boxes. The following filters
+   will help you to get rid of e-mails that contain 'unusual' subject
+   tags. Consider some excerpts from a typical logfile:
+   Subject: π≤œÌ¬∑”…∆˜£®ADSL/CABLE/ISDN/PSTN/SWITCH£©
+   Subject: «ø¡“Õ∆ºˆ Ù”⁄ƒ˙µƒÕ¯…œ…Á«¯£°(www.I_am_a_Spammer.com)
+   Subject: 70ÕÚ∆Û“µ–≈œ¢
+
+   All these subjects have one thing in common: They use characters which
+   do not fit into the ordinary range of displayable ASCII symbols. A
+   hexdump of the last subject line will help to illustrate this:
+
+   0000 53 75 62 6a 65 63 74 3a 20 37 30 cd f2 c6 f3 d2
+   0010 b5 d0 c5 cf a2 .. .. .. .. .. .. .. .. .. .. ..
+
+   Even though it is possible to create filters matching these strings,
+   it takes a bit of work, since most Regular Expression libraries that
+   today's operating systems provide do not support octal or hex escapes
+   (something like [\x80-\xfc]). In fact, the negative (and case
+   sensitive) message filters are our weapon of choice here:
+DENY_CASE<>"^Subject: [][A-Za-z0-9ƒ÷‹‰ˆ¸ﬂ
+            ^         ^^          ^^^^^^^
+            1         23          4
+
+        :;.,!"ß$%&/()=?{}_<>#~¥'` |@*+∞^\-]+$"
+                              ^^         ^^^^
+                              5          6278
+
+   There are some important issues in this expression, numbered from 1 -
+   8:
+    1. See 8.
+    2. These brackets '[]' enclose a character class.
+    3. We want to allow these brackets, too. The only position where to
+       put the closing bracket into a character class is the first one.
+    4. For those who want to allow German subjects. (Modify this to fit
+       your own needs for Scandinavian languages, etc.)
+    5. Attention: There are two different single quotes from the upper
+       right to the lower left.
+    6. Inside a character class the hyphen '-' is a meta symbol to set a
+       range of characters (take a look at the beginning). In order to
+       get the actual literal '-', it must be positioned at the end of
+       the class.
+    7. Indicates that the preceding character or character class has to
+       be present at least once.
+    8. In order to force the mail's originator to only use these
+       characters in the subject line, there must not exist any preceding
+       or following characters. That is the preceding character has to be
+       the start of the line, the following character has to be the end
+       of the line.
+
+   On a UNIX-like system you usually need to switch off the locale first
+   ('handling of different country characteristics'), so the internal
+   Regular Expression compile-process does not get confused. If you are
+   calling a script for filtering and getting messages, you could use
+   something similar to this:
+   #!/bin/sh
+   # Remove locale
+   L=$LANG
+   unset LANG
+   # Get mails
+   /usr/local/bin/fetchmail $*
+   # Restore locale
+   LANG=$L
+
+   Alternatively it is also possible to create a straight forward filter
+   that matches non-ISO-8859-1 messages (or at least almost). The
+   standard ISO-8859-1 is an extension to the ASCII character set (i.e.
+   the first 128 characters are the same, greater numbers encode symbols,
+   accents, etc.) and supports the following languages: Afrikaans,
+   Basque, Catalan, Danish, Dutch, English, Faeroese, Finnish, French,
+   Galician, German, Icelandic, Irish, Italian, Norwegian, Portuguese,
+   Spanish and Swedish. There is a draw back though: the filter we're
+   presenting here accepts only special German characters (umlauts) as
+   extension and is therefore not fully ISO-8859-1 compliant. However,
+   you might consider it useful anyway. Read the filter as one single
+   line:
+   # A filter that only accepts ASCII characters and also
+   # German umlauts as extension
+   DENY_NOCASE = "^Subject:.*=\?ISO-8859-1\?Q\?.*=
+   ([0189][[:xdigit:]]|[7F]F|A[0189A-F]|
+   B[1235-9A-F]|[CE][0-35-9A-F]|[DF][0-5789ABDE])"
+
+   Needless to say, you need to have extended Regular Expressions enabled
+   (Mailfilter's default are basic expressions) in order to create such
+   complex rules. (This truly frequently asked question was patiently
+   worked out and answered by Til Schubbe.)
+
+How do I fine tune other programs to work with Mailfilter?
+
+   As always, there are various ways to achieve this. I have chosen the
+   commonly used application fetchmail to explain how this works.
+   (Similar options are available in other mail programs, such as KMail.)
+   Fetchmail is a nifty program that downloads e-mail from POP accounts
+   (it also supports other protocols). Therefore it's a very tempting
+   idea to use the clean up services of Mailfilter before we're starting
+   to receive huge amounts of junk in between our normal e-mail messages.
+   Adding one single line to the fetchmail set-up file does the trick:
+   poll my.mailserver.de via "my.mailserver.de"
+    with proto POP3
+    localdomains mailserver.de
+    user "username" there with password "pass" is tuxuser here options
+   forcecr warnings 3600
+    preconnect "mailfilter"
+   poll my2.mailserver.de via "my2.mailserver.de"
+    with proto POP3
+    localdomains mailserver.de
+    user "anotherusername" there with password "other_pass" is tuxuser
+   here options forcecr warnings 3600
+
+   The line 'preconnect "mailfilter"' tells fetchmail to invoke
+   Mailfilter each time the user requests the download of new e-mail
+   messages. If Mailfilter is set up to check both of the given accounts
+   then calling it merely once is sufficient.
+   Another very good (and popular) way of using Mailfilter is to call it
+   via cron, or just once upon login. That way you won't see much of it
+   either and can work with your favourite e-mail program just as you are
+   used to - except you won't be disturbed by spam anymore.
+
+I'm using multidrop mail collection with fetchmail and can't get Mailfilter
+to work.
+
+   Peter T. Garner contributed this one: consider an environment in which
+   six users collect mail via fetchmail's multidrop mechanism, but want
+   their messages checked for spam first. That's no problem if you mind
+   the right syntax and add something like this to your fetchmail set-up:
+   set postmaster "root"
+   set properties ""
+   set bouncemail
+   set syslog
+   poll pop.something.net with proto POP3
+     envelope Envelope-to
+     aka something.rather.co.uk
+     user anything.anyone.co.uk there with password TOP_SECRET
+   to
+   peterg = peterg
+   annie = annie
+   gemma = gemma
+   lizzy = lizzy
+   bob = bob
+   here
+   options
+   preconnect "mailfilter --mailfilterrc=/etc/mailfilter.rc"
+
+Are there any sample rcfiles ($HOME/.mailfilterrc) ?
+
+   Yes, there are. You can find one in the INSTALL guide provided with
+   Mailfilter, or check the rest of the documentation for additional
+   'rcfile.example' files. A comprehensive list of all supported keywords
+   can be found in the mailfilterrc(5) and mailfilterex(5) man pages.
+   Study them carefully!
+
+I am scared to try out Mailfilter, cause I might accidently delete
+everything!
+
+   No, you won't. If you are new to Mailfilter, place this line in your
+   rcfile before running the program for the very first time:
+   TEST = "yes"
+
+   This makes sure you are not losing any mail at all, including spam.
+   When Mailfilter is in test mode it only simulates the deletion of
+   e-mail and you can see how good your filters would work - in theory.
+   Once you have come to a point where you are happy about their
+   behaviour you can remove this command from your rcfile again and start
+   to seriously kill the spam.
+     _________________________________________________________________
+
+Run-time Errors:
+
+Because of some missing libraries, Mailfilter won't start.
+
+   So far I have only witnessed this behaviour on a poorly administered
+   Solaris machine. If you get an error message similar to this
+
+   ld.so.1: ./mailfilter: fatal: libstdc++.so.2.10.0: open failed: No
+   such file or directory
+
+   then your library path is not set properly. To fix the problem, simply
+   type something like this in your shell (if it's bash - otherwise you
+   may have to use 'set' instead of 'export') depending on the path of
+   your libraries (sometimes they're also in /opt/lib)
+   export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
+
+Mailfilter complains that a specific file couldn't be accessed.
+
+   Most likely you need to fix up your Mailfilter configuration. Please
+   refer to the "Configuration" section in this FAQ.
+
+I get DNS lookup errors.
+
+   Such errors occur when the Domain Name Server failed to resolve the
+   name of your mail server. This either happens when you have misspelled
+   the server name in your rcfile, or when you are trying to start
+   Mailfilter even though you have not established a network connection
+   first.
+
+Mailfilter says it sent a specific command to the server, but it responded
+with an error.
+
+   Usually these errors occur when you are trying to get your mail from a
+   server that does not fully support the POP3/APOP transfer protocol.
+   But you can also get this behaviour if your network connection (or
+   only the connection to the POP3 server) drops during a mail box
+   examination. In this case, simply try to invoke Mailfilter again. If
+   that doesn't fix it, consider reporting a bug.
+
+Mailfilter says that some keyword is deprecated.
+
+   This may happen occasionally when updating from an old version of
+   Mailfilter to a new one. Usually the program suggests a new keyword in
+   its error message though. But you can also look up the proper
+   definition in the documentation files that come with the Mailfilter
+   distribution, or consult the mailfilterrc(5) man page. It contains a
+   comprehensive list of all supported and deprecated keywords.
+
+The compilation of Regular Expressions failed.
+
+   Extended Regular Expressions are not 100% compatible to the basic kind
+   of expressions. Check if you have set Mailfilter to support extended
+   expressions (keyword REG_TYPE) and adjust your filters if necessary.
+
+I frequently get an error message saying that my mail server is not
+responding.
+
+   You have to use the keyword TIMEOUT in order to increase the response
+   time out value. The default is set to 30 seconds, but in some
+   occasions a higher value might be necessary, because some mail servers
+   take longer to send a response, than others. This behaviour can also
+   be experienced on slow or extremely busy network connections.
+
+Help, Mailfilter hangs!
+
+   Depending on your machine's operating system and configuration you
+   might run into trouble with the deployed Regular Expression library.
+   Mailfilter depends on that component to match the user defined spam
+   filters.
+   It has been reported that certain library implementations do not like
+   (very) large strings and therefore stop Mailfilter when it tries to
+   process e-mails with big headers. The Internet standard RFC 822
+   explicitly forbids any header description to exceed the 998 byte
+   limit. So, you should use MAXLENGTH in your rcfile to make sure no
+   strings larger than 998 characters are being processed by Mailfilter.
+   All the different Regular Expression libraries should be able to
+   happily handle that size, too.
+   Please note that MAXLENGTH also overrides your friendly ALLOW rules.
+   So it's probably a good idea to deploy this feature only if you have
+   experienced this peculiar program behaviour yourself!
+     _________________________________________________________________
+
+Special Features:
+
+Can Mailfilter check more than one account?
+
+   Of course it can. Personally, I despise all e-mail programs that have
+   such stupid limitations. How many users nowadays have only one account
+   anyway?
+
+Does Mailfilter support any other protocols besides POP3?
+
+   Yes, it does: POP3 and APOP (= encrypted POP3) are implemented.
+   Support for the IMAP protocol is also planned.
+
+Is there a way to send encrypted password information to the server?
+
+   It is possible to tunnel Mailfilter through ssh (Secure-Shell). Brian
+   Hall has provided a shell script and some comments on this issue. This
+   solution requires a password-less login to your server/shell account
+   though.
+   #!/bin/sh
+   # Script to restart the ssh tunnel if tunneled ports are failed
+   /usr/local/bin/mailfilter -M /home/hallb/.mailfilterrc | \
+       grep "timed out" > /dev/null 2>&1 || exit
+   # Find pid of sleeping ssh tunnel process
+   /bin/kill `/bin/ps wx | /bin/grep -v grep| /bin/grep \
+       "ssh -i /root/.ssh/script_id -g shell.pcisys.net -f" | \
+       /bin/awk '{print $1}'` > /dev/null 2>&1
+   # Start ssh tunnel process
+   /usr/bin/ssh -i /root/.ssh/script_id -g shell.pcisys.net -f \
+       /bin/sleep 999999999 < /dev/null > /dev/null 2>&1
+
+Mailfilter logs are so plain; I'd like to have better spam-statistics!
+
+   Roland Smith has come up with a simple, yet efficient way to create
+   nice monthly spam-statistics. This shell script summarises the main
+   log file:
+   #!/bin/sh
+   # -*- shell-script -*-
+   # Id: spamsort,v 1.3 2002/03/14 18:47:39 rsmith Exp rsmith
+   #
+   # 2003/10/03 12:46:28 extension from Simon Brandmair: now shows
+   MAXSIZE_DENY hits
+   LOG = "/var/log/mailfilter"
+   cat $LOG |awk '/Deleted/ {print $NF}'|sed 's/]//g'| \
+   sed -e 's/^.*[/][0-9]*$/MAXSIZE_DENY exceeded/' | \
+   sort|uniq -c|sort -r
+
+   The output of this script looks something like this:
+ 384 '^Content-Type:.*text/html.*'
+ 261 '<>^(To|Cc):.*rsmith@xs4all.nl'
+ 189 '^(From|Received):.*hotmail.com.*'
+ 110 '^(From|Received|Reply-To):.*yahoo.com.*'
+  51 '^(From|Received|Reply-To):.*hotmail.com.*'
+  40 '^Subject:.*adult.*'
+  36 '^(From|Received|Reply-To):.*yahoo.*'
+  26 '^(From|Received):.*aol.com.*'
+  21 duplicate
+  18 '^(From|Received):.*listmanpro.com.*'
+  17 '^From:.*e.*direct.com.*'
+  14 '^Mailing-List:.*double-optin.*'
+  12 '^(From|Received):.*investorsalley.com.*'
+  11 '.*hardcore.*sex.*'
+  10 '^From:.*optmailing.com.*'
+  10 '^From:.*freeoptinfo.com.*'
+   7 '^From:.*horny18.net.*'
+   5 '^Subject:.*rsmith@xs4all.nl.*'
+   5 '^Received:.*listbuilder.com.*'
+   5 '^From:.*msn.com.*'
+   2 '^From:.*thenewpornsite.com.*'
+   1 material.*'
+   1 '^From:.*insync-palm.com.*'
+   1 '^(From|Received):.*sexrave.com.*'
+   1 '<>^From:.*@.*'
+
+How can I get Mailfilter to auto-reply to spam?
+
+   You can't and this is a feature that will never be implemented either.
+   I started the Mailfilter project to prevent e-mail abuse in general
+   not to give people a weapon to fight fire with fire. Apart from that
+   it would be considered a criminal offense in most countries (including
+   the one I'm living in) to answer a mail bomb with your own mail bomb.
+     _________________________________________________________________
+
+Miscellaneous:
+
+I think I accidently deleted an important e-mail with Mailfilter. Can I get
+it back somehow?
+
+   Tough. Once Mailfilter deleted an e-mail, all you get to see of it is
+   where it came from, what it was about and when it was sent. Have a
+   look in your logfile and ask the author to send it again. If that's
+   not an option for you, you may want to ask your ISP to recover this
+   message for you, though I doubt this would be a very successful
+   undertaking.
+
+If I make changes to the rcfile, does it affect immediately?
+
+   If you are changing Mailfilter's settings while it's active, nothing
+   special will happen. All changes you make in the rcfile will be
+   considered next time you run the application.
+
+Sometimes a few (spam-) messages slip through. How come?
+
+   This is not a bug in Mailfilter. Consider this a feature of every POP
+   e-mail server. Once you start checking for spam or downloading
+   messages, the server locks your mail box. If new messages arrive
+   during the locked state, they will be queued and provided for further
+   processing after the lock has been removed.
+   So Mailfilter does not see incoming messages while it checks for spam
+   and sometimes it happens that a message or two arrive just in time to
+   be too late for filtering, but in time for download. That's life.
+
+What's this cron business?
+
+   Cron. It's the way to run tasks on a schedule in Unix. Say, for
+   example, I wanted to run mailfilter once every minute of every day.
+   Well, we think of it this way:
+   minute hour day month day_of_week command_here
+
+   A quick explanation what it all means:
+     * The first field specifies the minute (0 to 59).
+     * The second field specifies the hour (0 to 23).
+     * The third field specifies the day of the month (1 to 31).
+     * The fourth field specifies the month of the year (1 to 12).
+     * The fifth field specifies the day of the week (0 to 6 for Sunday
+       to Saturday).
+     * The sixth field specifies the command to be executed.
+
+   So, for a quick example, if I wanted something to run every night at 3
+   AM, I would use the following (an asterisk is the same as saying
+   "anything").
+   0 3 * * * mailfilter
+
+   Or, lets say I wanted every weekday (days 1-5) every hour at half past
+   the hour:
+   30 * * * 1-5 mailfilter
+
+   Or, every 10 minutes (which is what I use)
+   10,20,30,40,50 * * * * mailfilter
+
+   (Thanks to Matt Cowger for answering this FAQ.)
+
+My question is not covered by this FAQ. Help!!
+
+   This FAQ can never be a 100% complete guide, covering all possible
+   aspects of the Mailfilter program. That is the reason why we have
+   created a mailing list where we discuss the various aspects of spam
+   killing and how to use Mailfilter. Feel free to subscribe and ask your
+   questions. In urgent or very special cases, however, you can also
+   contact me directly, the author of Mailfilter. Maybe the question will
+   be just another candidate for the FAQ.

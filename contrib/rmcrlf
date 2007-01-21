@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+#
+# rmcrlf - remove carriagereturn- and linefeed-characters from
+# a file containing mail-headers (like mailfilter.log) if a long
+# headerline was split into multiple shorter headerlines
+# ("folding whitespaces" - see RFC 2822, section
+# 2.2.3. Long Header Fields). Especially Received:-headers often
+# exceed the 78-character-limit.
+#
+# http://www.faqs.org/rfcs/rfc2822.html
+# ftp://ftp.rfc-editor.org/in-notes/rfc2822.txt
+#
+# After using rmcrlf you can egrep the new $out_file with your
+# regex_to_test to see if it would have matched the header of a
+# previously received e-mail. This prevents you from loosing
+# mail because of a buggy regex.
+#
+# This is a perl-skript. Depending on your system you may have
+# to adjust the first line.
+#
+# ---------------------
+# Licensed under GPL v2
+# ---------------------
+#
+# Til Schubbe, 13.11.2003
+# t.schubbe@gmx.de
+#
+
+use warnings;
+
+$out_file = "big_2003_07-";		# Output-file; MODIFY HERE
+$out_file_old = "$out_file" . ".old";
+$mailfilter_log = "mailfilter.log";	# Input-file; MODIFY HERE
+
+# Delete the file
+unlink $out_file_old;
+rename "$out_file", "$out_file_old";
+
+# Split $mailfilter_log into multiple smaller files
+# man split
+system "split", "-C", "10m", $mailfilter_log;
+
+open OUT, ">$out_file";
+
+# This handles 26 files only (26*10MB=260MB)
+foreach $f ("a".."z") {
+  unless (open FIL, "<xa$f") {
+    close OUT;
+    exit;
+  }
+  undef $/;			# All in one line
+  $_ = join('', <FIL>);
+  s{\x0d\x0a(\x20|\x09)+}	# This not exactly what RFC 2822 tells, but
+   {\x20}gsx;			# it increases the readability of the outfile
+  close FIL;
+  print OUT;
+  unlink "xa$f";
+}
+close OUT;

@@ -1,0 +1,10 @@
+#!/bin/sh
+# mailfilter.delete.stat
+# timothymoore@nsr500.net
+# input: mailfilter.log from stdin
+# Licensed under the same terms as mailfilter, GPL v2 or later.
+grep '^mailfilter: Deleted ' - |\
+awk '{print substr($0,index($0,"[Applied filter:"))}' |\
+sort +2 |\
+uniq -c |\
+sort -nr +0 -1

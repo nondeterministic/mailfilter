@@ -1,0 +1,19 @@
+Mailfilter Supported Servers
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+AGWPE v2000.70
+Cyrus POP3 Server
+IMail 7.04 NT-POP3 Server
+Netscape iPlanet 4.1
+POP3 v7.64
+QPOP 3.1.2
+Tiscali POP3 Proxy v1.0
+UWASH POP3 Server 3.3(18)
+
+
+----------------------------------------------------------------------------
+This list is not complete.   It contains servers that have been successfully
+tested with Mailfilter.  Other POP3 servers not listed here should work just
+fine, too.  You can help to expand this list by sending successfully tested,
+yet unlisted server names to <baueran@users.sourceforge.net>.     Thank you.
+----------------------------------------------------------------------------

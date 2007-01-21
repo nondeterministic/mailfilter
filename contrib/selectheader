@@ -1,0 +1,89 @@
+#!/usr/bin/perl
+#
+# Whith this skript you can select mails from your mailfilter.log which
+# match a certain regex. This can be useful
+# 1. to check if the header you already received would match a (newly
+#    created) filter,
+# 2. to create a reliable statistic.
+#
+# Input:
+# - mailfilter.log (STDIN)
+# - Regex (edit this skript)
+#
+# Output (STDOUT):
+# - Complete headers which match the given regex
+#
+# Usage:
+# 1.  Put the regex to look for (e.g. from your .mailfilterrc) into $regex
+# 2a. $ selectheader < big.log | less
+# 2b. $ selectheader < big.log > selected_mails.log
+#
+# To handle long header-lines (with folding whitespaces) correctly, you will
+# have to convert your mailfilter.log into another file (e.g. big.log)
+# by using 'rmcrlf' from the Mailfilter /contrib dirctory before feeding
+# this skript. This is important especially when looking for
+# Received:-headers.
+#
+# This is a perl-skript. Depending on your system you may have
+# to adjust the first line.
+#
+# ---------------------
+# Licensed under GPL v2
+# ---------------------
+#
+# ------------------------------
+# Til Schubbe <t.schubbe@gmx.de>
+# 27.12.2003, Version 2
+# ------------------------------
+#
+
+use warnings;
+
+undef $/;				# Read all in one line
+$logfile = <STDIN>;
+
+&prepare_log;
+
+$mail_delimiter = "\n-\n";
+
+$regex = '^Subject:.*Mailfilter';	# MODIFY HERE
+
+# Split logfile into headers
+@mails = split /$mail_delimiter/, $logfile;
+
+foreach $mail (@mails) {
+  # m-Modifier: Multi-line-mode
+  # Perhaps you want to add an 'i' to ignore the case of the regex
+  print "$mail\n--\n" if ($mail =~ /$regex/m
+  # Use the following lines if you want the mails to match another regex,
+  # too.
+#	&& $mail =~ /another regex/m
+#	&& $mail !~ /another regex/m
+#	|| $mail =~ /another regex/m
+#	|| $mail !~ /another regex/m
+  );
+}
+
+
+sub prepare_log {
+  # crlf -> lf
+  $logfile =~ s/\x0d\x0a/\n/mg;
+
+  # Remove additional mailfilter-messages
+  $logfile =~ s/^mailfilter: (?!(?:Allow|Approved|Deleted|Deny).*$).*$//mg;
+
+  # Remove '+OK'-lines (for old (~2001) versions of Mailfilter)
+  $logfile =~ s/^\+OK.*\n//mg;
+
+  # Insert '-' after every mailfilter-message
+  $logfile =~ s/^(mailfilter: .*)/$1\n-\n/mg;
+
+  # Insert '-' after every '.' not followed by 'mailfilter:'
+  $logfile =~ s/^\.\n(?!\n*mailfilter:.*$)/.\n-\n/mg;
+
+  # Remove empty lines
+  $logfile =~ s/\n(?=\n)//mg;
+
+  # Remove empty line at the beginning
+  $logfile =~ s/^\n+//;
+}

@@ -1,0 +1,452 @@
+# Brazilian Portuguese translation of mailfilter.
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Frédéric L. W. Meunier <0 @ pervalidus.net>, 2001.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mailfilter 0.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-31 21:45+0100\n"
+"PO-Revision-Date: 2001-07-07 01:53-0300\n"
+"Last-Translator: Frédéric L. W. Meunier <0 @ pervalidus.net>\n"
+"Language-Team: LDP-BR (http://ldp-br.conectiva.com.br/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/mailfilter.cc:94
+msgid "The rcfile could not be opened."
+msgstr ""
+
+#: src/mailfilter.cc:107
+msgid "Loading the rcfile failed."
+msgstr ""
+
+#: src/mailfilter.cc:113 src/mailfilter.cc:182
+msgid "Runtime exception occured: "
+msgstr ""
+
+#: src/mailfilter.cc:124
+msgid "Could not open log file '"
+msgstr ""
+
+#: src/mailfilter.cc:125
+msgid "' for writing."
+msgstr ""
+
+#: src/mailfilter.cc:127
+msgid "Could not locate log file."
+msgstr ""
+
+#: src/mailfilter.cc:138
+#, fuzzy
+msgid "Signal handler could not be installed."
+msgstr ": Erro: A conexão de rede não pôde ser estabelecida.\n"
+
+#: src/mailfilter.cc:166
+msgid " querying "
+msgstr " consultando "
+
+#: src/mailfilter.cc:168
+msgid " on "
+msgstr " em "
+
+#: src/mailfilter.cc:173
+msgid "Skipping account "
+msgstr ""
+
+#: src/mailfilter.cc:176
+msgid " due to earlier errors.\n"
+msgstr ""
+
+#: src/mailfilter.cc:226
+#, fuzzy
+msgid "Mailfilter filters e-mail and removes spam in one "
+msgstr ""
+"Mailfilter filtra as mensagens e remove o SPAM em uma ou várias contas POP."
+
+#: src/mailfilter.cc:227
+msgid "or many POP accounts."
+msgstr ""
+
+#: src/mailfilter.cc:229
+msgid "Usage: "
+msgstr "Utilização: "
+
+#: src/mailfilter.cc:229
+msgid " [OPTION]..."
+msgstr " [OPÇÃO]..."
+
+#: src/mailfilter.cc:231
+#, fuzzy
+msgid "If a long option shows an argument as mandatory, "
+msgstr ""
+"Se uma opção longa indica que um argumento é obrigatório, então ele é "
+"obrigatório"
+
+#: src/mailfilter.cc:232
+msgid "then "
+msgstr ""
+
+#: src/mailfilter.cc:233
+#, fuzzy
+msgid "it is mandatory for the equivalent short option "
+msgstr "também para as opções curtas equivalentes."
+
+#: src/mailfilter.cc:234
+msgid "also."
+msgstr ""
+
+#: src/mailfilter.cc:236
+msgid "Options:"
+msgstr "Opções:"
+
+#: src/mailfilter.cc:237
+#, fuzzy
+msgid "  -h, --help                 "
+msgstr "  -h, --help                 Indica esta mensagem de ajuda"
+
+#: src/mailfilter.cc:238
+#, fuzzy
+msgid "Display this help information"
+msgstr "  -h, --help                 Indica esta mensagem de ajuda"
+
+#: src/mailfilter.cc:239
+#, fuzzy
+msgid "  -L, --logfile=FILE         "
+msgstr ""
+"  -L, --logfile=FILE         Especifica a localização do arquivo de log"
+
+#: src/mailfilter.cc:240
+#, fuzzy
+msgid "Specify logfile location"
+msgstr ""
+"  -L, --logfile=FILE         Especifica a localização do arquivo de log"
+
+#: src/mailfilter.cc:241
+#, fuzzy
+msgid "  -M, --mailfilterrc=FILE    "
+msgstr ""
+"  -M, --mailfilterrc=FILE    Especifica a localização do arquivo de "
+"configuração"
+
+#: src/mailfilter.cc:242
+#, fuzzy
+msgid "Specify rcfile location"
+msgstr ""
+"  -M, --mailfilterrc=FILE    Especifica a localização do arquivo de "
+"configuração"
+
+#: src/mailfilter.cc:243
+msgid "  -r, --return-value         "
+msgstr ""
+
+#: src/mailfilter.cc:244
+msgid "Enable additional return values"
+msgstr ""
+
+#: src/mailfilter.cc:245
+#, fuzzy
+msgid "  -t, --test                 "
+msgstr "  -h, --help                 Indica esta mensagem de ajuda"
+
+#: src/mailfilter.cc:246
+msgid "Simulate deletes"
+msgstr ""
+
+#: src/mailfilter.cc:247
+#, fuzzy
+msgid "  -v, --verbose=LEVEL        "
+msgstr "  -v, --verbose=LEVEL        Especifica o nível de verbosidade"
+
+#: src/mailfilter.cc:248
+#, fuzzy
+msgid "Specify level of verbosity"
+msgstr "  -v, --verbose=LEVEL        Especifica o nível de verbosidade"
+
+#: src/mailfilter.cc:249
+#, fuzzy
+msgid "  -V, --version              "
+msgstr "  -V, --version              Indica o número da versão"
+
+#: src/mailfilter.cc:250
+#, fuzzy
+msgid "Display version information"
+msgstr "  -V, --version              Indica o número da versão"
+
+#: src/mailfilter.cc:252
+msgid "Report bugs to "
+msgstr ""
+
+#: src/mailfilter.cc:263
+#, fuzzy
+msgid "This is free software; see the source for copying "
+msgstr ""
+"Este programa é software livre; veja seu código fonte para condições de "
+"cópia. NÃO há"
+
+#: src/mailfilter.cc:264
+msgid "conditions.  There is NO warranty; not even for "
+msgstr ""
+
+#: src/mailfilter.cc:265
+#, fuzzy
+msgid "MERCHANTABILITY or FITNESS FOR A PARTICULAR "
+msgstr ""
+"garantia; nem mesmo para COMERCIABILIDADE ou APTIDÃO PARA UMA FINALIDADE "
+"PARTICULAR."
+
+#: src/mailfilter.cc:266
+msgid "PURPOSE."
+msgstr ""
+
+#: src/mailfilter.cc:291
+msgid "Try '"
+msgstr "Tente '"
+
+#: src/mailfilter.cc:292
+msgid " --help' for more information."
+msgstr "--help' para maiores informações."
+
+#: src/mailfilter.cc:314
+#, fuzzy
+msgid "Could not compile regular expression (allow)."
+msgstr ": Não pûde précompilar essa expressão racional '"
+
+#: src/mailfilter.cc:325
+#, fuzzy
+msgid "Could not compile regular expression (deny)."
+msgstr ": Não pûde précompilar essa expressão racional '"
+
+#: src/mailfilter.cc:337
+#, fuzzy
+msgid "Could not compile regular expression (score)."
+msgstr ": Não pûde précompilar essa expressão racional '"
+
+#: src/mailfilter.cc:388
+#, fuzzy
+msgid "popen failed."
+msgstr ". Falha no login.\n"
+
+#: src/mailfilter.cc:398
+#, fuzzy
+msgid "pclose failed."
+msgstr ". Falha no login.\n"
+
+#: src/getopt.c:688 src/getopt.c:698
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: oção `%s' é ambïgua\n"
+
+#: src/getopt.c:730 src/getopt.c:734
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: opção `--%s' não permite um argumento\n"
+
+#: src/getopt.c:743 src/getopt.c:748
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: opção `%c%s' não permite um argumento\n"
+
+#: src/getopt.c:782 src/getopt.c:793 src/getopt.c:1070 src/getopt.c:1082
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: opção `%s' requer um argumento\n"
+
+#: src/getopt.c:830 src/getopt.c:833
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: opção desconhecida `--%s'\n"
+
+#: src/getopt.c:841 src/getopt.c:844
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: opção desconhecida `%c%s'\n"
+
+#: src/getopt.c:887 src/getopt.c:890
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: opção ilegal -- %c\n"
+
+#: src/getopt.c:896 src/getopt.c:899
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: opção inválida -- %c\n"
+
+#: src/getopt.c:942 src/getopt.c:952 src/getopt.c:1136 src/getopt.c:1147
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: opção requer um argumento -- %c\n"
+
+#: src/getopt.c:1004 src/getopt.c:1014
+#, fuzzy, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: oção `%s' é ambïgua\n"
+
+#: src/getopt.c:1038 src/getopt.c:1049
+#, fuzzy, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: opção `--%s' não permite um argumento\n"
+
+#, fuzzy
+#~ msgid "  -H FILE                    "
+#~ msgstr "  -h, --help                 Indica esta mensagem de ajuda"
+
+#~ msgid "Report bugs to <baueran@users.sourceforge.net>."
+#~ msgstr "Reporte bugs para <baueran@users.sourceforge.net>."
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (c) 2000 - 2003  Andreas Bauer  <baueran@users.sourceforge.net>"
+#~ msgstr "Reporte bugs para <baueran@users.sourceforge.net>."
+
+#, fuzzy
+#~ msgid " and "
+#~ msgstr " em "
+
+#~ msgid ": Error: Could not login to server "
+#~ msgstr ": Erro: Não pûde logar no servidor "
+
+#~ msgid ". Unknown error.\n"
+#~ msgstr ". Erro desconhecido.\n"
+
+#~ msgid ": Error: DNS lookup failure for "
+#~ msgstr ": Erro: Falha de consulta de DNS para "
+
+#~ msgid ": Error: Network connection could not be established.\n"
+#~ msgstr ": Erro: A conexão de rede não pôde ser estabelecida.\n"
+
+#~ msgid ": Error: Authentication failed. Login canceled.\n"
+#~ msgstr ": Erro: A autenticação falhou. Login cancelado.\n"
+
+#~ msgid ": Error: Mail server not responding. Login canceled.\n"
+#~ msgstr ": Erro: O servidor de correio não responde. Login cancelado.\n"
+
+#~ msgid ": Error: Could not establish mail server connection.\n"
+#~ msgstr ": Erro: Não pûde estabelecer conexão com o servidor de correio.\n"
+
+#~ msgid ": Error: Sent STAT, but server responded with an error.\n"
+#~ msgstr ": Erro: STAT enviado, mas o servidor respondeu com um erro.\n"
+
+#~ msgid ": Error: Sent TOP, but server responded with an error.\n"
+#~ msgstr ": Erro: TOP enviado, mas o servidor respondeu com um erro.\n"
+
+#~ msgid ": Error: Sent LIST, but server responded with an error.\n"
+#~ msgstr ": Erro: LIST enviado, mas o servidor respondeu com um erro.\n"
+
+#~ msgid ""
+#~ ": Error: Sent DELE, but server responded with an error. Delete failed.\n"
+#~ msgstr ""
+#~ ": Erro: DELE enviado, mas o servidor respondeu com um erro. Remoção "
+#~ "falhou.\n"
+
+#~ msgid ""
+#~ ": Error: Encountered a malformed e-mail header which could not be handled "
+#~ "by Mailfilter. "
+#~ msgstr ""
+#~ ": Erro: Encontrado um cabeçalho de mensagem mal-formado que não pôde ser "
+#~ "tratado pelo Mailfilter. "
+
+#~ msgid "Program aborted.\n"
+#~ msgstr "Programa abortado.\n"
+
+#, fuzzy
+#~ msgid ": Error: Operation timed out.\n"
+#~ msgstr ""
+#~ ": Erro: Limite de tempo excedido para conexão no servidor de correio."
+
+#, fuzzy
+#~ msgid ": Error: Signal handler could not be installed.\n"
+#~ msgstr ": Erro: A conexão de rede não pôde ser estabelecida.\n"
+
+#~ msgid ""
+#~ ": Error: The rcfile for preferences has wrong number of arguments or "
+#~ "malformed syntax."
+#~ msgstr ""
+#~ ": Erro: O arquivo de configuração para preferências contém um número "
+#~ "errado de argumentos ou uma sintaxe mal-formada."
+
+#~ msgid ""
+#~ ": Error: The rcfile for preferences (usually $HOME/.mailfilterrc) could "
+#~ "not be read."
+#~ msgstr ""
+#~ ": Erro: O arquivo de configuração para preferências (geralmente $HOME/."
+#~ "mailfilterrc) não pôde ser lido."
+
+#~ msgid ""
+#~ ": Error: Aborted pre-compilation of Regular Expressions. Check the syntax "
+#~ "of your filters and rules."
+#~ msgstr ""
+#~ ": Erro: A précompilação das expressões racionais foi abortada. Verifique "
+#~ "a sintaxe de seus filtros e de suas regras."
+
+#~ msgid ""
+#~ ": Error: Could not access the logfile. Check the file permissions of your "
+#~ "logfile and make sure the rcfile contains the correct path."
+#~ msgstr ""
+#~ ": Erro: Não pûde acessar o arquivo de log. Verifique as permissões do seu "
+#~ "arquivo de log e certifique-se que o arquivo de configuração contém o "
+#~ "caminho correto."
+
+#~ msgid ""
+#~ ": Error: Communication failure. Either the server closed the connection "
+#~ "due to a time-out problem, or the entire network connection has dropped."
+#~ msgstr ""
+#~ ": Erro: Falha de comunicação. Ou o servidor encerrou a conexão por causa "
+#~ "de um problema de limite de tempo excedido, ou toda a conexão de rede "
+#~ "caiu. "
+
+#~ msgid ": Error: Connection to the mail server has timed out."
+#~ msgstr ""
+#~ ": Erro: Limite de tempo excedido para conexão no servidor de correio."
+
+#~ msgid ""
+#~ ": Error: Unknown communication error occured. Please consider reporting a "
+#~ "bug. Thank you."
+#~ msgstr ""
+#~ "Erro: Um erro desconhecido de comunicação ocorreu. Por favor, considere "
+#~ "reportar um bug. Obrigado."
+
+#~ msgid ": Error: Malformed e-mail header."
+#~ msgstr ": Erro: Cabeçalho de mensagem mal-formado."
+
+#~ msgid ""
+#~ ": Error: This is an unknown error. Please consider reporting a bug. Thank "
+#~ "you."
+#~ msgstr ""
+#~ ": Erro: Esse é um erro desconhecido. Por favor, considere reportar um "
+#~ "bug. Obrigado."
+
+#~ msgid ": Internal error code from the Regular Expression library: "
+#~ msgstr ""
+#~ ": Erro interno do código da biblioteca de tratamento das expressões "
+#~ "racionais: "
+
+#~ msgid ": Deprecated keyword '"
+#~ msgstr ": Palavra chave depreciada '"
+
+#~ msgid "' in '"
+#~ msgstr "' em '"
+
+#~ msgid ": Instead use the keyword 'REG_CASE' from now on."
+#~ msgstr ": Ao invés, utilize a palavra chave 'REG_CASE' de agora em diante."
+
+#~ msgid ": Instead use the keyword 'VERBOSE' from now on."
+#~ msgstr ": Ao invés, utilize a palavra chave 'VERBOSE' de agora em diante."
+
+#~ msgid ": Consult the mailfilterrc(5) man page for further details."
+#~ msgstr ""
+#~ ": Consulte a página de manual mailfilterrc(5) para detalhes adicionais."
+
+#~ msgid ": A keyword in '"
+#~ msgstr ": Uma palavra chave em '"
+
+#~ msgid "' contains invalid parameters."
+#~ msgstr "' contém parâmetros inválidos."
+
+#~ msgid "%s: Examining %d message(s).\n"
+#~ msgstr "%s: Examinando %d mensagem(ns).\n"
+
+#~ msgid ": Invalid keyword in '"
+#~ msgstr ": Palavra chave inválida em '"

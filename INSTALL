@@ -1,0 +1,260 @@
+Mailfilter INSTALL
+-=-=-=-=-=-=-=-=-=
+
+0.  REQUIREMENTS
+
+To run Mailfilter it's best to have a Unix-like operating system, but
+it also compiles fine with Windows 9x/NT/2000 if additional libraries
+and tools are installed (e.g. Cygwin, or DJGPP).  For instance,
+Mailfilter has been successfully compiled and tested with
+
+ - Solaris 8 / SunOS 5.8
+
+ - Irix 6.5
+
+ - FreeBSD 4.1.1-RELEASE, 4.5-RELEASE, 4.9-RELEASE
+
+ - Mac OS X 10.0
+
+ - NetBSD 1.5
+
+ - Linux:  Mandrake 7.0 - 10.0, Debian 2.1 - 3.0, RedHat 6.2 - 7.1,
+           Slackware 3.9, SuSE 6.2, LinuxPPC
+
+ - Windows NT, 2000 (using Cygwin)
+
+but it may well work on other platforms, too.  (Please report success
+if you have managed to compile it on any other system - thanks.)
+
+0.1  ADD-ON LIBRARIES & TOOLS
+
+To compile/install Mailfilter you also need to have a fairly recent
+version of a C and C++ compiler (e.g. GCC >= 3.0) and your system must
+support BSD-type sockets (in general all Unix systems do meet this
+criterion).  For compilation you will also need the GNU autotools, GNU
+gettext, and the programs flex and bison.
+
+NOTE: Please keep in mind that the GNU versions of flex and bison are
+`somewhat' peculiar.  It is *highly* recommended to use your
+distribution's very own releases of these tools, rather than compiling
+from source (e.g. get them from the BSD-ports collection, or via apt).
+However, if you must get the source for flex (e.g. because your
+distribution ships a broken GNU flex), then use http://lex.sf.net/, but
+*never* GNU flex!  It is broken!
+
+0.2  SSL SUPPORT
+
+Should SSL support be desired, the OpenSSL library (or, an equivalent
+substitute) must be present.  Potential SSL support should then be
+automatically detected by the configure script.
+
+
+1.  CONFIGURE
+
+If you have downloaded and installed a binary distribution of
+Mailfilter, then there is no need to read the following instructions.
+Continue with section 3 and 4 instead.
+
+If you have downloaded a compressed source code archive, then please
+proceed the following steps.  Change to the Mailfilter distribution
+directory (where the INSTALL file can be found,
+e.g. /home/tux/mailfilter-x.y.z) and run
+
+      ./configure
+
+For a list of available options for configuration, call configure with
+the --help parameter.  Running configure creates a Makefile in your
+source code directory.  If you like, have a look at it before you
+continue, though this should not be necessary, unless you want to have
+debugging information included or things like that.
+
+
+2.  INSTALL
+
+After configure has successfully guessed your system's specific
+values, you can compile the Mailfilter source code with
+
+      make
+
+NOTE: On Linux systems make typically refers to GNU gmake.  However,
+some operating systems (e.g. FreeBSD) ship with different versions of
+make and you will need to explicitly use the command 'gmake' (and
+later 'gmake install') in order to get Mailfilter compiled correctly.
+
+If you have not changed any of the predefined values for configure
+then Mailfilter will be installed in /usr/local/bin.  Become 'root'
+now and run
+
+      make install
+
+That's it - you're done with the installation, but please read on to
+find out what you have to do in order to make Mailfilter work.
+(IMPORTANT!!)
+
+
+3.  SET-UP MAILFILTER
+
+Before you can execute the Mailfilter application you must create a
+rcfile called
+
+      .mailfilterrc
+
+in your home directory, e.g. /home/tux/.mailfilterrc.  In this file
+you must specify the accounts you want Mailfilter to check for spam.
+Here is a very basic set of example rules you could use.  I suggest
+you simply copy and paste it.  For further information and a list of
+all supported key- words, please also read the mailfilterrc(5) and
+mailfilterex(5) man pages.  More rcfiles are available in the doc/
+directory of the Mailfilter distribution.
+
+
+# -----------------------------------------------------------
+# Logile path (be sure you have write permission in this
+# directory; you MUST specify a logfile)
+
+LOGFILE = "$HOME/logs/mailfilter.log"
+
+
+# -----------------------------------------------------------
+# Level of verbosity
+#
+#   0      Silent, show nothing at all
+#   1      Only show errors
+#   2      Only show "Deleted..." messages and errors
+#   3      Default; Show "Deleted..." messages,  errors
+#          and "Examining..." messages
+#   4      Like (3), except this also shows the current
+#          account's username
+#   5      Like (4), except this also shows which filter
+#          matched which string of an e-mail header
+#   6      Debugging mode; prints almost everything
+
+VERBOSE = 3
+
+
+# -----------------------------------------------------------
+# Server list  (Do not change the order of the fields!!)
+# Note: Port 110 is usually the port APOP and POP3 servers use,
+# port 995 is required if (say) POP3/SSL is specified.
+
+SERVER   = "pop.server.com"
+USER     = "username"
+PASS     = "password"
+PROTOCOL = "pop3"
+PORT     = 110
+
+SERVER   = "pop.secondserver.com"
+USER     = "anotherusername"
+PASS     = "anotherusername"
+PROTOCOL = "pop3/ssl"
+PORT     = 995
+
+
+# -----------------------------------------------------------
+# Do you want case sensitive e-mail filters? { yes | no }
+
+REG_CASE = "no"
+
+
+# -----------------------------------------------------------
+# Sets the type of Regular Expression used { extended | basic }
+#
+# (The default is 'basic', don't change unless you know what you
+#  are doing. Extended REs are more complex to set up.)
+
+REG_TYPE = "extended"
+
+
+# -----------------------------------------------------------
+# Maximum e-mail size in bytes that should not be exceeded.
+
+MAXSIZE_DENY = 1000000
+
+
+# -----------------------------------------------------------
+# Set maximum line length of any field in the message header
+ 
+MAXLENGTH = 998
+
+
+# ----------------------------------------------------------
+# Filter rules for detecting spam (each rule must be placed
+# in a separate line)
+
+# These filters detect certain unpleasant e-mail subjects:
+DENY = "^Subject:.*Get penis enlargement"
+DENY = "^Subject:.*WIN MONEY"
+
+# This one filters mail from a certain person:
+DENY = "^From:.*spammer@any_spam_organisation\.com"
+
+# This one filters mail from everyone at a certain organisation:
+DENY = "^From:.*@any_provider_that_spams\.org"
+
+# We don't want any of those 'LEGAL' messages either
+# while stuff with 'legal' in the subject still interests us:
+DENY_CASE = "^Subject:.*LEGAL"
+
+
+# -----------------------------------------------------------  
+# Normalises the subject strings before parsing, e.g.
+# ',L.E-G,A.L; ,C.A-B`L`E, +.B-O`X` ;D`E`S,C;R,A.MB;L,E.R-]'
+# becomes 'LEGAL CABLE BOX DESCRAMBLER' which can be filtered.
+# 
+# If NORMAL is switched on, Mailfilter tries to apply filters
+# to both the normalised and the original subject.
+
+NORMAL = "yes"
+
+
+# -----------------------------------------------------------
+# The maximum e-mail size in bytes that messages from friends
+# should not exceed. Set this to 0 if all your friends (ALLOW)
+# can send messages as long as they want.
+
+MAXSIZE_ALLOW = 0
+
+
+# ----------------------------------------------------------
+# Set list of friends that always pass, if they do not
+# exceed the message length of MAXSIZE_ALLOW
+
+# This rule allows all mail from a friend who was unlucky enough
+# to have signed up with a spam organisation. With DENY we
+# block everyone else from that domain though! See above!
+ALLOW = "^From:.*a_friend_with_account@any_provider_that_spams.org"
+
+# Of course we allow e-mail from anyone who has something to say about
+# mailfilter:
+ALLOW = "^Subject:.*mailfilter"
+
+# We also let our girlfriend send any e-mail she wants:
+ALLOW = "^From:.*my_girlfriend@any_provider\.com"
+
+
+It is _very_ important to not change the order of the SERVER, USER,
+PASS, PROTOCOL and PORT fields.  Generally the rcfile is not
+case-sensitive, which means it does not matter whether the keywords
+are spelled in capitals or not.  You can place white space characters
+before and in between a command and its parameters, but usually not
+after the parameter!
+
+To find out how to set up more complex rules and options, please refer
+to the man pages and the FAQ provided with the Mailfilter program, or
+simply look up the webpage.  If you do not set up a .mailfilterrc
+file, the program refuses to start.  It is also recommended to change
+the permissions of this file to read-only, as it contains all your
+passwords en clear.
+
+
+4.  RUN MAILFILTER
+
+Now try it out!  Mailfilter can be started with
+
+      mailfilter
+
+on the command line.  Be sure you have set up an individual rcfile
+(e.g. $HOME/.mailfilterrc) in your home directory.  If you don't know
+how to do this, please read section 3 of this document again, or
+consult the Mailfilter FAQ in the doc/ directory for further
+information.
