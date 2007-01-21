@@ -1,0 +1,178 @@
+Mailfilter ChangeLog
+-=-=-=-=-=-=-=-=-=-=
+
+Mon Jan  1 14:37:49 CET 2007  Andreas Bauer  <baueran@gmail.com>
+
+ * configure.ac: remove all m4 and gettext references
+ * Makefile.am: reflect changes
+
+Sun Dec 31 21:40:38 CET 2006  Andreas Bauer  <baueran@in.tum.de>
+
+ * configure.ac: update version number and copyright information
+ * src/preferences.*: use singleton design pattern
+ * src/rcfile.yy: reflect changes
+ * src/mailfilter.cc: reflect changes
+ * src/socket.cc: reflect changes
+ * src/feedback.*: use singleton design pattern
+
+Fri Jul  8 11:29:20 CEST 2005 Andreas Bauer  <baueran@in.tum.de>
+
+ * src/protocol.hh: add virtual destructor
+ * all file: change date in copyright statement
+
+Fri Jul  8 11:29:20 CEST 2005 Alexander Kaganyuk <kaganyuk@ccc.vinnica.ua>
+
+ * src/Makefile.am: change $^ to $<
+
+Sun Dec  5 10:01:16 CET 2004  Andreas Bauer  <baueran@in.tum.de>
+ 
+ * src/rcfile.ll, configure.ac: check for presence of wordexp.h
+
+Sat Dec  4 22:11:28 MET 2004  Andreas Bauer  <baueran@in.tum.de>
+
+ * src/apop.cc: add include <strings.h>
+ * src/Makefile.am: remove mv long options
+
+Sun Nov 21 10:40:39 CET 2004  Kai Hildebrandt <kai.hildebrandt@web.de>
+                              Andreas Bauer  <baueran@in.tum.de>
+
+ * src/Makefile.am: fix 'mv-dependencies' in rfc822parser.cc target
+
+Sat Nov 20 16:51:58 CET 2004  Andreas Bauer  <baueran@in.tum.de>
+
+ * src/preferences.*: remove prefs namespace and make class static
+ * src/*.cc,*.hh: remove all references to prefs namespace
+
+Sun Oct 10 15:11:44 CEST 2004  Andreas Bauer  <baueran@in.tum.de>
+
+ * src/*.cc,*.hh: change const functions to function type const
+
+Sat Aug  7 20:21:47 CEST 2004  Andreas Bauer  <baueran@in.tum.de>
+
+ * src/socket.cc: prepare IMAP support
+ * src/apop.cc:login: check for timestamp server message
+
+Sat Jun  5 15:22:58 CEST 2004  Hilmar Preusse <hille42@web.de>
+
+ * NEWS: add information about rcfile changes
+
+Sun May 30 16:03:58 CEST 2004  Andreas Bauer <baueran@in.tum.de>
+
+ * src/apop.cc:login: new
+ * src/socket.cc: added preliminary SSL support using OpenSSL
+ * configure.ac: check for OpenSSL
+ * src/account.cc: fix up error messages
+ * src/preferences.cc: add protocol variant pop3/ssl and apop/ssl
+ 
+Sat Apr 24 19:44:37 CEST 2004  Andreas Bauer <baueran@in.tum.de>
+
+ * src/weeder.cc:check_maxlength: unignore default value
+
+Sat Feb 14 12:13:21 CET 2004  Andreas Bauer <baueran@in.tum.de>
+
+ * src/weeder.cc:check_duplicates: add check for empty Message-ID
+
+Sun Jan 25 13:54:44 CET 2004  Andreas Bauer <baueran@in.tum.de>
+
+ * src/feedback.cc: print_header: new
+ * man/mailfilterrc.1: reflect changes of SHOW_HEADERS
+
+Sat Jan 24 18:20:21 CET 2004  Andreas Bauer <baueran@in.tum.de>
+
+ * man/Makefile.am: pdf: new target
+
+Sun Dec 28 13:20:58 CET 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/mailfilter.cc: fix today_ to store date properly
+
+Sat 27 Dec 2003 00:57:26 -0000  Til Schubbe <t.schubbe@gmx.de>
+
+ * contrib/selectheader: changed
+
+Fri 26 Dec 2003 17:40:29 -0000  Til Schubbe <t.schubbe@gmx.de>
+
+ * TODO: changed
+ * contrib/selectheader: new
+ * contrib/FILES: reflect changes
+
+Thu Dec 25 15:39:40 CET 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/rcfile.ll: rearranged state precedences
+ * src/preferences.cc: fixed up open() to use its argument
+ 
+Tue Nov 25 21:47:48 CET 2003  Chris Vine <chris@cvine.freeserve.co.uk>
+
+ * src/rcfile.yy: MAXSIZE_SCORE: new
+ * src/rcfile.ll: MAXSIZE_SCORE: new
+ * src/preferences.cc: set_max_size_score: new
+ * src/preferences.cc: max_size_score: new
+ 
+Mon Nov 24 22:29:25 CET 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/rcfile.yy: RCParser: new class declarations
+ * src/preferences.cc: rcflexer: remove all references
+ * src/rcfile.hh: new file
+
+13 Nov 2003 23:21:40 -0000  Til Schubbe <t.schubbe@gmx.de>
+
+ * contrib/chrcformat_05-07: new
+ * contrib/rmcrlf: new
+ * contrib/FILES: updated
+ * contrib/Makefile.am: updated
+
+Sun Oct 12 16:43:46 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/weeder.cc:check_scores: Fixed a bug concerning case sensivity
+ * src/rcfile.ll: Include can handle environment variables now
+
+Sat Oct 11 19:36:26 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/pop3.cc: added delete functionality
+ * src/rcfile.*: extended scanner and parser definitions
+ * src/weeder.cc: added support for normalised subject filtering
+
+Thu Oct  9 15:55:34 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/weeder.cc:check_allow_rules: new
+ * src/weeder.cc:check_deny_rules: new
+ * src/weeder.cc:check_scores: new
+ * src/weeder.cc:check_duplicates: new
+
+Mi Okt  8 22:19:22 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/score.cc: new
+
+Tue Oct  7 22:37:34 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/weeder.cc: is_weed: added support for negative deny rules
+
+Sun Oct  5 20:17:18 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/weeder.cc: is_weed: added support for negative allow rules
+
+Sat Oct  4 13:42:14 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/weeder.hh: new
+ * src/weeder.cc: new
+ * src/Makefile.am: add weeder.* to make targets
+
+Mi Aug 13 18:45:02 CEST 2003   Andreas Bauer <baueran@in.tum.de>
+
+ * src/rcfile.yy: renamed lexer to rclexer
+ * src/rfc822.yy: renamed lexer to rfclexer
+
+Sat Jul 26 15:26:22 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/rfc822.ll: new
+ * src/rfc822.yy: new
+ * src/Makefile.am: rfc_test: new compiler target
+
+Wed Jul 23 22:05:28 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * src/pop3.cc: status (): new
+
+Mon Jul 21 10:16:23 CEST 2003  Andreas Bauer <baueran@in.tum.de>
+
+ * ChangeLog.1: new
+ * src/account.cc: include header <typeinfo>
+ * src/RFC822.cc src/RFC822.hh: remove 

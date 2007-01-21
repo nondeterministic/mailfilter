@@ -1,0 +1,34 @@
+Mailfilter TODO (Please read the bottom of this document!)
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ o Add possibility to use perl-regex. Something like REG_TYPE=perl
+
+ o Add possbility to link external "modules" into the Mailfilter program
+ 
+ o Interactive first-time-setup to create rcfile automatically
+
+ o IMAP support
+
+ o Support for encrypted passwords
+
+ + Make mailfilter complain when the rcfile has wrong file permissions
+
+ - Support for .netrc?
+
+ o Another verbosity level:  one for showing matching DENY rules, one for
+   ALLOW rules -- but not both at once
+
+------------------------------------------------------------------------------
+
+SYMBOLS:
+
+ + Urgent request
+
+ o Normal request
+
+ - Not very urgent request
+
+In general new requests for features, bug fixes, etc. should be added on
+top of the list. They can be shifted down later on.
+
+------------------------------------------------------------------------------

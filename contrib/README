@@ -1,0 +1,21 @@
+Mailfilter Contrib
+
+This ia a collection of bits and pieces people sent to extend
+mailfilter. We try our best to not include malicious stuff in here, but
+all files in this directory are not part of mailfilter. You should not
+complain to us if they crash your system or burn all your important
+data, you USE IT OWN YOUR OWN RISK.
+
+All files in this directory should be licensed under the same terms
+mailfilter is, GPL v2 or later.
+
+How to contribute a file:
+Include a line like
+# Licensed under the same terms as Mailfilter, GPL v2 or later.
+in your file, fill out the following form and send all that to 
+Joerg Jaspert <joerg@goliathbbs.dnsalias.net>
+
+File: <filename_here>
+Author: <your name> <your email>
+Purpose: <what is it? config snippet, addon script, etc>
+Desc: <A description>

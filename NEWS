@@ -1,0 +1,396 @@
+Mailfilter NEWS (Summary)
+-=-=-=-=-=-=-=-=-=-=-=-=-
+
+mailfilter 0.8 (Mon Jan  1 16:09:52 CET 2007) [stable version]
+
+  - Code overhaul to introduce a more object oriented design
+
+  - Temporarily disabled gettext and the outdated translations
+
+  - (Hopefully) fixed bugs #238273 and #238273 in Debian bug database
+
+
+mailfilter 0.7.2  (Sun Oct  1 10:17:41 CEST 2006) [development version]
+
+  - Fixed a number of small build and dependency problems
+
+  - Makefile clean-up: should now compile with old GNU flex 2.5.4
+    again (?)
+
+  - New user contributed scripts in contrib/
+
+
+mailfilter 0.7.1  (Sat Nov 27 14:24:08 CET 2004) [development version]
+
+  - RUDIMENTARY IMAP support  (not usable yet)
+
+  - Preliminary support for SSL has been added
+    (if OpenSSL is installed, it can be enabled by specifying protocol
+    "pop3/ssl", or "apop/ssl" and by using port 995 in case of POP,
+    instead of 110)
+
+  - APOP support has been ported over to the 0.7.x development branch
+
+  - MAXLENGTH keyword default is no longer ignored, or misinterpreted
+
+
+mailfilter 0.7  (Sat Feb 14 17:59:26 CET 2004) [development version]
+
+  - Revised and faster networking code
+
+  - New rcfile parsing and setup capabilities
+    Note, the rcfile format has changed!  Parameter strings have to be
+    in quotes now, e.g.
+    
+    SERVER = "my.server"
+  
+    This also hits all your created rules. It is not necessary if your
+    parameter is a number e.g. the port number.
+  
+  - New keyword MAXSCORE_SCORE (see man pages)
+
+  - Keyword SHOW_HEADERS expects a path name now, indicating where
+    to store the headers
+
+  - Verbosity levels have been adjusted slightly
+
+
+mailfilter 0.6.2 (Sun Aug  8 14:17:18 CEST 2004) [stable version]
+
+  - Fixed a crash which would occur if the Date field contains no
+      ":" separator
+
+
+mailfilter 0.6.1 (Sat Feb 14 17:59:26 CET 2004) [stable version]
+
+  - New keyword MAXSIZE_SCORE (see man pages)
+
+  - New scripts in contrib/
+
+  - Mails which do not contain a valid Message-ID are no longer
+    treated as being duplicates
+
+  - Additional Polish rcfile example configurations in the doc/
+    directory
+
+
+mailfilter 0.6   (Sun Oct 26 17:20:59 CET 2003) [stable version]
+
+  - Polish translation added
+
+
+mailfilter 0.5.2  (Sat Oct 11 12:00:05 CEST 2003) [development version]
+
+  - (Buggy) Windows support has been removed
+
+  - (Hopefully) resolved compile problems: since mailfilter does not
+    compile with GNU-flex anymore, the code has been adjusted to depend
+    on a flex version which is available from http://lex.sf.net/
+
+  - New user-contributions and scripts in contrib/
+  
+  - Minor documentation changes in the FAQ
+
+
+mailfilter 0.5.1  (Sat Apr 12 08:46:25 CEST 2003) [development version]
+
+  - Added '-r'/'--return-value' in order to make mailfilter return
+    a positive integer if it scanned any messages in any POP account
+    (see mailfilter (1) man page for details)
+
+  - Added contrib directory with extra scripts and programs which can
+    be used in combination with mailfilter (read its README file for
+    further details)
+
+  - Added a scoring mechanism (see man pages for further details) to
+    allow more efficient filtering on mailing lists, for example
+
+  - Fixed configuraton and compilation woes with various versions of
+    gcc, flex, bison and the autotools (mainly relevant for developers)
+
+  - Added `--test' as command-line switch to merely simulate deletes
+
+
+mailfilter 0.5.0  (Sun Aug 25 14:52:54 EST 2002) [development version]
+
+  - Updated documentation and man pages
+
+  - APOP support (courtesy Greg Louis)
+
+  - Greek language translation (courtesy Dimitrios Kamenopoulos)
+
+  - Fixed Makefile bug that caused recompilation upon make install
+    (courtesy Joerg Jaspert)
+
+  - Updated Windows-related configuration and installation files
+
+  - Windows users can now use "_mailfilterrc" instead of ".mailfilterrc"
+
+
+mailfilter 0.4.0  (Wed May 29 10:10:18 CEST 2002) [stable version]
+
+  - Updated documentation
+
+  - Updated language translations (German, Spanish)
+
+
+mailfilter 0.3.3  (Mon Apr 22 17:38:10 CEST 2002) [development version]
+
+  - Mailfilter now supports POP3 servers that make use of several streams/
+    connections/whatever to send back acknowledgements during the login
+    period
+
+  - Added Russian translation, courtesy Ilgiz Kalmetev
+
+  - Fixed a bug that caused mailfilter to crash under certain conditions,
+    upon syntax errors in the rcfile
+
+  - The -L and -v command line switches override any rcfile directives
+    (again), as it should be
+
+  - Syntax errors in configuration files are reported correctly now
+
+  - Headers are not logged twice anymore, if SHOW_HEADERS=yes and VERBOSE=6
+  
+  - Nested rcfiles possible now (use INCLUDE as keyword)
+
+  - Exotic POP3 servers that do not use "TOP %n 0" to show the message
+    headers, can now be used by defining an alternative command in the
+    config.h file (recompilation is necessary, however)
+
+ 
+mailfilter 0.3.2  (Wed Feb 20 09:38:41 CET 2002) [development version]
+
+  - Improved rcfile parsing, trailing white space characters are possible
+    now
+
+  - Improved logging and verbosity capabilities (see mailfilterrc(5) for
+    details)
+
+  - Usernames and passwords may consist exclusively of digits now
+
+  - Fixed a type conversion problem in signal handling code, such that
+    compilation works again with FreeBSD 4.4-RELEASE
+
+  - Minor documentation updates (faq, man pages, etc.)
+
+  - Fixed a minor incompatibility with Windows configuration files,
+    such that bison gets invoked correctly
+
+
+mailfilter 0.3.1  (Sun Dec  2 11:11:52 GMT 2001) [development version]
+  
+  - Improved rcfile parsing and added support for multi-case keywords
+    and the like
+    
+    (If you run into problems compiling the program, please look into
+     doc/FAQ, as a couple of Linux distributors use(d) a broken version
+     of flex!)
+  
+  - Spanish translation (courtesy Carlos Valdivia Yagüe)
+
+  - Updated and corrected the program's FAQ (e. g. thanks to Brian
+    Hall we have now an example shell script that shows how Mailfilter
+    can be tunneled via ssh)
+
+  - Bug fix: Mailfilter now displays the correct filter and subject
+    string of a mail if a (normalised) filter matched
+
+  - Bug fix: mails that contain subject strings with only a white
+    space character, are now handled correctly
+
+  - Added time out signal handler for network connection code 
+
+  - Added signal handler to catch SIGINT, i.e. ctrl-c
+  
+
+mailfilter 0.3.0  (Wed Nov  7 14:17:44 GMT 2001) [development version]
+
+  - Program compiles and runs (again) under MS-Windows with Cygwin and
+    the like (see doc/README.Windows)
+
+  - rcfile must be in $HOME now and is not expected to be in
+    /home/<username> anymore
+
+  - Upon popular demand the default setting of MAXLENGTH is '0' now,
+    i.e. the feature is disabled by default
+    
+  - Restructured the verbosity levels; see mailfilterrc(5) man
+    page for details, please
+
+  - Removed internal string handling bugs that confused the
+    Regular Expression compilation
+
+
+mailfilter 0.2.4  (Thu Oct 11 18:32:48 GMT 2001) [stable version]
+
+  - Added option to define a time span in seconds that Mailfilter waits
+    for a server response, after a command was issued, keyword TIMEOUT
+
+  - Added option to define maximum line lengths of header fields,
+    keyword MAXLENGTH
+
+  - Changed header parsing slightly, such that program output
+    does not contain unwanted control characters anymore
+
+  - Added Russian translation of an example rcfile (courtesy of
+    Alex A. Puchow)
+
+
+mailfilter 0.2.3  (Wed Aug 15 17:13:17 CEST 2001) [stable version]
+
+  - Updated and extended the FAQ and man pages
+
+  - Bug fix: No more endless loops in the normalisation process if
+    subject line ends with a whole bunch of white-space characters,
+    ie more than the usual two <CR><LF>
+
+  - Bug fix: Normalisation handles multiple spaces/blanks correctly
+    now
+
+  - Bug fix: field-names may now start in lower case letters, ie
+    parsing should be fully RFC822 compliant
+
+  - Bug fix: the closing tags for e-mail headers are not parsed and
+    processed anymore
+
+  - Translations are now part of the RPM packages
+
+  - Message size of deleted messages (MAXSIZE) appears in logs
+
+  
+mailfilter 0.2.2  (Wed Jul 18 11:51:59 CEST 2001) [stable version]
+
+  - Changed source code, so Mailfilter compiles with the new GCC 3.0.x
+    (mainly a matter of missing namespace declarations)
+
+  - Line numbers of the rcfile show up in case of a configuration error
+    (courtesy Johannes Bauer)
+
+
+mailfilter 0.2.1  (Mon Jul  9 18:56:21 CEST 2001) [stable version]
+
+  - Fixed a bug that caused normalisation to fail when message tags
+    consisted of only capital letters
+
+  - The different verbose levels are more consistent and useful now
+
+  - Portuguese translations (courtesy Frederic Meunier)
+
+  - New example rcfiles to make installation easier
+
+
+mailfilter 0.2.0  (Thu May 31 18:16:41 CEST 2001) [stable version]
+  
+  - Updated man pages
+
+  - Added new keyword to delete duplicates of messages: DEL_DUPLICATES
+
+  - New Italian translations (courtesy Matteo Merli)
+
+  - Passwords don't show up in log files anymore if verbosity level is
+    set sufficiently high
+
+  
+mailfilter 0.1.3  (Sun May  6 10:59:36 CEST 2001) [development version]
+
+  - Multi-line header fields like "To:", "Cc:", etc. are now handled correctly
+    (especially in regard of the negative spam filters). That is, new lines are
+    transformed into white-spaces.
+
+  - Minor documentation updates
+
+
+mailfilter 0.1.2  (Wed Apr 25 17:24:11 CEST 2001) [development version]
+
+  - Added internationalisation (so far for 'de', 'fr')
+
+  - Added 'negative' DENY filters, e.g. DENY<>^To:.*my@address.com
+
+
+mailfilter 0.1.1  (Sat Jan 27 09:26:47 GMT+1 2001) [stable version]
+
+  - New man pages: mailfilter(1), mailfilterrc(5), mailfilterex(5)
+
+  - A 'normalised' subject string is now only checked if the message has
+    passed all ordinary filters first (That's much more efficient.)
+
+  - Replaced keyword ICASE with REG_CASE - less confusing that way (A list
+    of deprecated keywords can be found in the mailfilterrc(5) man page.)
+
+  - New keywords: TEST, SHOW_HEADER. See mailfilterrc(5) and mailfilterex(5)
+    for details.
+
+  - Small bug fixes that do not directly affect functionality
+
+
+mailfilter 0.1.0  (Sat Jan 20 10:01:44 GMT+1 2001)
+
+  - Added support for extended Regular Expressions
+
+  - Added 'normalisation' of subject strings for more effective filtering
+
+  - Improved memory management: e-mails are being filtered on the fly now
+
+  - All Regular Expressions of Mailfilter are only compiled once now,
+    on program startup; much faster!
+
+  - New keywords for more efficient filtering:
+    DENY_CASE, DENY_NOCASE, ALLOW, MAXSIZE_DENY, MAXSIZE_ALLOW
+    (Consult the README.mailfilterrc file for further information!)
+
+  - Added multi-level verbose mode (and replaced keyword MODE with VERBOSE)
+
+  - Added check for malformed keywords in .mailfilterrc
+
+  - Changes to the documentation; added platform specific installation
+    instructions (Windows and Slackware Linux)
+
+  - Moved some of the READMEs and the FAQ to the doc/ directory
+
+  - Small bug fixes that do not directly affect the functionality
+
+
+mailfilter 0.0.4  (Tue Dec 19 17:11:33 GMT+1 2000)
+
+  A small but nasty bug made Mailfilter crash on certain versions of glibc.
+  That's fixed now and also the reason why 0.0.4 was out so quickly after
+  0.0.3 has been shipped.
+  Mailfilter now allows ',' in the passwords and reports if the password
+  that was sent to the server was incorrect.
+
+
+mailfilter 0.0.3  (Thu Dec 14 16:31:46 GMT+1 2000):
+
+  It doesn't hurt anymore having e-mails that match two or more filters at
+  once.
+  Added support for anal mail servers such as IMail.
+  Various little bug fixes, mainly dealing with internal memory management,
+  but also exception and error handling.
+  Added a manual page.
+  Added the ability to have case insensitive regular expression
+  matching in the .mailfilterrc file (courtesy Ivan Vitjuk)
+  Added api documentation in various formats
+
+
+mailfilter 0.0.2  (Fri Nov 24 22:38:11 GMT+1 2000):
+
+  Mailfilter doesn't break anymore when the bandwidth gets low. Nonblocking
+  I/O seems to work as well and provides a better performance when checking
+  for e-mail headers on the server.
+
+  Various other little bug fixes have found its way in this release:
+  The --mailfilterrc switch works now, MAXSIZE can be set to zero and the
+  parsing of the e-mail headers got fixed.
+
+  This version also offers better support for other platforms due to automake
+  and provides a better help and version info (thanks to Matthew R. MacIntyre
+  for implementing this).  Also changed from a shallow to a deep
+  package structure.
+
+
+mailfilter 0.0.1  (Fri Nov 17 16:10:51 GMT+1 2000):
+
+  Mailfilter's initial version has been released. See TODO for more information
+  on this (yet) experimental release.
+

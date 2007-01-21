@@ -1,0 +1,75 @@
+.TH MAILFILTER "1" "June 2004" Mailfilter "User Manuals"
+.SH NAME
+mailfilter \- Filters e-mail, gets rid of spam
+.SH SYNOPSIS
+.B mailfilter
+[\fIOPTION\fR]...
+.SH DESCRIPTION
+Mailfilter is a very flexible utility to get rid of unwanted spam mails,
+before having to go through the trouble of downloading them into the local
+computer. It offers support for one or many POP accounts and is especially
+useful for dialup connections via modem, ISDN, etc.
+.PP
+Mailfilter connects to any POP mail box and compares part of its content to a
+set of user defined filter rules. That way the spam gets deleted directly on
+the mail server.
+.PP
+With Mailfilter you can define your own filters (rules) to determine which
+e-mails should be delivered and which are considered waste. Rules are Regular
+Expressions, so you can make use of familiar options from other mail delivery
+programs such as 
+.BR procmail (1)
+for example.
+.SH "RETURN VALUE"
+The mailfilter program normally returns 0 but -1 if an error occurs.
+However, if it has been invoked with the return-value command line switch,
+it gives back a positive integer in case there are messages on the POP
+server.  Empty POP accounts would then result in a return value of 0.
+Using the switch, mailfilter can be embedded into a shell script more
+easily.
+.SH "CONFIGURATION"
+The behaviour of Mailfilter is controlled by command-line options and a
+configuration file. The program will not start without it. Example
+configurations can be looked up in the
+.BR mailfilterex (5)
+man page, in the INSTALL document or inside the doc/ directory of the
+Mailfilter distribution.
+.PP
+By default Mailfilter tries to read $HOME/.mailfilterrc to get all its settings
+from. This is the place where all changes should be made, unless it is
+explicitly specified otherwise. A comprehensive list of all supported options
+and keywords can be found in the
+.BR mailfilterrc (5)
+man page.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Display help information
+.TP
+\fB\-L\fR, \fB\-\-logfile\fR=\fIFILE\fR
+Specify logfile location
+.TP
+\fB\-M\fR, \fB\-\-mailfilterrc\fR=\fIFILE\fR
+Specify rcfile location
+.TP
+\fB\-r\fR, \fB\-\-return-value\fR
+Enable additional return values
+.TP
+\fB\-t\fR, \fB\-\-test\fR
+Simulate deletes
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR=\fILEVEL\fR
+Specify level of verbosity
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Display version information
+.SH "SEE ALSO"
+.BR mailfilterrc (5),
+.BR mailfilterex (5),
+.BR procmail (1),
+.BR regex (7)
+.SH COPYRIGHT
+Copyright \(co 2000-2007 Andreas Bauer <baueran@in.tum.de>
+.PP
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

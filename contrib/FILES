@@ -1,0 +1,132 @@
+File: mbox.sh
+Author = Anton Filippov <sqrt@bluebootle.com>
+Purpose: Mails headers of undeleted mails
+Desc:
+ This script mails headers of undeleted mails to preview
+ mails and define new unwanted threads.  Simple view of
+ List-ID, size and subject of each mail.
+ 
+File: checkfilter.sh
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Desc:
+ Checks for deleted mails and send the filter applied
+ Good for crontab to see if mails you should
+ get were deleted
+ 
+File: chrcformat_05-07
+Author: Til Schubbe <t.schubbe@gmx.de>
+Purpose: Configuration helper
+Desc: Change the format of the mailfilterrc from version 0.5 to 0.7
+
+File: deleted.sh
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Needs: runit.sh
+Desc:
+ Calculates the amount of deleted mails by mailfilter
+ 
+File: examined.sh
+uthor: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Desc:
+ Calculates the amount of emails examined by mailfilter
+ This only makes sense if you examine mails only once.
+ If you do not download and then delete the emails on the
+ server, this script will give you the wrong number.
+ 
+File: getmailer.pl
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Needs: SHOW_HEADERS set to yes in mailfilter configuration
+Desc:
+ Get's the mail client from the logfile
+ by searching for /X-Mailer in the mailheader
+ 
+File: getstats.pl
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Needs: SHOW_HEADERS set to yes in mailfilter configuration
+Desc:
+ Searches for the String Applied in the logfiles.
+ 
+File: prozente.pl
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Needs: runit.sh, deleted.sh, examined.sh
+Desc:
+ Calculates the percentage of the filters' success
+ 
+File: mfdelete.stat
+Author: Tim Moore <timothymoore@nsr500.net>
+Purpose: Addon
+Desc: Determine which delete rules are used most
+Script reads mailfilter log and sorts by delete rule matches using
+common unix utilities. 
+
+File: rmcrlf
+Author: Til Schubbe <t.schubbe@gmx.de>
+Purpose: Addon, Configuration helper
+Desc: remove carriagereturn- and linefeed-characters from
+ a file containing mail-headers (like mailfilter.log) if a long
+ headerline was split into multiple shorter headerlines
+ ("folding whitespaces") - see skript for details
+
+File: runit.sh
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Needs: getstats.pl
+Desc:
+ Checks the filters and how often they were active!
+ Then sorts the ouput in ascending order.
+ E.g. 
+  32 Applied  filter: '^Received:.*\.tw[[:space:]]']
+  35 Applied  filter: '^Received:.*\.br']
+  81 Applied  filter: 'Content-Type:.*text/html.*']
+ 
+File: selectheader
+Author: Til Schubbe <t.schubbe@gmx.de>
+Purpose: Addon
+Desc: Whith this skript you can select mails from your mailfilter.log
+ which match a certain regex. This can be useful
+  1. to check if the header you already received would match a (newly
+     created) filter,
+  2. to create a reliable statistic.
+
+File: sort_de_do.sh
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Desc:
+ Sorts a file which only contains filters for
+ domains, such as
+ DENY=^(From|To|Cc):.*@.*handmark\.net
+ DENY=^(From|To|Cc):.*@.*homebets\.com
+ DENY=^(From|To|Cc):.*@.*homestar\.us
+ by the top level domain, then the first level domain etc.
+
+File: spam.tar.gz
+Author: Franck Pommereau <pommereau@univ-paris12.fr>
+Purpose: Addon, Configuration helper.
+Desc: 
+ Spam is a Perl script which should help in removing unsolicited mails
+ (spams). It parses mails and produces rules suitable to Mailfilter,
+ which makes it possible to remove them from your POP server. Spam will
+ not do everything for you but it will help to quickly update your
+ Mailfilter configuration.
+
+File: xmailer.sh
+Author: Kay Schulz <kay@kay-schulz.com>
+Purpose: Addon
+Needs: getmailer.pl
+Desc:
+ Calculates the amount how often a mailclient
+ was used.
+ E.g.
+  28 The Bat! (v1.33)
+  29 Internet Mail Service
+  29 The Bat! (v1.53d)
+  33 Wmx-0.3
+  36 Microsoft Outlook CWS,
+ Is not perfect, because the  naming of the mailclients,
+ particularly for the different OE versions is not unique
+ But it gives an overview.

@@ -1,0 +1,41 @@
+#!/usr/bin/perl
+#
+# chrcformat_05-07:
+# Change the format of the mailfilterrc from version 0.5 to 0.7
+#
+# Usage:
+# $ mv ~/.mailfilterrc ~/.mailfilterrc.05
+# $ chmod u+x chrcformat_05-07
+# $ cat ~/.mailfilterrc.05 | chrcformat_05-07 > ~/.mailfilterrc
+#
+# This is a perl-skript. Depending on your system you may have
+# to adjust the first line.
+#
+# ---------------------
+# Licensed under GPL v2
+# ---------------------
+#
+# 13.11.2003
+# Til Schubbe <t.schubbe@gmx.de>
+#
+
+$mf_number_keywords =
+	' VERBOSE PORT MAXSIZE_DENY MAXSIZE_ALLOW ' .
+	'MAXLENGTH TIMEOUT HIGHSCORE ';
+
+while (<>) {
+  $l++;
+  chomp;
+  if (/^(#|\s*$)/) {		# skip comment or empty line
+    print "$_\n";
+  } elsif (/^(([A-Z_]+)(\s+[+-]?[0-9]+)?\s*(=|<>)\s*)(.*)/) {
+    $keyword = $2;
+    if ($mf_number_keywords =~ m/ $keyword /) {
+      print "$_\n";		# let numbers unquoted
+    } else {
+      print "$1\"$5\"\n";	# quote the regex
+    }
+  } else {
+    die "error in line $l: '$_'\n";
+  }
+}

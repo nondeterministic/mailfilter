@@ -1,0 +1,436 @@
+# Russian translations for Mailfilter.
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Ilgiz Kalmetev <ilgiz@bashtelecom.ru>, 2001.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mailfilter 0.3.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-31 21:45+0100\n"
+"PO-Revision-Date: 2002-10-08 17:16+0200\n"
+"Last-Translator: Ilgiz Kalmetev <ilgiz@bashtelecom.ru>\n"
+"Language-Team: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/mailfilter.cc:94
+msgid "The rcfile could not be opened."
+msgstr ""
+
+#: src/mailfilter.cc:107
+msgid "Loading the rcfile failed."
+msgstr ""
+
+#: src/mailfilter.cc:113 src/mailfilter.cc:182
+msgid "Runtime exception occured: "
+msgstr ""
+
+#: src/mailfilter.cc:124
+msgid "Could not open log file '"
+msgstr ""
+
+#: src/mailfilter.cc:125
+msgid "' for writing."
+msgstr ""
+
+#: src/mailfilter.cc:127
+msgid "Could not locate log file."
+msgstr ""
+
+#: src/mailfilter.cc:138
+#, fuzzy
+msgid "Signal handler could not be installed."
+msgstr ": Ошибка: Обработчик сигналов не может быть установлен."
+
+#: src/mailfilter.cc:166
+msgid " querying "
+msgstr " запрос "
+
+#: src/mailfilter.cc:168
+msgid " on "
+msgstr " на "
+
+#: src/mailfilter.cc:173
+msgid "Skipping account "
+msgstr ""
+
+#: src/mailfilter.cc:176
+msgid " due to earlier errors.\n"
+msgstr ""
+
+#: src/mailfilter.cc:226
+#, fuzzy
+msgid "Mailfilter filters e-mail and removes spam in one "
+msgstr ""
+"Mailfilter фильтрует почту и удаляет спам с одного или более аккаунтов POP."
+
+#: src/mailfilter.cc:227
+msgid "or many POP accounts."
+msgstr ""
+
+#: src/mailfilter.cc:229
+msgid "Usage: "
+msgstr "Применение: "
+
+#: src/mailfilter.cc:229
+msgid " [OPTION]..."
+msgstr " [ОПЦИИ]..."
+
+#: src/mailfilter.cc:231
+#, fuzzy
+msgid "If a long option shows an argument as mandatory, "
+msgstr ""
+"Если длинная опция показывает аргумент как обязательный, то он обязательный."
+
+#: src/mailfilter.cc:232
+msgid "then "
+msgstr ""
+
+#: src/mailfilter.cc:233
+#, fuzzy
+msgid "it is mandatory for the equivalent short option "
+msgstr "аналогично для коротких опций."
+
+#: src/mailfilter.cc:234
+msgid "also."
+msgstr ""
+
+#: src/mailfilter.cc:236
+msgid "Options:"
+msgstr "Опции:"
+
+#: src/mailfilter.cc:237
+#, fuzzy
+msgid "  -h, --help                 "
+msgstr "  -h, --help                 Показать эту справку"
+
+#: src/mailfilter.cc:238
+#, fuzzy
+msgid "Display this help information"
+msgstr "  -h, --help                 Показать эту справку"
+
+#: src/mailfilter.cc:239
+#, fuzzy
+msgid "  -L, --logfile=FILE         "
+msgstr "  -L, --logfile=DATEI        Указать расположение файла журнала"
+
+#: src/mailfilter.cc:240
+#, fuzzy
+msgid "Specify logfile location"
+msgstr "  -L, --logfile=DATEI        Указать расположение файла журнала"
+
+#: src/mailfilter.cc:241
+#, fuzzy
+msgid "  -M, --mailfilterrc=FILE    "
+msgstr "  -M, --mailfilterrc=DATEI   Указать расположение rc-файла"
+
+#: src/mailfilter.cc:242
+#, fuzzy
+msgid "Specify rcfile location"
+msgstr "  -M, --mailfilterrc=DATEI   Указать расположение rc-файла"
+
+#: src/mailfilter.cc:243
+msgid "  -r, --return-value         "
+msgstr ""
+
+#: src/mailfilter.cc:244
+msgid "Enable additional return values"
+msgstr ""
+
+#: src/mailfilter.cc:245
+#, fuzzy
+msgid "  -t, --test                 "
+msgstr "  -h, --help                 Показать эту справку"
+
+#: src/mailfilter.cc:246
+msgid "Simulate deletes"
+msgstr ""
+
+#: src/mailfilter.cc:247
+#, fuzzy
+msgid "  -v, --verbose=LEVEL        "
+msgstr "  -v, --verbose=LEVEL        Указать уровень подробности"
+
+#: src/mailfilter.cc:248
+#, fuzzy
+msgid "Specify level of verbosity"
+msgstr "  -v, --verbose=LEVEL        Указать уровень подробности"
+
+#: src/mailfilter.cc:249
+#, fuzzy
+msgid "  -V, --version              "
+msgstr "  -V, --version              Показать номер версии"
+
+#: src/mailfilter.cc:250
+#, fuzzy
+msgid "Display version information"
+msgstr "  -V, --version              Показать номер версии"
+
+#: src/mailfilter.cc:252
+msgid "Report bugs to "
+msgstr ""
+
+#: src/mailfilter.cc:263
+#, fuzzy
+msgid "This is free software; see the source for copying "
+msgstr ""
+"Это свободное ПО; см. положения о копировании в исходном тексте. Никаких"
+
+#: src/mailfilter.cc:264
+msgid "conditions.  There is NO warranty; not even for "
+msgstr ""
+
+#: src/mailfilter.cc:265
+#, fuzzy
+msgid "MERCHANTABILITY or FITNESS FOR A PARTICULAR "
+msgstr ""
+"гарантий не дается; даже на ПОЛЕЗНОСТЬ и ПРИГОДНОСТЬ ПРИ ЧАСТНОМ "
+"ИСПОЛЬЗОВАНИИ."
+
+#: src/mailfilter.cc:266
+msgid "PURPOSE."
+msgstr ""
+
+#: src/mailfilter.cc:291
+msgid "Try '"
+msgstr "Попробуйте '"
+
+#: src/mailfilter.cc:292
+msgid " --help' for more information."
+msgstr " --help' для получения более полной информации."
+
+#: src/mailfilter.cc:314
+#, fuzzy
+msgid "Could not compile regular expression (allow)."
+msgstr ": Не могу пред-компилировать это регулярное выражение: '"
+
+#: src/mailfilter.cc:325
+#, fuzzy
+msgid "Could not compile regular expression (deny)."
+msgstr ": Не могу пред-компилировать это регулярное выражение: '"
+
+#: src/mailfilter.cc:337
+#, fuzzy
+msgid "Could not compile regular expression (score)."
+msgstr ": Не могу пред-компилировать это регулярное выражение: '"
+
+#: src/mailfilter.cc:388
+#, fuzzy
+msgid "popen failed."
+msgstr ". Не удалось войти в систему.\n"
+
+#: src/mailfilter.cc:398
+#, fuzzy
+msgid "pclose failed."
+msgstr ". Не удалось войти в систему.\n"
+
+#: src/getopt.c:688 src/getopt.c:698
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: опция '%s' не ясна\n"
+
+#: src/getopt.c:730 src/getopt.c:734
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: опция '--%s' не допускает аргумента\n"
+
+#: src/getopt.c:743 src/getopt.c:748
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: опция '%c%s' не допускает аргумента\n"
+
+#: src/getopt.c:782 src/getopt.c:793 src/getopt.c:1070 src/getopt.c:1082
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: опция '%s' требует аргумента\n"
+
+#: src/getopt.c:830 src/getopt.c:833
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: неопознанная опция '--%s'\n"
+
+#: src/getopt.c:841 src/getopt.c:844
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: неопознанная опция '%c%s'\n"
+
+#: src/getopt.c:887 src/getopt.c:890
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: недопустимая опция -- %c\n"
+
+#: src/getopt.c:896 src/getopt.c:899
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: неверная опция -- %c\n"
+
+#: src/getopt.c:942 src/getopt.c:952 src/getopt.c:1136 src/getopt.c:1147
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: опция требует аргумента -- %c\n"
+
+#: src/getopt.c:1004 src/getopt.c:1014
+#, fuzzy, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: опция '%s' не ясна\n"
+
+#: src/getopt.c:1038 src/getopt.c:1049
+#, fuzzy, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: опция '--%s' не допускает аргумента\n"
+
+#, fuzzy
+#~ msgid "  -H FILE                    "
+#~ msgstr "  -h, --help                 Показать эту справку"
+
+#~ msgid "Report bugs to <baueran@users.sourceforge.net>."
+#~ msgstr "Сообщайте об ошибках на <baueran@users.sourceforge.net>."
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (c) 2000 - 2003  Andreas Bauer  <baueran@users.sourceforge.net>"
+#~ msgstr ""
+#~ "Copyright (c) 2000 - 2001  Andreas Bauer  <baueran@users.sourceforge.net>"
+
+#, fuzzy
+#~ msgid " and "
+#~ msgstr " на "
+
+#~ msgid ": Error: Could not login to server "
+#~ msgstr ": Ошибка: Не могу подключиться к серверу "
+
+#~ msgid ". Unknown error.\n"
+#~ msgstr ". Неизвестная ошибка.\n"
+
+#~ msgid ": Error: DNS lookup failure for "
+#~ msgstr ": Ошибка: Не выяснен DNS для "
+
+#~ msgid ": Error: Network connection could not be established.\n"
+#~ msgstr ": Ошибка: Сетевое соединение не может быть установлено.\n"
+
+#~ msgid ": Error: Authentication failed. Login canceled.\n"
+#~ msgstr ": Ошибка: Не удалось аутентифицировать. Вход в систему прерван.\n"
+
+#~ msgid ": Error: Mail server not responding. Login canceled.\n"
+#~ msgstr ": Ошибка: Почтовый сервер не отвечает. Вход в систему прерван.\n"
+
+#~ msgid ": Error: Could not establish mail server connection.\n"
+#~ msgstr ": Ошибка: Не смог установить соединение с почтовым сервером.\n"
+
+#~ msgid ": Error: Sent STAT, but server responded with an error.\n"
+#~ msgstr ": Ошибка: Отправлен STAT, но сервер вернул ошибку.\n"
+
+#~ msgid ": Error: Sent TOP, but server responded with an error.\n"
+#~ msgstr ": Ошибка: Отправлен TOP, но сервер вернул ошибку.\n"
+
+#~ msgid ": Error: Sent LIST, but server responded with an error.\n"
+#~ msgstr ": Ошибка: Отправлен LIST, но сервер вернул ошибку.\n"
+
+#~ msgid ""
+#~ ": Error: Sent DELE, but server responded with an error. Delete failed.\n"
+#~ msgstr ": Ошибка: Отправлен DELE, но сервер вернул ошибку. Не удалено.\n"
+
+#~ msgid ""
+#~ ": Error: Encountered a malformed e-mail header which could not be handled "
+#~ "by Mailfilter. "
+#~ msgstr ""
+#~ ": Ошибка: Обнаружены некорректные почтовые заголовки, Mailfilter не может "
+#~ "их обработать."
+
+#~ msgid "Program aborted.\n"
+#~ msgstr "Программа прервана.\n"
+
+#~ msgid ": Error: Operation timed out.\n"
+#~ msgstr ": Ошибка: Вышло время операции.\n"
+
+#~ msgid ": Error: Signal handler could not be installed.\n"
+#~ msgstr ": Ошибка: Обработчик сигналов не может быть установлен.\n"
+
+#~ msgid ""
+#~ ": Error: The rcfile for preferences has wrong number of arguments or "
+#~ "malformed syntax."
+#~ msgstr ""
+#~ ": Ошибка: rc-файл параметров имеет неверное число аргументов или "
+#~ "некорректный синтаксис."
+
+#~ msgid ""
+#~ ": Error: The rcfile for preferences (usually $HOME/.mailfilterrc) could "
+#~ "not be read."
+#~ msgstr ""
+#~ ": Ошибка: rc-файл параметров (обычно $HOME/.mailfilterrc) не читается."
+
+#~ msgid ""
+#~ ": Error: Aborted pre-compilation of Regular Expressions. Check the syntax "
+#~ "of your filters and rules."
+#~ msgstr ""
+#~ ": Ошибка: прервана компиляция регулярных выражений. Проверьте синтаксис "
+#~ "ваших фильтров и правил."
+
+#~ msgid ""
+#~ ": Error: Could not access the logfile. Check the file permissions of your "
+#~ "logfile and make sure the rcfile contains the correct path."
+#~ msgstr ""
+#~ ": Ошибка: Нет доступа к Log-файлу. Проверьте права доступа к нему и "
+#~ "убедитесь, что rc-файл содержит правильный путь к Log-файлу."
+
+#~ msgid ""
+#~ ": Error: Communication failure. Either the server closed the connection "
+#~ "due to a time-out problem, or the entire network connection has dropped."
+#~ msgstr ""
+#~ ": Ошибка: Соединение разорвано. Либо сервер закрыл соединение из-за того, "
+#~ "что время вышло, либо было уничтожено соединение целиком."
+
+#~ msgid ": Error: Connection to the mail server has timed out."
+#~ msgstr ": Ошибка: Вышло время соединения с почтовым сервером."
+
+#~ msgid ""
+#~ ": Error: Unknown communication error occured. Please consider reporting a "
+#~ "bug. Thank you."
+#~ msgstr ""
+#~ ": Ошибка: Обнаружена неизвестная ошибка соединения. Пожалуйста, создайте "
+#~ "отчет об ошибке. Благодарю вас."
+
+#~ msgid ": Error: Malformed e-mail header."
+#~ msgstr ": Ошибка: Некорректный почтовый заголовок."
+
+#~ msgid ""
+#~ ": Error: This is an unknown error. Please consider reporting a bug. Thank "
+#~ "you."
+#~ msgstr ""
+#~ ": Ошибка: Это неизвестная ошибка. Пожалуйста, создайте отчет об ошибке. "
+#~ "Благодарю вас. "
+
+#~ msgid ": Signal SIGINT caught. Terminating with signal "
+#~ msgstr ": Принят сигнал SIGINT. Прекращение работы по сигналу "
+
+#~ msgid ": Internal error code from the Regular Expression library: "
+#~ msgstr ": Внутренняя ошибка из библиотеки регулярных выражений: "
+
+#~ msgid ": Deprecated keyword '"
+#~ msgstr ": Недопустимое ключевое слово '"
+
+#~ msgid "' in '"
+#~ msgstr "' в '"
+
+#~ msgid ": Instead use the keyword 'REG_CASE' from now on."
+#~ msgstr ": Вместо него сейчас используется ключевое слово 'REG_CASE'."
+
+#~ msgid ": Instead use the keyword 'VERBOSE' from now on."
+#~ msgstr ": Вместо него сейчас используется ключевое слово 'VERBOSE'."
+
+#~ msgid ": Consult the mailfilterrc(5) man page for further details."
+#~ msgstr ": Обратитесь за подробностями к странице руководств mailfilterrc(5)"
+
+#~ msgid ": A keyword in '"
+#~ msgstr ": Ключевое слово в '"
+
+#~ msgid "' contains invalid parameters."
+#~ msgstr "' содержит неверные параметры."
+
+#~ msgid "%s: Examining %d message(s).\n"
+#~ msgstr "%s: Проверяется %d сообщение(й).\n"
+
+#~ msgid ": Invalid keyword in '"
+#~ msgstr ": Неверное ключевое слово в '"

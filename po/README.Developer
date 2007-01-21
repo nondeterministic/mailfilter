@@ -1,0 +1,36 @@
+Mailfilter po/README.Developer
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Mailfilter still needs people doing translations of the program texts. If you
+are interested in providing help solving this task, be sure you are familiar
+with the GNU gettext package and DO NOT FORGET to set your LINGUAS environment
+variable to the proper country codes. This can be achieved, e.g. by invoking
+the following command:
+
+  export LINGUAGS='en de fr'
+
+With LINGUAS not configured properly, gettext translations will not be
+installed during Mailfilter's compilation and installation so the program
+would remain English by default.
+
+If you invoke xgettext to get the initial candidates for translation, please be
+sure to add the keyword tag to it, e.g. 'xgettext mailfilter.cc --keyword=_'.
+You may have to alter the path to your source file(s) or use a mask like this,
+if you prefer that: '*.c*'.
+
+
+Extending existing translations
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+If you want to merely extend your already existing translation file (i.e. bring
+it up to date with the current version of Mailfilter), then you need to add
+two options to your xgettext call:
+
+  xgettext *.c* --keyword=_ -o <your_translationfile>.po -j
+
+This command will add new terms to that file without deleting your existing
+work. If you invoke the command from within your po/ directory you need to
+adjust the path for the sources to ../src/*.c* of course.
+
+All you need to do now is carefully look through the new po-file and fill in
+the missing translation strings.
