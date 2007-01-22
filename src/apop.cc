@@ -61,7 +61,7 @@ bool APOP :: login (const char* usr,
   command = "APOP " + (string)usr + " " + (string)md5hash + "\r\n";
   if (conn->c_write (command.c_str ()) == -1 || !REPLY_OK)
     {
-      logger->print_err (_("APOP protocol initialisation error.\n"));
+      logger->print_err ("APOP protocol initialisation error.");
       return false;
     }
   

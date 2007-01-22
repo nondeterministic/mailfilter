@@ -20,7 +20,6 @@
 #define MAILFILTER_HH
 
 #include <iostream>
-#include "i18n.hh"
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -41,7 +40,7 @@ using namespace std;
 #define ERROR_MSG(msg)  \
   cerr << PACKAGE_NAME  \
        << ": Error: "   \
-       << _(msg)        \
+       << msg           \
        << endl
 
 #endif

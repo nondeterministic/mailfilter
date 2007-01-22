@@ -71,10 +71,10 @@ bool Feedback :: print_msg (const string msg, int min_verbose_level)
 {
   if (Preferences :: Instance ().verbose_level () >= min_verbose_level)
     {
-      cout << "mailfilter: " << msg;
+      cout << "mailfilter: " << msg << endl;
 	
       if (log_file.is_open ())
-	log_file << "mailfilter: " << msg;
+	log_file << "mailfilter: " << msg << endl;
       else
 	return false;
     }
@@ -86,10 +86,10 @@ bool Feedback :: print_err (const string msg, int min_verbose_level)
 {
   if (Preferences :: Instance ().verbose_level () >= min_verbose_level)
     {
-      cerr << "mailfilter: Error: " << msg;
+      cerr << "mailfilter: Error: " << msg << endl;
 	
       if (log_file.is_open ())
-	log_file << "mailfilter: Error: " << msg;
+	log_file << "mailfilter: Error: " << msg << endl;
       else
 	return false;
     }

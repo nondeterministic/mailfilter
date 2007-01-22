@@ -33,7 +33,6 @@
 #include "mailfilter.hh"
 #include "preferences.hh"
 #include "rcfile.hh"
-#include "i18n.hh"
 
 // We want to give the Preferences object as parameter for yyparse.
 #undef YYPARSE_PARAM
@@ -76,12 +75,12 @@ extern "C"
 
   void rcerror (const char* str)
   {
-    cerr << PACKAGE_NAME << _(": Error: ") << str;
+    cerr << PACKAGE_NAME << ": Error: " << str;
     if (sub_file.length ())
-      cerr << _(" in file ") << sub_file;
+      cerr << " in file " << sub_file;
     else
-      cerr << _(" in main rcfile");
-    cerr << _(" in line ") << (num_lines + 1);
+      cerr << " in main rcfile";
+    cerr << " in line " << (num_lines + 1);
     cerr << "." << endl;
     exit (-1);
   }

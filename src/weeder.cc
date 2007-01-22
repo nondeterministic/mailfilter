@@ -97,11 +97,11 @@ int Weeder :: check_duplicates (Header* the_header)
 	   cur_ID++)
 	if (*(the_header->ID ()) == *cur_ID)
 	  {
-	    logger->print_msg (_("Deny: ")
+	    logger->print_msg ("Deny: "
 			       + *(the_header->from ()) + ": "
 			       + *(the_header->subject ()) + ", "
 			       + *(the_header->date ())
-			       + _(" [Duplicate].\n"),
+			       + " [Duplicate].",
 			       2);
 	    return 1;
 	  }
@@ -141,14 +141,14 @@ int Weeder :: check_allow_rules (Header* the_header) const
 			  0) 
 	      == 0)
 	    {
-	      logger->print_msg (_("Allow: ")
+	      logger->print_msg ("Allow: "
 				 + *(the_header->from ()) + ": "
 				 + *(the_header->subject ()) + ", "
 				 + *(the_header->date ())
 				 + " [\"" 
 				 + cur_allow->expression ()
-				 + _("\" matches \"")
-				 + cur_line + "\"].\n",
+				 + "\" matches \""
+				 + cur_line + "\"].",
 				 4);
 	      
 	      // OK, friendly message detected.  Now check, whether
@@ -156,11 +156,11 @@ int Weeder :: check_allow_rules (Header* the_header) const
 	      if (Preferences :: Instance ().max_size_allow () > 0
 		  && the_header->size () > Preferences :: Instance ().max_size_allow ())
 		{
-		  logger->print_msg (_("Deny: ")
+		  logger->print_msg ("Deny: "
 				     + *(the_header->from ()) + ": "
 				     + *(the_header->subject ()) + ", "
 				     + *(the_header->date ())
-				     + _(" [Maxsize_Allow exceeded].\n"),
+				     + " [Maxsize_Allow exceeded].",
 				     2);
 		  return 1;
 		}
@@ -199,13 +199,13 @@ int Weeder :: check_allow_rules (Header* the_header) const
 		  
 		  if (cur_entry + 1 == the_header->entries ()->end ())
 		    {
-		      logger->print_msg (_("Allow: ")
+		      logger->print_msg ("Allow: "
 					 + *(the_header->from ()) + ": "
 					 + *(the_header->subject ()) + ", "
 					 + *(the_header->date ())
-					 + _(" [Negative allow rule \"")
+					 + " [Negative allow rule \""
 					 + cur_allow->expression ()
-					 + _("\" did not match].\n"),
+					 + "\" did not match].",
 					 4);
 		      return 0;
 		    }
@@ -234,13 +234,13 @@ int Weeder :: check_maxlength (Header* the_header) const
       
       if (cur_line.length () > (unsigned int)Preferences :: Instance ().maxlength ())
 	{
-	  logger->print_msg (_("Deny: ")
+	  logger->print_msg ("Deny: "
 			    + *(the_header->from ()) + ": "
 			    + *(the_header->subject ()) + ", "
 			    + *(the_header->date ())
 			    + " [\""
 			    + cur_entry->tag
-			    + _("\" exceeded maxlength].\n"),
+			    + "\" exceeded maxlength].",
 			    2);
 	  return 1;
 	}
@@ -264,11 +264,11 @@ int Weeder :: check_deny_rules (Header* the_header) const
   if (Preferences :: Instance ().max_size_deny () > 0
       && the_header->size () > Preferences :: Instance ().max_size_deny ())
     {
-      logger->print_msg (_("Deny: ")
+      logger->print_msg ("Deny: "
 			 + *(the_header->from ()) + ": "
 			 + *(the_header->subject ()) + ", "
 			 + *(the_header->date ())
-			 + _(" [Maxsize_Deny exceeded].\n"),
+			 + " [Maxsize_Deny exceeded].",
 			 2);
       return 1;
     }
@@ -290,14 +290,14 @@ int Weeder :: check_deny_rules (Header* the_header) const
 			  0) 
 	      == 0)
 	    {
-	      logger->print_msg (_("Deny: ")
+	      logger->print_msg ("Deny: "
 				+ *(the_header->from ()) + ": "
 				+ *(the_header->subject ()) + ", "
 				+ *(the_header->date ())
 				+ " [\"" 
 				+ cur_deny->expression () +
-				+ _("\" matches \"")
-				+ cur_line + "\"].\n",
+				+ "\" matches \""
+				+ cur_line + "\"].",
 				2);
 	      return 1;
 	    }
@@ -311,15 +311,15 @@ int Weeder :: check_deny_rules (Header* the_header) const
 			  0, NULL, 0)
 	      == 0)
 	    {
-	      logger->print_msg (_("Deny: ")
+	      logger->print_msg ("Deny: "
 				 + *(the_header->from ()) + ": "
 				 + *(the_header->subject ()) + ", "
 				 + *(the_header->date ())
 				 + " [\"" 
 				 + cur_deny->expression () +
-				 + _("\" matches \"")
+				 + "\" matches \""
 				 + cur_line 
-				 + _("\" (normalised)].\n"),
+				 + "\" (normalised)].",
 				 2);
 	      return 1;
 	    }
@@ -362,13 +362,13 @@ int Weeder :: check_deny_rules (Header* the_header) const
 		  
 		  if (cur_entry + 1 == the_header->entries ()->end ())
 		    {
-		      logger->print_msg (_("Deny: ")
+		      logger->print_msg ("Deny: "
 					 + *(the_header->from ()) + ": "
 					 + *(the_header->subject ()) + ", "
 					 + *(the_header->date ())
-					 + _(" [Negative deny rule \"")
+					 + " [Negative deny rule \""
 					 + cur_deny->expression ()
-					 + _("\" did not match].\n"),
+					 + "\" did not match].",
 					 4);
 		      return 1;
 		    }
@@ -423,13 +423,13 @@ int Weeder :: check_scores (Header* the_header) const
 			       0, NULL, 0) == 0)))
 	    {
 	      msg_score += cur_score->score ();
-	      logger->print_msg (_("Score: \"")
+	      logger->print_msg ("Score: \""
 				 + cur_score->expression ()
-				 + _("\" matches \"")
+				 + "\" matches \""
 				 + cur_line
 				 + "\" ["
 				 + int_to_string (cur_score->score ())
-				 + "].\n",
+				 + "].",
 				 5);
 	    }
 	}
@@ -468,12 +468,12 @@ int Weeder :: check_scores (Header* the_header) const
 	      if (cur_entry + 1 == the_header->entries ()->end ())
 		{
 		  msg_score += cur_score->score ();
-		  logger->print_msg (_("Score: <> \"")
+		  logger->print_msg ("Score: <> \""
 				     + cur_score->expression ()
-				     + _("\" did not match ")
+				     + "\" did not match "
 				     + "["
 				     +  int_to_string (cur_score->score ())
-				     + "].\n",
+				     + "].",
 				     5);
 		}
 	    }
@@ -482,24 +482,24 @@ int Weeder :: check_scores (Header* the_header) const
 
   if (msg_score >= Preferences :: Instance ().highscore ())
     {
-      logger->print_msg (_("Deny: ")
+      logger->print_msg ("Deny: "
 			 + *(the_header->from ()) + ": "
 			 + *(the_header->subject ()) + ", "
 			 + *(the_header->date ())
-			 + _(" [Score: ")
+			 + " [Score: "
 			 + int_to_string (msg_score)
-			 + "].\n",
+			 + "].",
 			 2);
       return 1;
     }
   
-  logger->print_msg (_("Pass: ")
+  logger->print_msg ("Pass: "
 		     + *(the_header->from ()) + ": "
 		     + *(the_header->subject ()) + ", "
 		     + *(the_header->date ())
-		     + _(" [Score: ")
+		     + " [Score: "
 		     + int_to_string (msg_score)
-		     + "].\n",
+		     + "].",
 		     5);
   return 0;
 }

@@ -32,7 +32,6 @@
 #define yyFlexLexer rfcFlexLexer
 #include <FlexLexer.h>
 
-#include "i18n.hh"
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -53,7 +52,7 @@ extern "C"
 
   void rfcerror (const char* str)
   {
-    cerr << PACKAGE_NAME << _(": Error: Parser reported ") << str;
+    cerr << PACKAGE_NAME << ": Error: Parser reported " << str;
     cerr << "." << endl;
     exit (-1);
   }
