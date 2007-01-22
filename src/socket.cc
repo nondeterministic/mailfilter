@@ -96,7 +96,7 @@ int Socket :: c_open (const char* host_name,
   // Try to initialise signal handler and save stack context.
   if (sigaction (SIGALRM, &sig_action, NULL) < 0)
     {
-      logger->print_err (_("Installation of signal handler failed.\n"));
+      logger->print_err ("Installation of signal handler failed.");
       return GEN_FAILURE_FLAG;
     }
     
@@ -110,7 +110,7 @@ int Socket :: c_open (const char* host_name,
       if (the_protocol == (PROTOCOL_POP3 | SSL_C)
 	  || the_protocol == (PROTOCOL_APOP | SSL_C))
 	{
-	  logger->print_msg (_("Debugging: Using SSL encrypted communication.\n"), 6);
+	  logger->print_msg ("Debugging: Using SSL encrypted communication.", 6);
 	  set_ssl (true);
 	  SSL_library_init ();
 	  SSL_load_error_strings();
@@ -121,7 +121,7 @@ int Socket :: c_open (const char* host_name,
 	  ssl_ctx  = SSL_CTX_new (ssl_meth);
 	}
       else
-	logger->print_msg (_("Debugging: Client-server communication is not encrypted.\n"), 6);
+	logger->print_msg ("Debugging: Client-server communication is not encrypted.", 6);
 #endif
       
       // Try to establish a socket communication endpoint and then
@@ -130,7 +130,7 @@ int Socket :: c_open (const char* host_name,
 	  || ((sd = socket (PF_INET, SOCK_STREAM, 0)) < 0)
 	  || (!(host = gethostbyname (host_name))))
 	{
-	  logger->print_err (_("DNS look up error; is the hostname correct?\n"));
+	  logger->print_err ("DNS look up error; is the hostname correct?");
 	  alarm (0);
 	  return GEN_FAILURE_FLAG;
 	}
@@ -146,7 +146,7 @@ int Socket :: c_open (const char* host_name,
 		   (struct sockaddr*) &s_address,
 		   sizeof (struct sockaddr)) < 0)
 	{
-	  logger->print_err (_("Server connection could not be established.\n"));
+	  logger->print_err ("Server connection could not be established.");
 	  alarm (0);
 	  return GEN_FAILURE_FLAG;
 	}
@@ -157,7 +157,7 @@ int Socket :: c_open (const char* host_name,
 	{
 	  if ((ssl = SSL_new (ssl_ctx)) == NULL)
 	    {
-	      logger->print_err (_("SSL connection structure could not be created.\n"));
+	      logger->print_err ("SSL connection structure could not be created.");
 	      exit (-1);
 	    }
 	  
@@ -167,14 +167,14 @@ int Socket :: c_open (const char* host_name,
 	  // Create BIO object and attach ssl object to it
 	  if ((sbio = BIO_new_socket (sd, BIO_NOCLOSE)) == NULL)
 	    {
-	      logger->print_err (_("Socket-BIO could not be created.\n"));
+	      logger->print_err ("Socket-BIO could not be created.");
 	      return GEN_FAILURE_FLAG;
 	    }
 	  SSL_set_bio (ssl, sbio, sbio);
 	  
 	  if (SSL_connect (ssl) <= 0)
 	    {
-	      logger->print_err (_("SSL connection could not be established.\n"));
+	      logger->print_err ("SSL connection could not be established.");
 	      return GEN_FAILURE_FLAG;
 	    }
 	}
@@ -182,7 +182,7 @@ int Socket :: c_open (const char* host_name,
     }
   else
     {
-      logger->print_err (_("Timeout occured.\n"));
+      logger->print_err ("Timeout occured.");
       return GEN_FAILURE_FLAG;
     }
 
@@ -235,9 +235,9 @@ int Socket :: c_write (const char* msg)
 
       // Debugging.
       if (tmp_msg.find ("PASS ") != 0)
-	logger->print_msg (_("Debugging: Wrote: ") + tmp_msg, 6);
+	logger->print_msg ("Debugging: Wrote: " + tmp_msg, 6);
       else
-	logger->print_msg (_("Debugging: Wrote: PASS *****\n"), 6);
+	logger->print_msg ("Debugging: Wrote: PASS *****", 6);
 
       return bytes;
     }
@@ -325,24 +325,24 @@ int Socket :: c_read (bool read_header)
 		      break;
 		    case SSL_ERROR_WANT_READ:
 		      prem_exit = 1;
-		      logger->print_msg (_("Debugging: Warning: Received SSL_ERROR_WANT_READ.\n"), 6);
+		      logger->print_msg ("Debugging: Warning: Received SSL_ERROR_WANT_READ.", 6);
 		      break;
 		    case SSL_ERROR_WANT_WRITE:
 		      prem_exit = 1;
-		      logger->print_msg (_("Debugging: Warning: Received SSL_ERROR_WANT_WRITE.\n"), 6);
+		      logger->print_msg ("Debugging: Warning: Received SSL_ERROR_WANT_WRITE.", 6);
 		      break;
 		    case SSL_ERROR_ZERO_RETURN:
 		      prem_exit = 1;
-		      logger->print_msg (_("Debugging: Warning: Received SSL_ERROR_ZERO_RETURN.\n"), 6);
+		      logger->print_msg ("Debugging: Warning: Received SSL_ERROR_ZERO_RETURN.", 6);
 		      break;
 		    default:
-		      logger->print_err (_("SSL_read returned unknown error.\n"));
+		      logger->print_err ("SSL_read returned unknown error.");
 		      return GEN_FAILURE_FLAG;
 		    }
 		}
 	      else
 		{
-		  logger->print_err (_("For unknown reason the SSL connection was closed.\n"));
+		  logger->print_err ("For unknown reason the SSL connection was closed.");
 		  return GEN_FAILURE_FLAG;
 		}
 	    }
@@ -383,7 +383,7 @@ int Socket :: c_read (bool read_header)
     }
   else
     {
-      logger->print_err (_("Connection has timed out.\n"));
+      logger->print_err ("Connection has timed out.");
       return GEN_FAILURE_FLAG;      
     }
 
@@ -398,7 +398,7 @@ int Socket :: c_read (bool read_header)
     input.append ("\0");
 
   // Debugging.
-  logger->print_msg (_("Debugging: Read: ") + 
+  logger->print_msg ("Debugging: Read: " + 
 		    (input[input.length () - 1] != '\n'? input + "\n" : input),
 		    6);
   

@@ -25,7 +25,6 @@
 #include <csignal>
 #include <stdexcept>
 #include <vector>
-#include "i18n.hh"
 #include "mailfilter.hh"
 #include "preferences.hh"
 #include "feedback.hh"
@@ -91,7 +90,7 @@ int main (int argc, char* argv[])
   if (!(Preferences :: Instance ().
 	open (Preferences :: Instance ().rc_file ().c_str ())))
     {
-      ERROR_MSG(_("The rcfile could not be opened."));
+      ERROR_MSG("The rcfile could not be opened.");
       return -1;
     }
 
@@ -104,13 +103,13 @@ int main (int argc, char* argv[])
     {
       if (!Preferences :: Instance ().load ())
 	{
-	  ERROR_MSG(_("Loading the rcfile failed."));
+	  ERROR_MSG("Loading the rcfile failed.");
 	  return -1;
 	}
     }
   catch (const exception& r_err)
     {
-      ERROR_MSG(_("Runtime exception occured: ")
+      ERROR_MSG("Runtime exception occured: "
 		+ (string)r_err.what ());
       return -1;
     }
@@ -121,10 +120,10 @@ int main (int argc, char* argv[])
   if (!logger->open (Preferences :: Instance ().log_file ().c_str ()))
   {
     if (Preferences :: Instance ().log_file ().length ())
-      ERROR_MSG(_("Could not open log file '") +
-		Preferences :: Instance ().log_file () + _("' for writing."));
+      ERROR_MSG("Could not open log file '" +
+		Preferences :: Instance ().log_file () + "' for writing.");
     else
-      ERROR_MSG(_("Could not locate log file."));
+      ERROR_MSG("Could not locate log file.");
     return -1;
   }
 
@@ -135,7 +134,7 @@ int main (int argc, char* argv[])
   
   if (sigaction (SIGINT, &sigact, NULL) < 0)
     {
-      ERROR_MSG(_("Signal handler could not be installed."));
+      ERROR_MSG("Signal handler could not be installed.");
       exit (-1);
     }
 
@@ -163,23 +162,23 @@ int main (int argc, char* argv[])
 	      free (today);
 	    }
 	  logger->print_msg ((string)PACKAGE_VERSION
-			    + _(" querying ")
+			    + " querying "
 			    + cur_account->usr () + "@"
-			    + cur_account->server () + _(" on ")
-			    + today_ + ".\n",
+			    + cur_account->server () + " on "
+			    + today_ + ".",
 			    3);
 	  
 	  if (cur_account->check () != 0)
-	    logger->print_err (_("Skipping account ")
+	    logger->print_err ("Skipping account "
 			      + cur_account->usr () + "@"
 			      + cur_account->server ()
-			      + _(" due to earlier errors.\n"));
+			      + " due to earlier errors.");
 	  cur_account++;
 	}
     }
   catch (const exception& r_err)
     {
-      logger->print_err (_("Runtime exception occured: ")
+      logger->print_err ("Runtime exception occured: "
 			+ (string)r_err.what ());
       return -1;
     }
@@ -223,33 +222,33 @@ void get_opts (int argc, char* argv[])
 	{
 	case 'h':
 	case VALUE_HELP:
-	  cout << _("Mailfilter filters e-mail and removes spam in one ");
-	  cout << _("or many POP accounts.") << endl;
+	  cout << "Mailfilter filters e-mail and removes spam in one ";
+	  cout << "or many POP accounts." << endl;
 	  cout << endl;
-	  cout << _("Usage: ") << PACKAGE_NAME << _(" [OPTION]...") << endl;
+	  cout << "Usage: " << PACKAGE_NAME << " [OPTION]..." << endl;
 	  cout << endl;
-	  cout << _("If a long option shows an argument as mandatory, ");
-	  cout << _("then ") << endl;
-	  cout << _("it is mandatory for the equivalent short option ");
-	  cout << _("also.") << endl;
+	  cout << "If a long option shows an argument as mandatory, ";
+	  cout << "then " << endl;
+	  cout << "it is mandatory for the equivalent short option ";
+	  cout << "also." << endl;
 	  cout << endl;
-	  cout << _("Options:") << endl;
-	  cout << _("  -h, --help                 ");
-	  cout << _("Display this help information") << endl;
-	  cout << _("  -L, --logfile=FILE         ");
-	  cout << _("Specify logfile location") << endl;
-	  cout << _("  -M, --mailfilterrc=FILE    ");
-	  cout << _("Specify rcfile location") << endl;
-	  cout << _("  -r, --return-value         ");
-	  cout << _("Enable additional return values") << endl;
-	  cout << _("  -t, --test                 ");
-	  cout << _("Simulate deletes") << endl;
-	  cout << _("  -v, --verbose=LEVEL        ");
-	  cout << _("Specify level of verbosity") << endl;
-	  cout << _("  -V, --version              ");
-	  cout << _("Display version information") << endl;
+	  cout << "Options:" << endl;
+	  cout << "  -h, --help                 ";
+	  cout << "Display this help information" << endl;
+	  cout << "  -L, --logfile=FILE         ";
+	  cout << "Specify logfile location" << endl;
+	  cout << "  -M, --mailfilterrc=FILE    ";
+	  cout << "Specify rcfile location" << endl;
+	  cout << "  -r, --return-value         ";
+	  cout << "Enable additional return values" << endl;
+	  cout << "  -t, --test                 ";
+	  cout << "Simulate deletes" << endl;
+	  cout << "  -v, --verbose=LEVEL        ";
+	  cout << "Specify level of verbosity" << endl;
+	  cout << "  -V, --version              ";
+	  cout << "Display version information" << endl;
 	  cout << endl;
-	  cout << _("Report bugs to ");
+	  cout << "Report bugs to ";
 	  cout << "<baueran@users.sourceforge.net>." << endl;
 	  exit (0);
 	  break;
@@ -259,10 +258,10 @@ void get_opts (int argc, char* argv[])
           cout << endl;
 	  cout << PACKAGE_COPYRIGHT << endl;
           cout << endl;
-          cout << _("This is free software; see the source for copying ");
-	  cout << _("conditions.  There is NO warranty; not even for ");
-	  cout << _("MERCHANTABILITY or FITNESS FOR A PARTICULAR ");
-	  cout << _("PURPOSE.") << endl;
+          cout << "This is free software; see the source for copying ";
+	  cout << "conditions.  There is NO warranty; not even for ";
+	  cout << "MERCHANTABILITY or FITNESS FOR A PARTICULAR ";
+	  cout << "PURPOSE." << endl;
           exit (0);
 	  break;
         case 'L':
@@ -287,8 +286,8 @@ void get_opts (int argc, char* argv[])
 	  break;
 	default:
 	  // Command line option not recognised.
-	  cerr << _("Try '") << argv[0]
-	       << _(" --help' for more information.") << endl;
+	  cerr << "Try '" << argv[0]
+	       << " --help' for more information." << endl;
 	  exit (-1);
 	}
     }
@@ -310,7 +309,7 @@ int precompile_expressions (void)
 	{
 	  if ((comp_err = cur_filter->compile ()) != 0)
 	    {
-	      ERROR_MSG(_("Could not compile regular expression (allow)."));
+	      ERROR_MSG("Could not compile regular expression (allow).");
 	      return comp_err;
 	    }
 	  cur_filter++;
@@ -321,7 +320,7 @@ int precompile_expressions (void)
 	{ 
 	  if ((comp_err = cur_filter->compile ()) != 0)
 	    {
-	      ERROR_MSG(_("Could not compile regular expression (deny)."));
+	      ERROR_MSG("Could not compile regular expression (deny).");
 	      return comp_err;
 	    }
 	  cur_filter++;
@@ -333,7 +332,7 @@ int precompile_expressions (void)
 	{
 	  if ((comp_err = cur_score->compile ()) != 0)
 	    {
-	      ERROR_MSG(_("Could not compile regular expression (score)."));
+	      ERROR_MSG("Could not compile regular expression (score).");
 	      return comp_err;
 	}
 	  cur_score++;
@@ -384,7 +383,7 @@ string exec_shell (const char* command)
       
       if (cur_string[cur_string.size () - 1] != '\n')
 	{
-	  ERROR_MSG(_("popen failed."));
+	  ERROR_MSG("popen failed.");
 	  exit (-1);
 	}
       else
@@ -394,7 +393,7 @@ string exec_shell (const char* command)
       
       if (pclose(fp) == -1)
 	{
-	  ERROR_MSG(_("pclose failed."));
+	  ERROR_MSG("pclose failed.");
 	  exit (-1);
 	}
     }

@@ -73,7 +73,6 @@ dist-hook:
 # If this gets updated, remember to update the doxygen.in config file!
 mailfilter_SOURCES =	md5c.c md5.h                            \
 			defines.hh                              \
-			i18n.hh                                 \
 			rcfile.ll rcfile.hh                     \
 			rfc822.ll                               \
 			getopt.c getopt.h getopt1.c             \

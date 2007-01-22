@@ -26,7 +26,6 @@
 #include <cstdio>
 #include "preferences.hh"
 #include "filter.hh"
-#include "i18n.hh"
 #include "mailfilter.hh"
 #include "account.hh"
 #include "protocol.hh"
@@ -237,7 +236,7 @@ void Preferences :: set_headers_file (const char* name)
     headers_file_name = result.we_wordv[0];
   else
     {
-      ERROR_MSG(_("Invalid file name: ") + (string)name + ".");
+      ERROR_MSG("Invalid file name: " + (string)name + ".");
       exit (-1);
     }
   wordfree (&result);
@@ -263,7 +262,7 @@ void Preferences :: set_log_file (const char* name)
 	log_file_name = result.we_wordv[0];
       else
 	{
-	  ERROR_MSG(_("Invalid file name: ") + (string)name + ".");
+	  ERROR_MSG("Invalid file name: " + (string)name + ".");
 	  exit (-1);
 	}
       wordfree (&result);
@@ -299,8 +298,8 @@ void Preferences :: set_reg_type (const char* new_type)
     rreg_type = 0;
   else
     {
-      ERROR_MSG((string)_("Regular expressions must either be of type ")
-		+ (string)_("'extended', or 'basic'."));
+      ERROR_MSG((string)"Regular expressions must either be of type "
+		+ (string)"'extended', or 'basic'.");
       exit (-1);
     }
 }
@@ -333,8 +332,8 @@ void Preferences :: set_protocol (const char* prot)
 #endif
       else
 	{
-	  ERROR_MSG ((string)_("Only supported protocols are POP3 and ")
-		     + (string)_("APOP (SSL only if OpenSSL is available)."));
+	  ERROR_MSG ((string)"Only supported protocols are POP3 and "
+		     + (string)"APOP (SSL only if OpenSSL is available).");
 	  exit (-1);
 	}
     }

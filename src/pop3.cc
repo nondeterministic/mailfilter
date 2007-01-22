@@ -60,14 +60,14 @@ bool POP3 :: login (const char* usr,
   // Send user name and read server reply.
   if (conn->c_write (usr_name.c_str ()) == -1 || !REPLY_OK)
     {
-      logger->print_err(_("Error occured while sending username to server.\n"));
+      logger->print_err("Error occured while sending username to server.");
       return false;
     }
 
   // Send password and read server reply.
   if (conn->c_write (pass_wd.c_str ()) == -1 || !REPLY_OK)
     {
-      logger->print_err(_("Error occured while sending password to server.\n"));
+      logger->print_err("Error occured while sending password to server.");
       return false;
     }
 
@@ -110,7 +110,7 @@ int POP3 :: scan (void) const
   // Determine number of messages waiting to be examined.
   if ((num_messages = status ()) < 0)
     {
-      logger->print_err (_("Error occured while sending STAT to server.\n"));
+      logger->print_err ("Error occured while sending STAT to server.");
       return GEN_FAILURE_FLAG;
     }
   
@@ -129,7 +129,7 @@ int POP3 :: scan (void) const
 	  cmd = "LIST " + msg_no.str () + "\r\n";
 	  if (conn->c_write (cmd.c_str ()) == -1 || !REPLY_OK)
 	    {
-	      logger->print_err (_("Error occured while sending LIST to server.\n"));
+	      logger->print_err ("Error occured while sending LIST to server.");
 	      return GEN_FAILURE_FLAG;
 	    }
 	  
@@ -142,7 +142,7 @@ int POP3 :: scan (void) const
 	  cmd = "TOP " + msg_no.str () + " 0\r\n";
 	  if (conn->c_write (cmd.c_str ()) == -1 || !HEADER_OK)
 	    {
-	      logger->print_err (_("Error occured while sending TOP to server.\n"));
+	      logger->print_err ("Error occured while sending TOP to server.");
 	      return GEN_FAILURE_FLAG;
 	    }
 
@@ -150,7 +150,7 @@ int POP3 :: scan (void) const
 	  // a path definition via SHOW_HEADERS.
 	  if (Preferences :: Instance ().headers_file ().length ())
 	    if (!logger->print_header (conn->c_reply ()->c_str ()))
-	      logger->print_err (_("Could not write headers to separate file.\n"));
+	      logger->print_err ("Could not write headers to separate file.");
 	  
 	  // Strip topmost status line of server reply, e.g.  "+OK Message
 	  // follows."  The +1 in the end is necessary to skip the actual
@@ -162,9 +162,9 @@ int POP3 :: scan (void) const
 	  // the msg_header object.
 	  if (invoke_msg_parser (&message, msg_header) < 0)
 	    {
-	      logger->print_err (_("Parsing the header of message ")
+	      logger->print_err ("Parsing the header of message "
 				+ msg_no.str ()
-				+ _(" failed.\n"));
+				+ " failed.");
 	      return GEN_FAILURE_FLAG;
 	    }
 	  
@@ -222,7 +222,7 @@ int POP3 :: remove_msg (const unsigned int num) const
   if (Preferences :: Instance ().test_mode ())
     {
       Feedback* logger = Feedback :: Instance ();
-      logger->print_msg (_("Debugging: Simulating DELE command.\n"), 6);
+      logger->print_msg ("Debugging: Simulating DELE command.", 6);
       return 0;
     }
 

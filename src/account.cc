@@ -137,7 +137,7 @@ int Account :: check (void)
 			Preferences :: Instance ().time_out (),
 			proto->ident ()) != 0)
 	{
-	  logger->print_err (_("Could not establish network connection.\n"), 1);
+	  logger->print_err ("Could not establish network connection.", 1);
 	  return GEN_FAILURE_FLAG;
 	}
       
@@ -146,27 +146,27 @@ int Account :: check (void)
 			 passwd ().c_str (),
 			 proto->ident ()))
 	{
-	  logger->print_err (_("Server login failure.\n"), 1);
+	  logger->print_err ("Server login failure.", 1);
 	  conn->c_close ();
 	  return GEN_FAILURE_FLAG;
 	}
 
       if ((messages = proto->status ()) < 0)
 	{
-	  logger->print_err (_("Could not determine mailbox status.\n"), 1);
+	  logger->print_err ("Could not determine mailbox status.", 1);
 	  proto->logout ();
 	  conn->c_close ();
 	  return GEN_FAILURE_FLAG;
 	}
       
-      logger->print_msg (_("Examining "
+      logger->print_msg ("Examining "
 			  + int_to_string (messages)
-			  + " message(s).\n"), 3);
+			  + " message(s).", 3);
       
       // Scan mailbox for spam and unwanted bulk.
       if (proto->scan () < 0)
 	{
-	  logger->print_err (_("Scanning of mail account failed.\n"), 1);
+	  logger->print_err ("Scanning of mail account failed.", 1);
 	  proto->logout ();
 	  conn->c_close ();
 	  return GEN_FAILURE_FLAG;
@@ -177,7 +177,7 @@ int Account :: check (void)
       if (Preferences :: Instance ().return_status ()
 	  && (messages = proto->status ()) < 0)
 	{
-	  logger->print_err (_("Could not determine mailbox status.\n"), 1);
+	  logger->print_err ("Could not determine mailbox status.", 1);
 	  proto->logout ();
 	  conn->c_close ();
 	  return GEN_FAILURE_FLAG;

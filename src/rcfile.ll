@@ -40,7 +40,6 @@
 #endif
 
 #include "rcparser.hh"
-#include "i18n.hh"
 
 extern "C"
 {
@@ -129,7 +128,7 @@ CTRL_CHAR	.
 
      if (include_stack_ptr >= MAX_INCLUDE_DEPTH)
      {
-        cerr << PACKAGE_NAME << _(": Error: Files nested too deep.") << endl;
+        cerr << PACKAGE_NAME << ": Error: Files nested too deep." << endl;
 	exit (-1);
      }
      include_stack[include_stack_ptr++] = YY_CURRENT_BUFFER;
@@ -143,8 +142,8 @@ CTRL_CHAR	.
         }
         else
         {
-           cerr << PACKAGE_NAME << _(": Error: Nested rcfile '");
-	   cerr << yytext << _("' could not be found.") << endl;
+           cerr << PACKAGE_NAME << ": Error: Nested rcfile '";
+	   cerr << yytext << "' could not be found." << endl;
 	   exit (-1);
         }
 
@@ -152,8 +151,8 @@ CTRL_CHAR	.
 
         if (!((ifstream*) yyin)->is_open ())
         {
-           cerr << PACKAGE_NAME << _(": Error: Nested rcfile '");
-	   cerr << sub_file << _("' could not be opened.") << endl;
+           cerr << PACKAGE_NAME << ": Error: Nested rcfile '";
+	   cerr << sub_file << "' could not be opened." << endl;
 	   exit (-1);
         }
 
@@ -161,8 +160,8 @@ CTRL_CHAR	.
      }
      catch (...)
      {
-	cerr << PACKAGE_NAME << _(": Error: Exception was thrown when ")
-	     << _("trying to read '")
+	cerr << PACKAGE_NAME << ": Error: Exception was thrown when "
+	     << "trying to read '"
              << yytext << "'." << endl;
         exit (-1);
      }
@@ -449,18 +448,18 @@ CTRL_CHAR	.
 <*>. {
      if (sub_file != "")
      {
-     	cerr << PACKAGE_NAME << _(": Error: Lexicographical error in line ");
-        cerr << (num_lines + 1) << _(" of your rcfile '") << sub_file;
+     	cerr << PACKAGE_NAME << ": Error: Lexicographical error in line ";
+        cerr << (num_lines + 1) << " of your rcfile '" << sub_file;
         cerr << "'."  << endl;
      }
      else
      {
-        cerr << PACKAGE_NAME << _(": Error: Lexicographical error in line ");
-        cerr << (num_lines + 1) << _(" of your main rcfile.")  << endl;
+        cerr << PACKAGE_NAME << ": Error: Lexicographical error in line ";
+        cerr << (num_lines + 1) << " of your main rcfile."  << endl;
      }
 
-     cerr << PACKAGE_NAME << _(": The term '") << yytext;
-     cerr << _("' could not be interpreted.") << endl;
+     cerr << PACKAGE_NAME << ": The term '" << yytext;
+     cerr << "' could not be interpreted." << endl;
      exit (-1);
 }
 
