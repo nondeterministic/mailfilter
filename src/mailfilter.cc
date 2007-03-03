@@ -79,6 +79,7 @@ int main (int argc, char* argv[])
   struct timeval tv;
   struct timezone tz;
   string options_set;
+  int    return_val = 0;
 
   init_app ();
 
@@ -169,10 +170,13 @@ int main (int argc, char* argv[])
 			    3);
 	  
 	  if (cur_account->check () != 0)
-	    logger->print_err ("Skipping account "
-			      + cur_account->usr () + "@"
-			      + cur_account->server ()
-			      + " due to earlier errors.");
+	    {
+	      logger->print_err ("Skipping account "
+				 + cur_account->usr () + "@"
+				 + cur_account->server ()
+				 + " due to earlier errors.");
+	      return_val = -1;
+	    }
 	  cur_account++;
 	}
     }
@@ -184,10 +188,10 @@ int main (int argc, char* argv[])
     }
 
   // Mailfilter can return the number of pending mails to be
-  // downloaded, e.g. when embeddeding it into a script.
+  // downloaded, e.g., when embeddeding it into a script.
   if (Preferences :: Instance ().return_status ())
     return mailbox_status;
-  return 0;
+  return return_val;
 }
 
 // This function is being run before Mailfilter starts to read the

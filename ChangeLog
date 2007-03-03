@@ -1,6 +1,17 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+2007-01-22 14:00:26 -0800 (Mon, 22 Jan 2007)  baueran
+
+- src/i18n.hh: remove                                                           
+- src/apop.cc, src/preferences.cc, src/rcfile.yy,                               
+  src/pop3.cc, src/rfc822.yy, src/feedback.cc,                                  
+  src/rcfile.ll, src/header.cc, src/socket.cc,                                  
+  src/account.cc, src/mailfilter.hh, src/weeder.cc,                             
+  src/Makefile.am, src/mailfilter.cc: remove all references                     
+  to gettext, replace occurrences of "\n" with endl in the                      
+  mailfilter output messages                                                    
+
 Mon Jan  1 14:37:49 CET 2007  Andreas Bauer  <baueran@gmail.com>
 
  * configure.ac: remove all m4 and gettext references
