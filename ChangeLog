@@ -1,6 +1,12 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+2007-03-03 13:14:15 -0800 (Sat, 03 Mar 2007) baueran 
+                                                                                
+- src/mailfilter.cc: add return_val to capture failed attempt to check          
+  mailbox for spam
+- src/socket.cc: syntax change
+
 2007-01-22 14:00:26 -0800 (Mon, 22 Jan 2007)  baueran
 
 - src/i18n.hh: remove                                                           
