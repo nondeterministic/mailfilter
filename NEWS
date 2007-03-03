@@ -5,6 +5,10 @@ mailfilter 0.8.1 (under development) [stable version]
 
   - Fixed logging error; no log files were created occasionally
 
+  - Mailfilter now returns -1 if one or more accounts failed to be
+    checked; 0 is only returned if the *entire* mailfilter session
+    was successful (Thanks to Mike Clarke for pointing this out)
+
 
 mailfilter 0.8 (Mon Jan  1 16:09:52 CET 2007) [stable version]
 

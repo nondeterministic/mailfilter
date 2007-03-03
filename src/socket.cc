@@ -384,7 +384,7 @@ int Socket :: c_read (bool read_header)
   else
     {
       logger->print_err ("Connection has timed out.");
-      return GEN_FAILURE_FLAG;      
+      return GEN_FAILURE_FLAG;
     }
 
   // Put line ending behind the buffer, if needed.  Do not use '\0'
