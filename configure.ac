@@ -82,10 +82,14 @@ AC_C_CONST
 AC_TYPE_SIZE_T
 AC_HEADER_TIME
 
-AC_CHECK_FUNC(getopt_long,
- 	[AC_DEFINE(HAVE_GETOPT_H,1,
-	           [Define this if there is a system getopt.h header])],
-	[AC_MSG_RESULT(Using included getopt header)])
+#AC_CHECK_FUNC(getopt_long,
+# 	[AC_DEFINE(HAVE_GETOPT_H,1,
+#	           [Define this if there is a system getopt.h header])],
+#	[AC_MSG_RESULT(Using included getopt header)])
+
+AC_CHECK_HEADERS(getopt.h, [
+ 	AC_DEFINE(HAVE_GETOPT_H)
+])
 
 # Checks for (library) functions.
 AC_FUNC_ERROR_AT_LINE
