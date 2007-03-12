@@ -75,7 +75,6 @@ mailfilter_SOURCES =	md5c.c md5.h                            \
 			defines.hh                              \
 			rcfile.ll rcfile.hh                     \
 			rfc822.ll                               \
-			getopt.c getopt.h getopt1.c             \
 			mailfilter.hh mailfilter.cc             \
 			header.hh header.cc                     \
 			weeder.hh weeder.cc                     \
@@ -90,6 +89,10 @@ mailfilter_SOURCES =	md5c.c md5.h                            \
 			pop3.hh pop3.cc                         \
 			apop.hh apop.cc                         \
 			imap.hh imap.cc
+
+if !GETOPT
+mailfilter_SOURCES += getopt.c getopt1.c getopt.h
+endif
 
 mailfilter_LDADD = rcparser.o rfc822parser.o
 
