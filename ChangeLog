@@ -1,7 +1,16 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
-2007-03-03 13:14:15 -0800 (Sat, 03 Mar 2007) baueran 
+2007-03-12 07:25:35 -0700 (Mon, 12 Mar 2007)  baueran
+
+- src/Makefile.am: make getopt conditional on GETOPT
+- configure.ac: add GETOPT conditional to check getopt
+
+2007-03-12 07:31:00 -0700 (Mon, 12 Mar 2007)  baueran
+
+- man/mailfilter*: reflect recent date
+
+2007-03-03 13:14:15 -0800 (Sat, 03 Mar 2007)  baueran 
                                                                                 
 - src/mailfilter.cc: add return_val to capture failed attempt to check          
   mailbox for spam
