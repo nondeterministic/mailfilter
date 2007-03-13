@@ -85,9 +85,9 @@ AC_HEADER_TIME
 AC_CHECK_FUNC(getopt_long,
  	[AC_DEFINE(HAVE_GETOPT_H,1,
 	           [Define this if there is a system getopt.h header])
-         AM_CONDITIONAL(GETOPT, false)],
+         AM_CONDITIONAL([GETOPT], true)],
 	[AC_MSG_RESULT(Using included getopt header)
-	 AM_CONDITIONAL(GETOPT, true)])
+	 AM_CONDITIONAL([GETOPT], false)])
 
 # Checks for (library) functions.
 AC_FUNC_ERROR_AT_LINE
