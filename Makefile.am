@@ -22,7 +22,7 @@ AUTOMAKE_OPTIONS = dist-shar dist-zip dist-tarZ
 
 SUBDIRS = doc man src contrib
 
-EXTRA_DIST = mkinstalldirs ylwrap
+EXTRA_DIST = ylwrap
 
 # EXTRA_DIST = config.rpath mkinstalldirs ABOUT-NLS ylwrap
 

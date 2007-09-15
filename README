@@ -16,9 +16,9 @@ which e-mails should be delivered and which are considered waste.
 Rules are regular expressions, so you can make use of familiar options
 from other mail delivery programs such as e.g. procmail.
 
-Mailfilter is released under the terms of the GNU General Public
-License.  For more information, see the COPYING file provided with the
-Mailfilter program.
+Mailfilter is released under the GPL with the additional exemption            
+that compiling, linking, and/or using OpenSSL is allowed.  For more
+information, see the COPYING file provided with the Mailfilter program.
 
 The latest version of Mailfilter can be obtained from this web page:
 

@@ -41,7 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-, root, root)
 %doc contrib
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS TODO ABOUT-NLS
+%doc AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS ABOUT-NLS
 %doc doc/FAQ doc/README.Slackware doc/README.Windows doc/rcfile.example1 doc/rcfile.example2 doc/rcfile.example2.ru doc/rcfile.example1.it doc/win_Makefile.am doc/win_configure.in doc/win_src_Makefile.am doc/supported_servers
 %{_bindir}/mailfilter
 %{_datadir}/locale/*/LC_MESSAGES/mailfilter.mo
