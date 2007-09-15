@@ -1,7 +1,7 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
-mailfilter 0.8.1 (under development) [stable version]
+mailfilter 0.8.1 (Sat Sep 15 17:14:49 EST 2007) [stable version]
 
   - Detection of getopt should now work when compiling the program
     from source (Thanks to Mike Clarke for helping me debug this)
