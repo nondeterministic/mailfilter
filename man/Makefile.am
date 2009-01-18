@@ -1,7 +1,7 @@
 # Makefile.am: help build documentation files
 # $Id: Makefile.am,v 1.4.2.1.2.4 2007/01/01 15:32:29 baueran Exp $
 #
-# Copyright (c) 2000 - 2004  Andreas Bauer <baueran@in.tum.de>
+# Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
 #  
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
