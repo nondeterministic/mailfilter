@@ -1,7 +1,7 @@
 # Makefile.am: help build sources on mulitiple architectures 
 # $Id: Makefile.am,v 1.20.2.3.2.8 2007/01/01 13:38:40 baueran Exp $
 
-# Copyright (c) 2000 - 2005  Andreas Bauer <baueran@in.tum.de>
+# Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
