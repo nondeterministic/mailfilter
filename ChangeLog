@@ -1,6 +1,11 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Sun Jan 18 19:11:38 EST 2009 baueran
+
+- src/apop.cc: fix strlen dependency by including cstring
+- *: update email address and copyright information
+
 Sat Sep 15 17:48:33 EST 2007 baueran
 
 - src/socket.cc: update licensing to reflect SSL use

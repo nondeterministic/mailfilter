@@ -1,7 +1,7 @@
 # Makefile.am: help build program sources
 # $Id: Makefile.am,v 1.9.2.6.2.22 2006/12/31 21:44:18 baueran Exp $
 
-# Copyright (c) 2000 - 2005  Andreas Bauer <baueran@in.tum.de>
+# Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

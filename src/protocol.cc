@@ -1,5 +1,5 @@
 // protocol.cc - source file for the mailfilter program
-// Copyright (c) 2003  Andreas Bauer <baueran@in.tum.de>
+// Copyright (c) 2003 - 2009  Andreas Bauer <baueran@gmail.com>
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

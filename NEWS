@@ -1,6 +1,11 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
+mailfilter 0.8.2 (under development)
+
+  - Fix build problems such that mailfilter compiles with recent
+    gcc
+
 mailfilter 0.8.1 (Sat Sep 15 17:14:49 EST 2007) [stable version]
 
   - Detection of getopt should now work when compiling the program
