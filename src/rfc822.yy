@@ -24,6 +24,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <stdexcept>
+
 #include "header.hh"
 
 // This is necessary to use multiple lexer classes.  See the flex man
@@ -78,8 +80,17 @@ header:		/* empty */
 
 entry:		the_end
 		| TAG bodies
-		  { ((Header*)param)->add_entry ($1, $2);
-                    free ($1); free ($2); }
+		  { 
+		    try 
+                    {
+		      ((Header*)param)->add_entry ($1, $2);
+                      free ($1); free ($2);
+                    }
+                    catch (const std::exception &e)
+                    {
+		      throw e;
+                    }
+                  }
 		;
 
 bodies:		BODY  { $$ = $1; }
@@ -94,7 +105,8 @@ bodies:		BODY  { $$ = $1; }
                       }
                     else
                       {
-			cerr << "Out of memory error in rfcparser." << endl;
+			std::cerr << "Out of memory error in rfcparser."
+                                  << std::endl;
                         exit (-1);
                       }
                   }
