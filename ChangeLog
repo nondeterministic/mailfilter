@@ -1,6 +1,12 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Sun Jun  7 11:51:11 EST 2009 baueran
+
+- src/header.hh: new custom exception, add_entry throws it
+  when pop header is malformed
+- src/rfc822.yy: pass on exception to main filtering code
+
 Sun Jan 18 19:11:38 EST 2009 baueran
 
 - src/apop.cc: fix strlen dependency by including cstring

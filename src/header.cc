@@ -18,11 +18,13 @@
 
 #include <string>
 #include <cstdlib>
+#include <cstring>
 #include <stdexcept>
 #include "header.hh"
 #include "preferences.hh"
 #include "mailfilter.hh"
 #include "defines.hh"
+#include "feedback.hh"
 extern "C"
 {
 #include <ctype.h>
@@ -35,6 +37,54 @@ extern int cmp_no_case (const string&, const string&);
 vector<entry>* Header :: entries (void)
 { return &msg_entries; }
 
+// Taken from mutt in response to APOP security vulnerability.
+/* incomplete. Only used to thwart the APOP MD5 attack (#2846). */
+
+int Header :: rfc822_valid_msgid (const char* msgid)
+{
+  /* msg-id         = "<" addr-spec ">"
+   * addr-spec      = local-part "@" domain
+   * local-part     = word *("." word)
+   * word           = atom / quoted-string
+   * atom           = 1*<any CHAR except specials, SPACE and CTLs>
+   * CHAR           = ( 0.-127. )
+   * specials       = "(" / ")" / "<" / ">" / "@"
+                    / "," / ";" / ":" / "\" / <">
+		    / "." / "[" / "]"
+   * SPACE          = ( 32. )
+   * CTLS           = ( 0.-31., 127.)
+   * quoted-string  = <"> *(qtext/quoted-pair) <">
+   * qtext          = <any CHAR except <">, "\" and CR>
+   * CR             = ( 13. )
+   * quoted-pair    = "\" CHAR
+   * domain         = sub-domain *("." sub-domain)
+   * sub-domain     = domain-ref / domain-literal
+   * domain-ref     = atom
+   * domain-literal = "[" *(dtext / quoted-pair) "]"
+   */
+
+  char* dom;
+  unsigned int l, i;
+
+  if (!msgid || !*msgid)
+    return -1;
+
+  l = strlen (msgid);
+  if (l < 5) /* <atom@atom> */
+    return -1;
+  if (msgid[0] != '<' || msgid[l-1] != '>')
+    return -1;
+  if (!(dom = strrchr (msgid, '@')))
+    return -1;
+
+  /* TODO: complete parser */
+  for (i = 0; i < l; i++)
+    if (msgid[i] > 127)
+      return -1;
+
+  return 0;
+}
+
 void Header :: add_entry (const char* tag, const char* body)
 {
   struct entry tmp_entry;
@@ -44,6 +94,12 @@ void Header :: add_entry (const char* tag, const char* body)
 
   if (cmp_no_case (tag, "Message-Id") == 0)
     {
+      if (rfc822_valid_msgid (body) < 0)
+	{
+	  Feedback* logger = Feedback :: Instance ();
+	  logger->print_err ("POP timestamp in message-ID invalid.");
+	  throw WrongMessageIDException();
+	}
       set_ID (body);
       return;
     }
@@ -92,7 +148,9 @@ const string* Header :: ID (void) const
 { return &msg_ID; }
 
 void Header :: set_ID (const char* tid)
-{ msg_ID = tid; }
+{
+  msg_ID = tid;
+}
 
 const string* Header :: from (void) const
 { return &msg_from; }

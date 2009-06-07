@@ -21,6 +21,7 @@
 
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 using namespace std;
 
@@ -28,6 +29,15 @@ struct entry
 {
   string tag;
   string body;
+};
+
+class WrongMessageIDException : public runtime_error
+{
+public:
+  WrongMessageIDException ()
+    : runtime_error ("POP timestamp in message-ID invalid.") 
+  {
+  }
 };
 
 class Header
@@ -44,6 +54,7 @@ private:
 
 public:
   vector<entry>* entries             (void);
+  int            rfc822_valid_msgid  (const char*);
   void           add_entry           (const char*, const char*);
   const string*  ID                  (void)                const;
   void           set_ID              (const char*);
