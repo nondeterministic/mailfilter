@@ -1,7 +1,7 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
-mailfilter 0.8.2 (under development)
+mailfilter 0.8.2 (Sat Aug 15 16:12:22 EST 2009)
 
   - Provide fix for APOP vulnerability (e.g., described in ticket
     #2846 on mutt mailing list)
