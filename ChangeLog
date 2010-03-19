@@ -1,6 +1,10 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Fri Mar 19 20:03:19 EST 2010 baueran
+
+- src/header.cc: fix type incompatibility / compilation problem
+
 Sun Jun  7 11:51:11 EST 2009 baueran
 
 - src/header.hh: new custom exception, add_entry throws it

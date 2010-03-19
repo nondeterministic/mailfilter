@@ -63,7 +63,6 @@ int Header :: rfc822_valid_msgid (const char* msgid)
    * domain-literal = "[" *(dtext / quoted-pair) "]"
    */
 
-  char* dom;
   unsigned int l, i;
 
   if (!msgid || !*msgid)
@@ -74,7 +73,7 @@ int Header :: rfc822_valid_msgid (const char* msgid)
     return -1;
   if (msgid[0] != '<' || msgid[l-1] != '>')
     return -1;
-  if (!(dom = strrchr (msgid, '@')))
+  if (!strrchr (msgid, '@'))
     return -1;
 
   /* TODO: complete parser */

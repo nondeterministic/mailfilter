@@ -1,6 +1,11 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
+mailfilter 0.8.3 (under development)
+
+  - Minor fixes to allow compilation with recent gcc versions
+
+
 mailfilter 0.8.2 (Sat Aug 15 16:12:22 EST 2009)
 
   - Provide fix for APOP vulnerability (e.g., described in ticket
@@ -8,6 +13,7 @@ mailfilter 0.8.2 (Sat Aug 15 16:12:22 EST 2009)
 
   - Fix build problems such that mailfilter compiles with recent
     gcc and autotools (mainly for developers)
+
 
 mailfilter 0.8.1 (Sat Sep 15 17:14:49 EST 2007) [stable version]
 
