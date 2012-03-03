@@ -58,6 +58,7 @@ Preferences :: Preferences ()
   show_headers      = false;
   del_duplicates    = false;
   ret_status        = false;
+  _ignore_time_stamp= false;
   high_score        = 100;
   time_out_val      = 30;
   negative_allows   = 0;
@@ -82,8 +83,8 @@ Preferences& Preferences :: Instance ()
 
 void Preferences :: init (void)
 {
-  ((Size_score)(Preferences :: size_score)).score = 0;
-  ((Size_score)(Preferences :: size_score)).size  = 0;
+  size_score.score = 0;
+  size_score.size = 0;
 }
   
 void Preferences :: kill (void)
@@ -92,7 +93,17 @@ void Preferences :: kill (void)
   while (die_account != (Preferences :: accnts).end ())
     { die_account->clear (); die_account++; }
 }
-  
+
+void Preferences :: set_ignore_time_stamp(bool new_ts)
+{
+  _ignore_time_stamp = new_ts;
+}
+
+bool Preferences :: ignore_time_stamp()
+{
+  return _ignore_time_stamp;
+}
+
 // This function tries to locate a preferences file and, upon success,
 // stores the file path in prefs_file.  However, no data is loaded by
 // the open() function.

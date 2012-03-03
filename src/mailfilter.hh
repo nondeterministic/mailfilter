@@ -1,5 +1,5 @@
 // mailfilter.hh - source file for the mailfilter program
-// Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
+// Copyright (c) 2000 - 2012  Andreas Bauer <baueran@gmail.com>
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,6 +36,7 @@ using namespace std;
 #define VALUE_VERSION                   5
 #define VALUE_TEST                      6
 #define VALUE_RETURN                    7
+#define VALUE_TIMESTAMP                 8
 
 #define ERROR_MSG(msg)  \
   cerr << PACKAGE_NAME  \
