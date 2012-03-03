@@ -285,7 +285,7 @@ void get_opts (int argc, char* argv[])
 	  break;
 	case 'i':
 	case VALUE_TIMESTAMP:
-	  Preferences :: Instance().ignore_time_stamp();
+	  Preferences :: Instance().set_ignore_time_stamp();
 	  break;
 	case 'r':
 	case VALUE_RETURN:
