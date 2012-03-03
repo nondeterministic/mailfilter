@@ -1,5 +1,5 @@
 // mailfilter.cc - source file for the mailfilter program
-// Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
+// Copyright (c) 2000 - 2012  Andreas Bauer <baueran@gmail.com>
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -53,6 +53,7 @@ static struct option long_options[] =
     {"verbose", 1, NULL, VALUE_VERBOSE},
     {"mailfilterrc", 1, NULL, VALUE_MAILFILTERRC},
     {"logfile", 1, NULL, VALUE_LOGFILE},
+    {"ignore-time-stamps", 0, NULL, VALUE_TIMESTAMP},
     {"version", 0, NULL, VALUE_VERSION},
     {"test", 0, NULL, VALUE_TEST},
     {"return-value", 0, NULL, VALUE_RETURN},
@@ -219,7 +220,7 @@ void get_opts (int argc, char* argv[])
   int option = 0;
   int option_index = 0;
 
-  while ((option = getopt_long (argc, argv, "hL:M:Vv:tr",
+  while ((option = getopt_long (argc, argv, "hL:M:Vv:tir",
 				long_options, &option_index)) != -1)
     {
       switch (option)
@@ -247,6 +248,8 @@ void get_opts (int argc, char* argv[])
 	  cout << "Enable additional return values" << endl;
 	  cout << "  -t, --test                 ";
 	  cout << "Simulate deletes" << endl;
+	  cout << "  -i, --ignore-time-stamps   ";
+	  cout << "Ignore invalid Message-ID time stamps (Do not use unless you know better!)" << endl;
 	  cout << "  -v, --verbose=LEVEL        ";
 	  cout << "Specify level of verbosity" << endl;
 	  cout << "  -V, --version              ";
@@ -279,6 +282,10 @@ void get_opts (int argc, char* argv[])
 	case 't':
 	case VALUE_TEST:
 	  Preferences :: Instance ().set_test_mode ("yes");
+	  break;
+	case 'i':
+	case VALUE_TIMESTAMP:
+	  Preferences :: Instance().ignore_time_stamp();
 	  break;
 	case 'r':
 	case VALUE_RETURN:

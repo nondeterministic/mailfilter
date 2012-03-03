@@ -5,6 +5,9 @@ mailfilter 0.8.3 (under development)
 
   - Minor fixes to allow compilation with recent gcc versions
 
+  - Due to popular demand: Added option -i to ignore invalid
+    Message-ID time stamps.  (Using this option is a potential
+    security risk, so do not use unless you know better!)
 
 mailfilter 0.8.2 (Sat Aug 15 16:12:22 EST 2009)
 

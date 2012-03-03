@@ -62,10 +62,10 @@ static sigjmp_buf curr_env;
 
 // TODO: these variables should not "just" be global; maybe static members or something?
 #ifdef USE_SSL
-  SSL*        ssl;
-  BIO*        sbio;
-  SSL_METHOD* ssl_meth;
-  SSL_CTX*    ssl_ctx;
+  SSL*              ssl;
+  BIO*              sbio;
+  const SSL_METHOD* ssl_meth;
+  SSL_CTX*          ssl_ctx;
 #endif
 
 Socket :: Socket (void)

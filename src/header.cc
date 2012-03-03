@@ -93,7 +93,8 @@ void Header :: add_entry (const char* tag, const char* body)
 
   if (cmp_no_case (tag, "Message-Id") == 0)
     {
-      if (rfc822_valid_msgid (body) < 0)
+      if (!Preferences :: Instance ().ignore_time_stamp() 
+	  && rfc822_valid_msgid (body) < 0)
 	{
 	  Feedback* logger = Feedback :: Instance ();
 	  logger->print_err ("POP timestamp in message-ID invalid.");

@@ -48,6 +48,7 @@ protected:
   bool             show_headers;
   bool             del_duplicates;
   bool             ret_status;
+  bool             _ignore_time_stamp;
   int              high_score;
   unsigned         time_out_val;
   int              max_size;
@@ -122,6 +123,8 @@ public:
   void             set_test_mode     (const char*);
   int              maxlength         (void);
   void             set_maxlength     (int);
+  bool             ignore_time_stamp ();
+  void             set_ignore_time_stamp (bool = true);
   bool             return_status     (void);
   void             set_return_status (bool);
   vector<Account>* accounts          (void);
