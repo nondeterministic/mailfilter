@@ -48,7 +48,6 @@ rfc822.cc: rfc822.ll rfc822parser.hh
 rfc822parser.hh: rfc822parser.cc
 rfc822parser.cc: rfc822.yy
 		   $(YACC) $(YFLAGS) -p rfc -o$@ $<;  \
-		   mv -f y.tab.h rfc822parser.hh;     \
 		   $(CXXCOMPILE) -c rfc822parser.cc;  \
 		   touch y.tab.c
 
