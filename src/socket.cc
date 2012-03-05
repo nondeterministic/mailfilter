@@ -62,10 +62,10 @@ static sigjmp_buf curr_env;
 
 // TODO: these variables should not "just" be global; maybe static members or something?
 #ifdef USE_SSL
-  SSL*              ssl;
-  BIO*              sbio;
-  const SSL_METHOD* ssl_meth;
-  SSL_CTX*          ssl_ctx;
+  SSL*        ssl;
+  BIO*        sbio;
+  SSL_METHOD* ssl_meth;
+  SSL_CTX*    ssl_ctx;
 #endif
 
 Socket :: Socket (void)
@@ -120,8 +120,8 @@ int Socket :: c_open (const char* host_name,
 	  
 	  // Here should be some key verification stuff...
 	  
-	  ssl_meth = SSLv23_client_method ();
-	  ssl_ctx  = SSL_CTX_new (ssl_meth);
+	  ssl_meth = (SSL_METHOD*)(SSLv23_client_method ());
+	  ssl_ctx  = (SSL_CTX*)(SSL_CTX_new (ssl_meth));
 	}
       else
 	logger->print_msg ("Debugging: Client-server communication is not encrypted.", 6);
@@ -145,9 +145,7 @@ int Socket :: c_open (const char* host_name,
 	      host->h_length);
       s_address.sin_port = htons (port);
       
-      if (connect (sd,
-		   (struct sockaddr*) &s_address,
-		   sizeof (struct sockaddr)) < 0)
+      if (connect (sd, (struct sockaddr*) &s_address, sizeof (struct sockaddr)) < 0)
 	{
 	  logger->print_err ("Server connection could not be established.");
 	  alarm (0);
