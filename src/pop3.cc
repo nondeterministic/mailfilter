@@ -29,6 +29,7 @@
 #include "weeder.hh"
 #include "defines.hh"
 #include "protocol.hh"
+#include "rfc822parser.hh"
 
 // This is necessary to use multiple lexer classes.  See the flex man
 // page for further information.

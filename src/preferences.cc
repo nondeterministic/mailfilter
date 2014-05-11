@@ -151,8 +151,8 @@ bool Preferences :: load (void)
   
   try
     {
-      RCParser rcparser (&prefs_stream);
-      rcparser.parse ((void*)NULL);
+      RCParser rcparser(&prefs_stream);
+      rcparser.parse();
     }
   catch (...) { throw; }
   

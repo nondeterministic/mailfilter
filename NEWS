@@ -3,7 +3,10 @@ Mailfilter NEWS (Summary)
 
 mailfilter 0.8.3 (under development)
 
-  - Minor fixes to allow compilation with recent gcc versions
+  - Fix build problems due to bison not supporting YYPARSE_PARAM
+    any longer.
+
+  - Minor fixes to allow compilation with recent GCC versions.
 
   - Due to popular demand: Added option -i to ignore invalid
     Message-ID time stamps.  (Using this option is a potential

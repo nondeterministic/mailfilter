@@ -1,6 +1,13 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Sun May 11 17:11:43 CEST 2014 baueran
+
+ Fix build problems due to bison not supporting
+ YYPARSE_PARAM anylonger, documented e.g. here:
+
+  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=733380
+
 Sat Mar  3 17:40:14 EST 2012 baueran
 
  Index: src/socket.cc
