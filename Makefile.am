@@ -18,7 +18,8 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 # USA.
 
-AUTOMAKE_OPTIONS = dist-shar dist-zip dist-tarZ
+# AUTOMAKE_OPTIONS = dist-shar dist-zip dist-tarZ
+AUTOMAKE_OPTIONS = dist-zip
 
 SUBDIRS = doc man src contrib
 

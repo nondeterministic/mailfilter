@@ -37,9 +37,9 @@ private:
   ostream*     osp;
 
 public:
-  RCParser  (istream* ip = 0, ostream* = 0);
-  ~RCParser ();
-  void parse (void* = 0);
+  RCParser(istream* ip = 0, ostream* = 0);
+  ~RCParser();
+  void parse(void* = 0);
 };
 
 #endif

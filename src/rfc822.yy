@@ -39,7 +39,7 @@
 #endif
 
 // We want to give the Preferences object as parameter for yyparse
-#define YYPARSE_PARAM param
+// #define YYPARSE_PARAM param
 
 using namespace std;
 
@@ -50,9 +50,12 @@ inline int yylex ()
 
 extern "C"
 {
-  int rfcparse (void*);
+  #include "header.hh"
 
-  void rfcerror (const char* str)
+  // int rfcparse (void*);
+  int rfcparse (const char*);
+
+  void rfcerror (const char* str, const char* tmp)
   {
     cerr << PACKAGE_NAME << ": Error: Parser reported " << str;
     cerr << "." << endl;
@@ -72,6 +75,10 @@ extern "C"
 
 %type <sval> bodies
 %right BODY
+ 	
+// %lex-param {Header* param}
+%parse-param {const char* param}
+// %define parse.error verbose
 
 %%
 header:		/* empty */

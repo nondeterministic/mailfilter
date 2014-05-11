@@ -35,8 +35,8 @@
 #include "rcfile.hh"
 
 // We want to give the Preferences object as parameter for yyparse.
-#undef YYPARSE_PARAM
-#define YYPARSE_PARAM param
+// #undef YYPARSE_PARAM
+// #define YYPARSE_PARAM param
 
 // Define P_DEBUG_MODE to get extra output from the parser.
 #ifdef P_DEBUG_MODE
@@ -61,19 +61,22 @@ extern string       int_to_string (int);
 extern string       exec_shell  (const char*);
        void         strip_shell (char[]);
 
-inline int yylex ()
-{  return rclexer->rclex ();  }
+inline int yylex()
+{  
+  return rclexer->rclex();
+}
 
 extern "C"
 {
-  int rcparse (void*);
+  int rcparse(void*);
+  // int rcparse(const char*);
 
-  int rcwrap (void)
+  int rcwrap(void)
   {
     return 1;
   }
 
-  void rcerror (const char* str)
+  void rcerror (const void* str, const void* NOT_USED)
   {
     cerr << PACKAGE_NAME << ": Error: " << str;
     if (sub_file.length ())
@@ -93,6 +96,8 @@ extern "C"
   int   ival;
   char* sval;
 }
+
+%parse-param {void* param}
 
 %token <sval> ALLOW
 %token <sval> ALLOW_CASE
@@ -435,11 +440,10 @@ verbose:
 /* This function strips the leading, and trailing quotation marks
    around a shell `command' to be executed by the POSIX shell.  */
 
-void strip_shell (char s[])
+void strip_shell(char s[])
 {
   string buf = s;
-  for (unsigned int i = 1; i < buf.length () - 1; i++)
-  {
+  for (unsigned int i = 1; i < buf.length () - 1; i++) {
     s[i-1] = buf[i];
     s[i] = '\0';
   }
@@ -447,20 +451,24 @@ void strip_shell (char s[])
 
 /* The class declarations can be found in rcfile.hh.  */
 
-RCParser :: RCParser (istream* ip, ostream* op)
-  : isp (ip), osp (op)
+RCParser :: RCParser(istream* ip, ostream* op)
+  : isp(ip), osp(op)
 {
-  try
-    {
-      rclexer = new rcFlexLexer (isp, osp);
-    }
-  catch (...) {  throw;  } 
+  try {
+    rclexer = new rcFlexLexer(isp, osp);
+  }
+  catch (...) {  
+    throw;  
+  } 
 }
 
-RCParser :: ~RCParser() { delete rclexer; }
+RCParser :: ~RCParser()
+{ 
+  delete rclexer;
+}
 
-void RCParser :: parse (void* val)
+void RCParser :: parse(void* val)
 {
-  rclexer->yyrestart (isp);
-  rcparse (val);
+  rclexer->yyrestart(isp);
+  rcparse(val);
 }
