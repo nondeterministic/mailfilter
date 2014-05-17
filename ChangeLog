@@ -1,6 +1,14 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Sat May 17 19:21:57 CEST 2014 baueran
+
+ src/preferences.cc:
+
+ (Hopefully) fixed Debian Bug #716522: mailfilter crashes
+ with invalid file name in rc file that cannot be expanded
+ properly.
+
 Sun May 11 17:11:43 CEST 2014 baueran
 
  Fix build problems due to bison not supporting

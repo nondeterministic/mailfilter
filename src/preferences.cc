@@ -243,13 +243,13 @@ void Preferences :: set_headers_file (const char* name)
 {
   // Expand the given file name.
   wordexp_t result;
-  if (wordexp (name, &result, 0) == 0)
+  if (wordexp (name, &result, 0) == 0 && result.we_wordc > 0) {
     headers_file_name = result.we_wordv[0];
-  else
-    {
-      ERROR_MSG("Invalid file name: " + (string)name + ".");
-      exit (-1);
-    }
+  }
+  else {
+    ERROR_MSG("Invalid headers store-file name: `" + (string)name + "'.");
+    exit(-1);
+  }
   wordfree (&result);
 }
 
@@ -266,18 +266,17 @@ void Preferences :: set_log_file (const char* name)
 {
   // Only expand logfile name if none was already specified, eg on the
   // command line.
-  if (log_file_name.length () == 0)
-    {
-      wordexp_t result;
-      if (wordexp (name, &result, 0) == 0)
-	log_file_name = result.we_wordv[0];
-      else
-	{
-	  ERROR_MSG("Invalid file name: " + (string)name + ".");
-	  exit (-1);
-	}
-      wordfree (&result);
+  if (log_file_name.length() == 0) {
+    wordexp_t result;
+    if (wordexp(name, &result, 0) == 0 && result.we_wordc > 0) {
+      log_file_name = result.we_wordv[0];
     }
+    else {
+      ERROR_MSG("Invalid logfile name: `" + (string)name + "'.");
+      exit(-1);
+    }
+    wordfree (&result);
+  }
 }
 
 string Preferences :: log_file (void)
