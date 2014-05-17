@@ -3,6 +3,10 @@ Mailfilter NEWS (Summary)
 
 mailfilter 0.8.3 (under development)
 
+  - (Hopefully) fixed Debian Bug #716522: mailfilter crashes
+    with invalid file name in rc file that cannot be expanded
+    properly.
+
   - Fix build problems due to bison not supporting YYPARSE_PARAM
     any longer.
 
