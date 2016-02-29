@@ -146,17 +146,21 @@ CTRL_CHAR	.
 	   cerr << yytext << "' could not be found." << endl;
 	   exit (-1);
         }
+	
+	// yyin is now a std::istream& it seems. So the following no longer works:
+	// yyin = new ifstream (sub_file.c_str ());
+	std::ifstream* infile = new ifstream (sub_file.c_str ());
 
-        yyin = new ifstream (sub_file.c_str ());
-
-        if (!((ifstream*) yyin)->is_open ())
+	// if (!((std::ifstream*) yyin)->is_open ())
+        if (!infile->is_open ())
         {
            cerr << PACKAGE_NAME << ": Error: Nested rcfile '";
 	   cerr << sub_file << "' could not be opened." << endl;
 	   exit (-1);
         }
 
-        yy_switch_to_buffer (yy_create_buffer (yyin, YY_BUF_SIZE));
+        yy_switch_to_buffer (yy_create_buffer (infile, YY_BUF_SIZE));
+	// yy_switch_to_buffer (yy_create_buffer (yyin, YY_BUF_SIZE));
      }
      catch (...)
      {
