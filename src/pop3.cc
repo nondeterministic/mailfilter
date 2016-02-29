@@ -204,7 +204,7 @@ int POP3 :: invoke_msg_parser (const string* header,
 	  stringstream cur_header;
 	  cur_header << *header;
 	  rfclexer = new rfcFlexLexer;
-	  rfclexer->switch_streams (&cur_header);
+	  rfclexer->switch_streams (&cur_header, NULL);
 	  int error = rfcparse ((void*) msg_header);
 	  delete rfclexer;
 	  return error;

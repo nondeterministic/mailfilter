@@ -1,6 +1,13 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Mon Feb 29 16:44:08 CET 2016 baueran
+
+- src/rcfile.ll: yyin is now a reference. So use different ifstream
+                 pointer and pass it on.
+- src/pop3.cc: FlexLexer::switch_stream no longer has 2nd argument
+               optional, it seems.  So pass NULL as second object.
+
 Sat May 17 19:21:57 CEST 2014 baueran
 
  src/preferences.cc:

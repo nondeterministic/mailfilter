@@ -1,6 +1,13 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
+mailfilter 0.8.4 (under development)
+
+  - Fix compilation issues stemming from flex >= 2.6.0, which no
+    longer uses pointers for yyin, but references it seems.
+
+  - Minor other code fixes that relate to the above.
+
 mailfilter 0.8.3 (Sat May 17 19:37:27 CEST 2014)
 
   - (Hopefully) fixed Debian Bug #716522: mailfilter crashes
