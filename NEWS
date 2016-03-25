@@ -1,7 +1,7 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
-mailfilter 0.8.4 (under development)
+mailfilter 0.8.4 (Fri Mar 25 18:44:55 CET 2016)
 
   - Fix compilation issues stemming from flex >= 2.6.0, which no
     longer uses pointers for yyin, but references it seems.

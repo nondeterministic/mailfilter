@@ -30,9 +30,9 @@ AC_INIT(mailfilter, 0.8.4, [baueran@gmail.com])
 AC_REVISION($Revision: 1.1.2.4.2.12 $)
 AC_SUBST(PACKAGE_COPYRIGHT)
 AC_DEFINE(PACKAGE_COPYRIGHT,
-	   "Copyright (c) 2000 - 2014  Andreas Bauer <baueran@gmail.com>", 
+	   "Copyright (c) 2000 - 2016  Andreas Bauer <baueran@gmail.com>", 
     	   [Copyright information.])
-AC_COPYRIGHT(Copyright (c) 2000 - 2014  Andreas Bauer <baueran@gmail.com>)
+AC_COPYRIGHT(Copyright (c) 2000 - 2016  Andreas Bauer <baueran@gmail.com>)
 
 AC_CONFIG_SRCDIR([src/mailfilter.cc])
 AC_CONFIG_HEADERS(config.h)
