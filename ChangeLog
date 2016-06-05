@@ -1,6 +1,14 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Sun Jun  5 11:29:18 CEST 2016 Holger Hoffstätte <holger@applied-asynchrony.com>
+
+- delete unused regex
+- delete unused variables
+- fix virutal function signatures
+- handle fgets return value
+- properly delete err_buf
+
 Mon Feb 29 16:44:08 CET 2016 baueran
 
 - src/rcfile.ll: yyin is now a reference. So use different ifstream

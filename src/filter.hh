@@ -37,7 +37,6 @@ class Filter
 private:
   string         expr;
   regex_t        comp_expr;
-  regex_t        comp_normal_expr;
   // Values can be CASE_SENSITIVE, CASE_INSENSITIVE, or CASE_DEFAULT:
   int            case_sensitivity;
   bool           negativity;
