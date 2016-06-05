@@ -262,9 +262,7 @@ int Socket :: c_read (bool read_header)
   struct timeval tv;
   string input;
   int flags;
-  int prem_exit = 0;
   int bytes;
-  int counter;
   int error;
   fd_set rfds;
 
@@ -322,18 +320,14 @@ int Socket :: c_read (bool read_header)
 		  switch (i)
 		    {
 		    case SSL_ERROR_NONE:
-		      prem_exit = 0;
 		      break;
 		    case SSL_ERROR_WANT_READ:
-		      prem_exit = 1;
 		      logger->print_msg ("Debugging: Warning: Received SSL_ERROR_WANT_READ.", 6);
 		      break;
 		    case SSL_ERROR_WANT_WRITE:
-		      prem_exit = 1;
 		      logger->print_msg ("Debugging: Warning: Received SSL_ERROR_WANT_WRITE.", 6);
 		      break;
 		    case SSL_ERROR_ZERO_RETURN:
-		      prem_exit = 1;
 		      logger->print_msg ("Debugging: Warning: Received SSL_ERROR_ZERO_RETURN.", 6);
 		      break;
 		    default:
@@ -355,8 +349,6 @@ int Socket :: c_read (bool read_header)
 	  
 	  if (bytes > 0)
 	    {
-	      counter += bytes;
-	      
 	      if (input.length ())
 		input.append (buffer, bytes);
 	      else

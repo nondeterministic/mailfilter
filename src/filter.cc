@@ -62,7 +62,7 @@ int Filter :: compile (void)
 				   + 1];
 	  regerror (comp_err, &comp_expr, err_buf, sizeof *err_buf);
 	  ERROR_MSG(err_buf);
-	  delete (err_buf);
+	  delete[] (err_buf);
 	}
       catch (...) {  throw;  }
     }

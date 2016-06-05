@@ -389,7 +389,11 @@ string exec_shell (const char* command)
   
   if ((fp = popen (command, "r")) != NULL)
     {
-      fgets (buf, sizeof (buf), fp);
+      if (fgets (buf, sizeof (buf), fp) == NULL)
+	{
+	  ERROR_MSG("popen failed.");
+	  exit (-1);
+	}
       cur_string = buf;
       
       if (cur_string[cur_string.size () - 1] != '\n')

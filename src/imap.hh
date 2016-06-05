@@ -45,11 +45,11 @@ private:
 public:
   bool     login             (const char* usr,
 			      const char* pass,
-			      const unsigned int enc);
-  bool     logout            (void);
-  int      remove_msg        (unsigned int num);
-  int      status            (void);
-  int      scan              (void);
+			      const unsigned int enc) const;
+  bool     logout            (void) const;
+  int      remove_msg        (unsigned int num) const;
+  int      status            (void) const;
+  int      scan              (void) const;
 };
 
 #endif
