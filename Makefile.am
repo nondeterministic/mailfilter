@@ -1,7 +1,7 @@
 # Makefile.am: help build sources on mulitiple architectures 
 # $Id: Makefile.am,v 1.20.2.3.2.8 2007/01/01 13:38:40 baueran Exp $
 
-# Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
+# Copyright (c) 2000 - 2016  Andreas Bauer <baueran@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,8 +24,9 @@ AUTOMAKE_OPTIONS = dist-zip
 SUBDIRS = doc man src contrib
 
 EXTRA_DIST = ylwrap
-
 # EXTRA_DIST = config.rpath mkinstalldirs ABOUT-NLS ylwrap
+
+CLEANFILES = mailfilter*.gz mailfilter-*.zip mailfilter-*Z
 
 ACLOCAL_AMFLAGS = -I
 

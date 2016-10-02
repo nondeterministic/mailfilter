@@ -47,7 +47,7 @@ rfc822parser.cc: rfc822.yy
 		   mv rfc.tab.c rfc822parser.cc; \
 		   mv rfc.tab.h rfc822parser.hh
 
-CLEANFILES = *.output
+CLEANFILES = *.output Makefile.in rcfile.cc rcfile.ll.bak rcparser.cc rcparser.hh rfc822.cc rfc822parser.cc rfc822parser.hh
 
 # If this gets updated, remember to update the doxygen.in config file!
 mailfilter_SOURCES =	md5c.c md5.h                              \
