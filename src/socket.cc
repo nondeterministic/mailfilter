@@ -183,7 +183,7 @@ int Socket :: c_open (const char* host_name,
     }
   else
     {
-      logger->print_err ("Timeout occured.");
+      logger->print_err ("Timeout occurred.");
       return GEN_FAILURE_FLAG;
     }
 
@@ -290,7 +290,7 @@ int Socket :: c_read (bool read_header)
   // Only read if the socket is ready and able to send data.
   error = select (sd + 1, &rfds, NULL, NULL, &tv);
   
-  // An error occured while trying to poll server.  We did not get a
+  // An error occurred while trying to poll server.  We did not get a
   // file descriptor.
   if (error < 0)
     {

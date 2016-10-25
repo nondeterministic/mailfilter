@@ -111,7 +111,7 @@ int main (int argc, char* argv[])
     }
   catch (const exception& r_err)
     {
-      ERROR_MSG("Runtime exception occured: "
+      ERROR_MSG("Runtime exception occurred: "
 		+ (string)r_err.what ());
       return -1;
     }
@@ -183,7 +183,7 @@ int main (int argc, char* argv[])
     }
   catch (const exception& r_err)
     {
-      logger->print_err ("Runtime exception occured: "
+      logger->print_err ("Runtime exception occurred: "
 			+ (string)r_err.what ());
       return -1;
     }
