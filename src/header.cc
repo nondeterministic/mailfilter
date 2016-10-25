@@ -130,7 +130,7 @@ void Header :: add_entry (const char* tag, const char* body)
 	}
       catch (const exception& r_err)
 	{
-	  ERROR_MSG("Runtime exception occured while parsing rcfile: "
+	  ERROR_MSG("Runtime exception occurred while parsing rcfile: "
 		    + (string)r_err.what ());
 	  exit (-1);
 	}

@@ -1,12 +1,15 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
-mailfilter 0.8.6 (Tue Jul 26 18:22:15 CEST 2016)
+mailfilter 0.8.6 (Tue Oct 25 20:18:55 CEST 2016)
 
-  - Merely rebuilt the tarball, using more up to date versions of flex
-    and bison.  It seems that older versions generated incompatible
-    code (thanks to Elimar Riesebieter for helping me isolate this
+  - Rebuilt the tarball, using more up to date versions of flex and
+    bison.  It seems that older versions generated incompatible code
+    (thanks to Elimar Riesebieter for helping me isolate this
     problem!)
+
+  - Some minor spelling mistakes fixed in mailfilter output (thanks to
+    Elimar Riesebieter!)
 
 mailfilter 0.8.5 (Tue Jul 26 18:22:15 CEST 2016)
 

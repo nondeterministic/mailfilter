@@ -61,14 +61,14 @@ bool POP3 :: login (const char* usr,
   // Send user name and read server reply.
   if (conn->c_write (usr_name.c_str ()) == -1 || !REPLY_OK)
     {
-      logger->print_err("Error occured while sending username to server.");
+      logger->print_err("Error occurred while sending username to server.");
       return false;
     }
 
   // Send password and read server reply.
   if (conn->c_write (pass_wd.c_str ()) == -1 || !REPLY_OK)
     {
-      logger->print_err("Error occured while sending password to server.");
+      logger->print_err("Error occurred while sending password to server.");
       return false;
     }
 
@@ -97,7 +97,7 @@ int POP3 :: status (void) const
 // The function scans the headers inside a POP3 account for spam.  It
 // will delete all spam messages in the account and return 0 when all
 // the hard work is done.  A negative integer is returned if an error
-// occured.
+// occurred.
 
 int POP3 :: scan (void) const
 {
@@ -111,7 +111,7 @@ int POP3 :: scan (void) const
   // Determine number of messages waiting to be examined.
   if ((num_messages = status ()) < 0)
     {
-      logger->print_err ("Error occured while sending STAT to server.");
+      logger->print_err ("Error occurred while sending STAT to server.");
       return GEN_FAILURE_FLAG;
     }
   
@@ -130,7 +130,7 @@ int POP3 :: scan (void) const
 	  cmd = "LIST " + msg_no.str () + "\r\n";
 	  if (conn->c_write (cmd.c_str ()) == -1 || !REPLY_OK)
 	    {
-	      logger->print_err ("Error occured while sending LIST to server.");
+	      logger->print_err ("Error occurred while sending LIST to server.");
 	      return GEN_FAILURE_FLAG;
 	    }
 	  
@@ -143,7 +143,7 @@ int POP3 :: scan (void) const
 	  cmd = "TOP " + msg_no.str () + " 0\r\n";
 	  if (conn->c_write (cmd.c_str ()) == -1 || !HEADER_OK)
 	    {
-	      logger->print_err ("Error occured while sending TOP to server.");
+	      logger->print_err ("Error occurred while sending TOP to server.");
 	      return GEN_FAILURE_FLAG;
 	    }
 
