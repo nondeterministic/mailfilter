@@ -1,4 +1,9 @@
 language: C
+
 before_install:
  - ./autogen.sh
+
+install:
+ - sudo apt-get install -qq doxygen
+ 
 script: make alldist
