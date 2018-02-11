@@ -1,4 +1,4 @@
 language: C
 before_install:
  - ./autogen.sh
-script: make
+script: make alldist
