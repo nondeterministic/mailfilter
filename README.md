@@ -1,4 +1,5 @@
-# Mailfilter [![Build Status](https://travis-ci.org/nondeterministic/mailfilter.png?branch=master)](https://travis-ci.org/nondeterministic/mailfilter)
+# Mailfilter 
+[![Build Status](https://travis-ci.org/nondeterministic/mailfilter.png?branch=master)](https://travis-ci.org/nondeterministic/mailfilter)
 
 Mailfilter is a flexible utility for Unix-like operating systems to get rid of unwanted spam mails, before having to go through the
 trouble of downloading them into the local computer.  It offers support for one or many POP accounts and is especially useful for
