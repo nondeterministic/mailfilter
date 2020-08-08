@@ -1,7 +1,7 @@
 # configure.in: Autoconfigure input file for mailfilter
 # $Id: configure.ac,v 1.1.2.4.2.12 2007/01/01 15:32:29 baueran Exp $
 #
-# Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
+# Copyright (c) 2000 - 2020  Andreas Bauer <baueran@gmail.com>
 #  
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,13 +26,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.54)
-AC_INIT(mailfilter, 0.8.6, [baueran@gmail.com])
+AC_INIT(mailfilter, 0.8.7, [baueran@gmail.com])
 AC_REVISION($Revision: 1.1.2.4.2.12 $)
 AC_SUBST(PACKAGE_COPYRIGHT)
 AC_DEFINE(PACKAGE_COPYRIGHT,
-	   "Copyright (c) 2000 - 2016  Andreas Bauer <baueran@gmail.com>", 
+	   "Copyright (c) 2000 - 2020  Andreas Bauer <baueran@gmail.com>", 
     	   [Copyright information.])
-AC_COPYRIGHT(Copyright (c) 2000 - 2016  Andreas Bauer <baueran@gmail.com>)
+AC_COPYRIGHT(Copyright (c) 2000 - 2020  Andreas Bauer <baueran@gmail.com>)
 
 AC_CONFIG_SRCDIR([src/mailfilter.cc])
 AC_CONFIG_HEADERS(config.h)

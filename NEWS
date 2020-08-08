@@ -1,6 +1,11 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
+mailfilter 0.8.7 (Sun 09 Aug 2020 09:56:55 AM CEST)
+
+  - Fix for build error w/ bison 3.7:
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=966908
+
 mailfilter 0.8.6 (Tue Oct 25 20:18:55 CEST 2016)
 
   - Rebuilt the tarball, using more up to date versions of flex and
