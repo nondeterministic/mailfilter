@@ -59,6 +59,16 @@ bool Feedback :: open (const char* name)
   return false;
 }
 
+static string timestamp()
+{
+  char timestamp[64];
+  time_t timer = time(NULL);
+  struct tm* tm_info = localtime(&timer);
+  strftime (timestamp, sizeof(timestamp), "%b %d %H:%M:%S", tm_info);
+  return string(timestamp);
+}
+
+
 // The following two functions attempt to append program messages to
 // the end of the log file and returns false, if the file is not
 // accessable.  True is returned otherwise.
@@ -71,10 +81,11 @@ bool Feedback :: print_msg (const string msg, int min_verbose_level)
 {
   if (Preferences :: Instance ().verbose_level () >= min_verbose_level)
     {
-      cout << "mailfilter: " << msg << endl;
+      string ts = timestamp();
+      cout << ts << " mailfilter: " << msg << endl;
 	
       if (log_file.is_open ())
-	log_file << "mailfilter: " << msg << endl;
+	log_file << ts << " mailfilter: " << msg << endl;
       else
 	return false;
     }
@@ -86,10 +97,11 @@ bool Feedback :: print_err (const string msg, int min_verbose_level)
 {
   if (Preferences :: Instance ().verbose_level () >= min_verbose_level)
     {
-      cerr << "mailfilter: Error: " << msg << endl;
+      string ts = timestamp();
+      cerr << ts << " mailfilter: Error: " << msg << endl;
 	
       if (log_file.is_open ())
-	log_file << "mailfilter: Error: " << msg << endl;
+	log_file << ts << " mailfilter: Error: " << msg << endl;
       else
 	return false;
     }
