@@ -59,6 +59,7 @@ Preferences :: Preferences ()
   del_duplicates    = false;
   ret_status        = false;
   _ignore_time_stamp= false;
+  _skip_ssl_verify  = false;
   high_score        = 100;
   time_out_val      = 30;
   negative_allows   = 0;
@@ -474,3 +475,8 @@ bool Preferences :: return_status (void)
 void Preferences :: set_return_status (bool st)
 { ret_status = st; }
 
+void Preferences :: set_skip_ssl_verify (bool skip)
+{ _skip_ssl_verify = skip; }
+
+bool Preferences :: skip_ssl_verify (void)
+{ return _skip_ssl_verify; }

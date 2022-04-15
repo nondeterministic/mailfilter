@@ -57,6 +57,7 @@ static struct option long_options[] =
     {"version", 0, NULL, VALUE_VERSION},
     {"test", 0, NULL, VALUE_TEST},
     {"return-value", 0, NULL, VALUE_RETURN},
+    {"skip-ssl-verify", 0, NULL, VALUE_SKIP_SSL_VERIFY},
     {0, 0, 0, 0}
   };
 
@@ -220,7 +221,7 @@ void get_opts (int argc, char* argv[])
   int option = 0;
   int option_index = 0;
 
-  while ((option = getopt_long (argc, argv, "hL:M:Vv:tir",
+  while ((option = getopt_long (argc, argv, "hL:M:Vv:tirs",
 				long_options, &option_index)) != -1)
     {
       switch (option)
@@ -246,6 +247,8 @@ void get_opts (int argc, char* argv[])
 	  cout << "Specify rcfile location" << endl;
 	  cout << "  -r, --return-value         ";
 	  cout << "Enable additional return values" << endl;
+	  cout << "  -s, --skip-ssl-verify      ";
+	  cout << "Skip verification of SSL certificates (Do not use unless you know better!)" << endl;
 	  cout << "  -t, --test                 ";
 	  cout << "Simulate deletes" << endl;
 	  cout << "  -i, --ignore-time-stamps   ";
@@ -291,6 +294,10 @@ void get_opts (int argc, char* argv[])
 	case VALUE_RETURN:
 	  Preferences :: Instance ().set_return_status (true);
 	  break;
+	case 's':
+	case VALUE_SKIP_SSL_VERIFY:
+	  Preferences :: Instance ().set_return_status (true);
+	  break;	  
 	case 'M':
 	case VALUE_MAILFILTERRC:
 	  Preferences :: Instance ().set_rc_file (optarg);

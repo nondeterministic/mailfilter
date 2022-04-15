@@ -1,6 +1,9 @@
 Mailfilter ChangeLog
 -=-=-=-=-=-=-=-=-=-=
 
+Please note, this file is kept only for historic reasons. Check git history for
+current change log from now on.
+
 Sun Jun  5 11:29:18 CEST 2016 Holger Hoffstätte <holger@applied-asynchrony.com>
 
 - delete unused regex

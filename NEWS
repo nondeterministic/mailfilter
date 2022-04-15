@@ -1,6 +1,15 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
+mailfilter 0.8.8 (under development)
+
+  - Fix github issue #1: ability to verify SSL certificates
+    https://github.com/nondeterministic/mailfilter/issues/1
+
+  - New command line switch (-s) to skip SSL certification
+    verification (e.g., for local mail server with self-signed
+    certificate), which is disabled by default
+
 mailfilter 0.8.7 (Sun 09 Aug 2020 09:56:55 AM CEST)
 
   - Fix for build error w/ bison 3.7:

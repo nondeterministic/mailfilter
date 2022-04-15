@@ -49,6 +49,7 @@ protected:
   bool             del_duplicates;
   bool             ret_status;
   bool             _ignore_time_stamp;
+  bool             _skip_ssl_verify;
   int              high_score;
   unsigned         time_out_val;
   int              max_size;
@@ -127,6 +128,8 @@ public:
   void             set_ignore_time_stamp (bool = true);
   bool             return_status     (void);
   void             set_return_status (bool);
+  void             set_skip_ssl_verify (bool);
+  bool             skip_ssl_verify   (void);
   vector<Account>* accounts          (void);
   vector<Filter>*  allow_filters     (void);
   vector<Filter>*  deny_filters      (void);

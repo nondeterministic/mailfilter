@@ -27,6 +27,7 @@ extern "C"
 {
 #include <openssl/ssl.h>
 #include <openssl/rand.h>
+#include <openssl/x509_vfy.h>
 }
 #endif
 
@@ -60,6 +61,11 @@ public:
   int               c_write       (const char* command);
   int               c_read        (bool = false);
   const string*     c_reply       (void) const;
+
+#if USE_SSL
+  static int        verify_callback
+                                  (int, X509_STORE_CTX*);
+#endif
 };
 
 #endif
