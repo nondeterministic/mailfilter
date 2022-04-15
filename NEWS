@@ -10,6 +10,8 @@ mailfilter 0.8.8 (under development)
     verification (e.g., for local mail server with self-signed
     certificate), which is disabled by default
 
+  - Add timestamps to output (thanks @hhoffstaette)
+
 mailfilter 0.8.7 (Sun 09 Aug 2020 09:56:55 AM CEST)
 
   - Fix for build error w/ bison 3.7:
