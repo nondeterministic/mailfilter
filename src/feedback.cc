@@ -1,5 +1,5 @@
 // feedback.cc - source file for the mailfilter program
-// Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
+// Copyright (c) 2000 - 2022  Andreas Bauer <baueran@gmail.com>
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -59,7 +59,8 @@ bool Feedback :: open (const char* name)
   return false;
 }
 
-static string timestamp()
+
+string Feedback::timestamp()
 {
   char timestamp[64];
   time_t timer = time(NULL);

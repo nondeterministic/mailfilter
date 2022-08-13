@@ -1,5 +1,5 @@
 // socket.cc - source file for the mailfilter program
-// Copyright (c) 2003 - 2009  Andreas Bauer <baueran@gmail.com>
+// Copyright (c) 2003 - 2022  Andreas Bauer <baueran@gmail.com>
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -73,13 +73,9 @@ static sigjmp_buf curr_env;
   int Socket :: verify_callback (int preverify_ok, X509_STORE_CTX* ctx)
   {
     Feedback* logger = Feedback :: Instance ();
-    X509* err_cert;
-    int err;
-    int depth;
-    
-    err_cert = X509_STORE_CTX_get_current_cert(ctx); // TODO: use me!
-    err = X509_STORE_CTX_get_error(ctx);
-    depth = X509_STORE_CTX_get_error_depth(ctx); // TODO: use me!
+    // X509* err_cert = X509_STORE_CTX_get_current_cert(ctx); // TODO: use me!
+    int err = X509_STORE_CTX_get_error(ctx);
+    // int depth = X509_STORE_CTX_get_error_depth(ctx); // TODO: use me!
     
     if (!preverify_ok)
       {

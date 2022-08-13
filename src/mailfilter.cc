@@ -79,9 +79,6 @@ string int_to_string          (int);
 int main (int argc, char* argv[])
 {
   Feedback* logger = Feedback :: Instance ();
-  time_t now;
-  struct timeval tv;
-  struct timezone tz;
   string options_set;
   int    return_val = 0;
 
@@ -154,23 +151,10 @@ int main (int argc, char* argv[])
 	Preferences :: Instance ().accounts ()->begin ();
       while (cur_account != Preferences :: Instance ().accounts ()->end ())
 	{
-	  gettimeofday (&tv, &tz);
-	  now = tv.tv_sec;
-	  
-	  // Some versions of ctime () terminate with "\n\0", some don't.
-	  string today_ = ctime (&now);
-	  if (today_[today_.length () - 1] == '\n')
-	    {
-	      char* today = (char*)malloc (sizeof (char) * today_.length ());
-	      snprintf (today, today_.length (), "%s", ctime (&now));
-	      today_ = today;
-	      free (today);
-	    }
 	  logger->print_msg ((string)PACKAGE_VERSION
 			    + " querying "
 			    + cur_account->usr () + "@"
-			    + cur_account->server () + " on "
-			    + today_ + ".",
+			    + cur_account->server () + ".",
 			    3);
 	  
 	  if (cur_account->check () != 0)

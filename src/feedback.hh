@@ -1,5 +1,5 @@
 // feedback.hh - source file for the mailfilter program
-// Copyright (c) 2000 - 2009  Andreas Bauer <baueran@gmail.com>
+// Copyright (c) 2000 - 2022  Andreas Bauer <baueran@gmail.com>
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -31,6 +31,8 @@ private:
   ofstream         header_file;
   static Feedback* _instance;
 
+  string           timestamp         (void);
+  
 public:
   static Feedback* Instance          (void);
                    ~Feedback         (void);
