@@ -1,7 +1,7 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
-mailfilter 0.8.8 (under development)
+mailfilter 0.8.8 (Sa 13. Aug 13:35:50 CEST 2022)
 
   - Fix github issue #1: ability to verify SSL certificates
     https://github.com/nondeterministic/mailfilter/issues/1
