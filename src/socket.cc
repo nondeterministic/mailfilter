@@ -38,7 +38,9 @@ extern "C"
 
 extern "C"
 {
+#if HAVE_SYS_TIME_H
 #include <sys/time.h>
+#endif
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <setjmp.h>

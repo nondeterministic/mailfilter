@@ -1,7 +1,6 @@
 # configure.in: Autoconfigure input file for mailfilter
-# $Id: configure.ac,v 1.1.2.4.2.12 2007/01/01 15:32:29 baueran Exp $
 #
-# Copyright (c) 2000 - 2020  Andreas Bauer <baueran@gmail.com>
+# Copyright (c) 2000 - 2022  Andreas Bauer <baueran@gmail.com>
 #  
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,8 +24,8 @@
 #  
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.54)
-AC_INIT(mailfilter, 0.8.8, [baueran@gmail.com])
+AC_PREREQ([2.71])
+AC_INIT([mailfilter],[0.8.8],[baueran@gmail.com])
 AC_REVISION($Revision: 1.1.2.4.2.12 $)
 AC_SUBST(PACKAGE_COPYRIGHT)
 AC_DEFINE(PACKAGE_COPYRIGHT,
@@ -44,25 +43,13 @@ AM_MAINTAINER_MODE
 AC_PROG_AWK
 AC_PROG_CXX
 AC_PROG_CC
-AC_ISC_POSIX
 AC_PROG_MAKE_SET
 AC_PROG_YACC
-AC_PROG_LEX
-
-# More specifically, check for installed SSL library.
-AC_ARG_WITH(openssl, [  --with-openssl          use OpenSSL (default="yes")])
-if test "$with_openssl" != "no" ; then
-  AC_CHECK_LIB(crypto,BIO_new)
-  AC_CHECK_LIB(ssl,SSL_new)
-  AC_DEFINE([USE_SSL],[1],
-            [Is set if SSL encryption via OpenSSL is desired.])
-fi
-
-# Static or dynamic linking?  Look inside m4/ for further information.
-# PETI_ENABLED_DYNAMIC_LINKING
+AS_IF([test x"$YACC" == x"yacc"], [AC_MSG_ERROR([Please install bison or byacc before configuring.])])
+AC_PROG_LEX(noyywrap)
+AS_IF([test x"$LEX" == x":"], [AC_MSG_ERROR([Please install flex before configuring.])])
 
 # Checks for header files.
-AC_HEADER_STDC
 AC_CHECK_HEADERS([arpa/inet.h \
 	wordexp.h             \
 	fcntl.h               \
@@ -80,7 +67,6 @@ AC_CHECK_HEADERS([arpa/inet.h \
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
 AC_TYPE_SIZE_T
-AC_HEADER_TIME
 
 AC_CHECK_FUNC(getopt_long,
  	[AC_DEFINE(HAVE_GETOPT_H,1,
@@ -89,12 +75,18 @@ AC_CHECK_FUNC(getopt_long,
 	[AC_MSG_RESULT(Using included getopt header)
 	 AM_CONDITIONAL([GETOPT], false)])
 
-# Checks for (library) functions.
-AC_FUNC_ERROR_AT_LINE
-AC_TYPE_SIGNAL
+# Checks for library (functions).
 AC_CHECK_LIB(socket,connect)
 AC_CHECK_LIB(nsl,gethostbyname)
 AC_CHECK_LIB(regex,regcomp)
+
+AC_ARG_WITH(openssl, [  --with-openssl          use OpenSSL (default="yes")])
+if test "$with_openssl" != "no" ; then
+  AC_CHECK_LIB(crypto,BIO_new)
+  AC_CHECK_LIB(ssl,SSL_new)
+  AC_DEFINE([USE_SSL],[1],
+            [Is set if SSL encryption via OpenSSL is desired.])
+fi
 
 AC_CHECK_FUNCS([alarm \
 	gethostbyname \

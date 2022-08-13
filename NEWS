@@ -12,6 +12,8 @@ mailfilter 0.8.8 (under development)
 
   - Add timestamps to output (thanks @hhoffstaette)
 
+  - Update configure.ac to reflect changes in the dev tools
+
 mailfilter 0.8.7 (Sun 09 Aug 2020 09:56:55 AM CEST)
 
   - Fix for build error w/ bison 3.7:

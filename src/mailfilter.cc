@@ -37,7 +37,9 @@
 extern "C"
 {
 #include "time.h"
-#include <sys/time.h>                                                    
+#if HAVE_SYS_TIME_H
+#include <sys/time.h>
+#endif
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
 #else
