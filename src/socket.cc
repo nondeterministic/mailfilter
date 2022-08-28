@@ -65,41 +65,41 @@ static sigjmp_buf curr_env;
 
 // TODO: these variables should not "just" be global; maybe static members or something?
 #ifdef USE_SSL
-  SSL*        ssl;
-  BIO*        sbio;
-  SSL_METHOD* ssl_meth;
-  SSL_CTX*    ssl_ctx;
+SSL*        ssl;
+BIO*        sbio;
+SSL_METHOD* ssl_meth;
+SSL_CTX*    ssl_ctx;
 
-  int Socket :: verify_callback (int preverify_ok, X509_STORE_CTX* ctx)
-  {
-    Feedback* logger = Feedback :: Instance ();
-    // X509* err_cert = X509_STORE_CTX_get_current_cert(ctx); // TODO: use me!
-    int err = X509_STORE_CTX_get_error(ctx);
-    // int depth = X509_STORE_CTX_get_error_depth(ctx); // TODO: use me!
-    
-    if (!preverify_ok)
-      {
-	std::string err_msg("SSL connection could not be established: ");
-	
-	logger->print_err(err_msg += X509_verify_cert_error_string(err));
-	
-	if (Preferences :: Instance().skip_ssl_verify())
-	  {
-	    logger->print_msg("Debugging: SSL certificate verification failed, but continuing anyway.", 6);
-	    return 1; // We pretend, SSL certification was successful as user wanted to skip it
-	  }
-	else
-	  {
-	    logger->print_msg("Debugging: SSL certificate verification failed.", 6);
-	    return 0; // Verification not successful
-	  }
-      }
-    else
-      {
-	logger->print_msg("Debugging: SSL certificate verification successful.", 6);
-	return 1; // Verification successful
-      }
-  }
+int Socket :: verify_callback (int preverify_ok, X509_STORE_CTX* ctx)
+{
+  Feedback* logger = Feedback :: Instance ();
+  // X509* err_cert = X509_STORE_CTX_get_current_cert(ctx); // TODO: use me!
+  int err = X509_STORE_CTX_get_error(ctx);
+  // int depth = X509_STORE_CTX_get_error_depth(ctx); // TODO: use me!
+  
+  if (!preverify_ok)
+    {
+      std::string err_msg("SSL connection could not be established: ");
+      
+      logger->print_err(err_msg += X509_verify_cert_error_string(err));
+      
+      if (Preferences :: Instance().skip_ssl_verify())
+	{
+	  logger->print_msg("Debugging: SSL certificate verification failed, but continuing anyway.", 6);
+	  return 1; // We pretend, SSL certification was successful as user wanted to skip it
+	}
+      else
+	{
+	  logger->print_msg("Debugging: SSL certificate verification failed.", 6);
+	  return 0; // Verification not successful
+	}
+    }
+  else
+    {
+      logger->print_msg("Debugging: SSL certificate verification successful.", 6);
+      return 1; // Verification successful
+    }
+}
 #endif
 
 Socket :: Socket (void)
@@ -151,12 +151,11 @@ int Socket :: c_open (const char* host_name,
 	  set_ssl (true);
 	  SSL_library_init ();
 	  SSL_load_error_strings();
-	  
+
 	  // Here should be some key verification stuff...
-	  
 	  ssl_meth = (SSL_METHOD*)(SSLv23_client_method ());
 	  ssl_ctx  = (SSL_CTX*)(SSL_CTX_new (ssl_meth));
-	  SSL_CTX_set_default_verify_paths(ssl_ctx);
+	  SSL_CTX_set_default_verify_paths(ssl_ctx); 
 	  SSL_CTX_set_verify(ssl_ctx, SSL_VERIFY_PEER, verify_callback);
 	}
       else
@@ -208,7 +207,10 @@ int Socket :: c_open (const char* host_name,
 	      return GEN_FAILURE_FLAG;
 	    }
 	  SSL_set_bio (ssl, sbio, sbio);
-	  
+
+	  // Do this before initiating the SSL connection...
+	  SSL_set_tlsext_host_name(ssl, host_name);
+
 	  if (SSL_connect (ssl) <= 0)
 	    {
 	      logger->print_err ("SSL connection could not be established.");

@@ -282,7 +282,7 @@ void get_opts (int argc, char* argv[])
 	  break;
 	case 's':
 	case VALUE_SKIP_SSL_VERIFY:
-	  Preferences :: Instance ().set_return_status (true);
+	  Preferences :: Instance ().set_skip_ssl_verify (true);
 	  break;	  
 	case 'M':
 	case VALUE_MAILFILTERRC:
