@@ -1,6 +1,13 @@
 Mailfilter NEWS (Summary)
 -=-=-=-=-=-=-=-=-=-=-=-=-
 
+mailfilter 0.8.9 (in development)
+
+  - Fix gentoo build issue: https://bugs.gentoo.org/859514
+
+  - Add support for TLS-SNI (which, for example, is required
+    to use SSL encryption with gmail.com)
+
 mailfilter 0.8.8 (Sa 13. Aug 13:35:50 CEST 2022)
 
   - Fix github issue #1: ability to verify SSL certificates

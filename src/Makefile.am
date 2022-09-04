@@ -28,20 +28,20 @@ bin_PROGRAMS = mailfilter
 
 # Some dependencies to invoke flex + bison before compilation of lex output starts:
 rcfile.cc: rcfile.ll rcparser.hh
-	   $(LEX) $(AM_LFLAGS) -Prc -o$@ $<
+	   $(LEX) $(AM_LFLAGS) --prefix=rc -o$@ $<
 
 rcparser.hh: rcparser.cc
 rcparser.cc: rcfile.yy
-		   $(YACC) $(YFLAGS) -b rc -p rc --defines=rcparser.hh $<;  \
+		   $(YACC) $(YFLAGS) --file-prefix=rc -Dapi.prefix=rc --defines=rcparser.hh $<;  \
 		   mv rc.tab.c rcparser.cc
 
 # Almost the same as above, but this time for the RFC 822 parser:
 rfc822.cc: rfc822.ll rfc822parser.hh
-	   $(LEX) $(AM_LFLAGS) -Prfc -o$@ $<
+	   $(LEX) $(AM_LFLAGS) --prefix=rfc -o$@ $<
 
 rfc822parser.hh: rfc822parser.cc
 rfc822parser.cc: rfc822.yy
-		   $(YACC) $(YFLAGS) -b rfc -p rfc --defines=rfc822parser.hh $<;  \
+		   $(YACC) $(YFLAGS) --file-prefix=rfc -Dapi.prefix=rfc --defines=rfc822parser.hh $<;  \
 		   mv rfc.tab.c rfc822parser.cc
 
 CLEANFILES = *.output Makefile.in rcfile.cc rcfile.ll.bak rcparser.cc rcparser.hh rfc822.cc rfc822parser.cc rfc822parser.hh

@@ -25,7 +25,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.71])
-AC_INIT([mailfilter],[0.8.8],[baueran@gmail.com])
+AC_INIT([mailfilter],[0.8.9],[baueran@gmail.com])
 AC_REVISION($Revision: 1.1.2.4.2.12 $)
 AC_SUBST(PACKAGE_COPYRIGHT)
 AC_DEFINE(PACKAGE_COPYRIGHT,

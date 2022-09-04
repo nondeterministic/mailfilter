@@ -26,6 +26,18 @@
 #include <cstdlib>
 #include <string>
 
+#ifdef yyalloc
+#define rcalloc_ALREADY_DEFINED
+#else
+#define yyalloc rcalloc
+#endif
+
+#ifdef yysymbol_kind_t
+#define rcsymbol_kind_t_ALREADY_DEFINED
+#else
+#define yysymbol_kind_t rcsymbol_kind_t
+#endif
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -91,7 +103,7 @@ extern "C"
 
 %}
 
-%union
+%union rc
 {
   int   ival;
   char* sval;

@@ -24,7 +24,6 @@
 %x PARAM
 %s PARAM_NUM
 %s PARAM_BOOL
-
 %option noyywrap
 
 %{

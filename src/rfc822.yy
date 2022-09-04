@@ -26,6 +26,18 @@
 #include <string>
 #include <stdexcept>
 
+#ifdef yyalloc
+#define rfcalloc_ALREADY_DEFINED
+#else
+#define yyalloc rfcalloc
+#endif
+
+#ifdef yysymbol_kind_t
+#define rfcsymbol_kind_t_ALREADY_DEFINED
+#else
+#define yysymbol_kind_t rfcsymbol_kind_t
+#endif
+
 #include "header.hh"
 
 // This is necessary to use multiple lexer classes.  See the flex man
@@ -65,7 +77,10 @@ extern "C"
 
 %}
 
-%union { char* sval; };
+%union rfc
+{
+  char* sval;
+};
 
 %token <sval> HEADER_END
 %token <sval> TOPLINE
