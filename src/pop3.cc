@@ -105,6 +105,8 @@ int POP3 :: scan (void) const
 
   Header* msg_header;
   int num_messages;
+  int max_messages;
+  int start_message;
   stringstream msg_no;
   string cmd;
 
@@ -114,10 +116,16 @@ int POP3 :: scan (void) const
       logger->print_err ("Error occurred while sending STAT to server.");
       return GEN_FAILURE_FLAG;
     }
+  start_message = 1;
+  max_messages = Preferences :: Instance ().max_messages();
+  if (max_messages > 0 && num_messages > max_messages)
+    {
+      start_message = num_messages - max_messages + 1;
+    }
   
   try
     {
-      for (int i = 1; i <= num_messages; i++)
+      for (int i = start_message; i <= num_messages; i++)
 	{
 	  // Reserve heap for the message to be stored, parsed, and
 	  // processed.

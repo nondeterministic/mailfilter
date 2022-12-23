@@ -50,6 +50,7 @@ protected:
   bool             ret_status;
   bool             _ignore_time_stamp;
   bool             _skip_ssl_verify;
+  int              _max_messages;
   int              high_score;
   unsigned         time_out_val;
   int              max_size;
@@ -130,6 +131,8 @@ public:
   void             set_return_status (bool);
   void             set_skip_ssl_verify (bool);
   bool             skip_ssl_verify   (void);
+  void             set_max_messages  (int);
+  int              max_messages      (void);
   vector<Account>* accounts          (void);
   vector<Filter>*  allow_filters     (void);
   vector<Filter>*  deny_filters      (void);

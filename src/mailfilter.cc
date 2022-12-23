@@ -60,6 +60,7 @@ static struct option long_options[] =
     {"test", 0, NULL, VALUE_TEST},
     {"return-value", 0, NULL, VALUE_RETURN},
     {"skip-ssl-verify", 0, NULL, VALUE_SKIP_SSL_VERIFY},
+    {"max-messages", 1, NULL, VALUE_MAX_MESSAGES},
     {0, 0, 0, 0}
   };
 
@@ -207,7 +208,7 @@ void get_opts (int argc, char* argv[])
   int option = 0;
   int option_index = 0;
 
-  while ((option = getopt_long (argc, argv, "hL:M:Vv:tirs",
+  while ((option = getopt_long (argc, argv, "hL:M:Vv:tirsm:",
 				long_options, &option_index)) != -1)
     {
       switch (option)
@@ -235,6 +236,8 @@ void get_opts (int argc, char* argv[])
 	  cout << "Enable additional return values" << endl;
 	  cout << "  -s, --skip-ssl-verify      ";
 	  cout << "Skip verification of SSL certificates (Do not use unless you know better!)" << endl;
+	  cout << "  -m, --max-messages=NUMBER  ";
+	  cout << "Maximum number messages to check, starting from end (POP3 only)" << endl;
 	  cout << "  -t, --test                 ";
 	  cout << "Simulate deletes" << endl;
 	  cout << "  -i, --ignore-time-stamps   ";
@@ -284,6 +287,10 @@ void get_opts (int argc, char* argv[])
 	case VALUE_SKIP_SSL_VERIFY:
 	  Preferences :: Instance ().set_skip_ssl_verify (true);
 	  break;	  
+	case 'm':
+	case VALUE_MAX_MESSAGES:
+	  Preferences :: Instance ().set_max_messages (atoi (optarg));
+	  break;
 	case 'M':
 	case VALUE_MAILFILTERRC:
 	  Preferences :: Instance ().set_rc_file (optarg);
@@ -350,7 +357,7 @@ int precompile_expressions (void)
 // Comapre two strings, but disregard case-sensitivity.  Returns 0, if
 // no differences could be determined, a negative integer if s is
 // lexicographically before s2, and a positive integer otherwise.
-// (See also Stroustrup §20.3.8.)
+// (See also Stroustrup ï¿½20.3.8.)
 
 int cmp_no_case (const string& s, const string& s2)
 {
