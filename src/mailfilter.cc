@@ -357,7 +357,7 @@ int precompile_expressions (void)
 // Comapre two strings, but disregard case-sensitivity.  Returns 0, if
 // no differences could be determined, a negative integer if s is
 // lexicographically before s2, and a positive integer otherwise.
-// (See also Stroustrup ï¿½20.3.8.)
+// (See also Stroustrup §20.3.8.)
 
 int cmp_no_case (const string& s, const string& s2)
 {
