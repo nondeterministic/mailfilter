@@ -163,6 +163,14 @@ int Account :: check (void)
 			  + int_to_string (messages)
 			  + " message(s).", 3);
       
+      if (Preferences :: Instance ().max_messages() > 0
+	  && messages > Preferences :: Instance ().max_messages())
+	{
+      logger->print_msg ("Examining last "
+	    + int_to_string (Preferences :: Instance ().max_messages())
+	    + " message(s).", 3);
+	}
+
       // Scan mailbox for spam and unwanted bulk.
       if (proto->scan () < 0)
 	{

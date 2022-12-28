@@ -38,6 +38,7 @@ using namespace std;
 #define VALUE_RETURN                    7
 #define VALUE_TIMESTAMP                 8
 #define VALUE_SKIP_SSL_VERIFY           9
+#define VALUE_MAX_MESSAGES             10
 
 #define ERROR_MSG(msg)  \
   cerr << PACKAGE_NAME  \

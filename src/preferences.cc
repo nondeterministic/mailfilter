@@ -60,6 +60,7 @@ Preferences :: Preferences ()
   ret_status        = false;
   _ignore_time_stamp= false;
   _skip_ssl_verify  = false;
+  _max_messages     = 0;
   high_score        = 100;
   time_out_val      = 30;
   negative_allows   = 0;
@@ -480,3 +481,9 @@ void Preferences :: set_skip_ssl_verify (bool skip)
 
 bool Preferences :: skip_ssl_verify (void)
 { return _skip_ssl_verify; }
+
+void Preferences :: set_max_messages (int val)
+{ _max_messages = val; }
+
+int Preferences :: max_messages (void)
+{ return _max_messages; }
