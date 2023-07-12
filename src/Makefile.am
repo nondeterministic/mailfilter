@@ -32,7 +32,7 @@ rcfile.cc: rcfile.ll rcparser.hh
 
 rcparser.hh: rcparser.cc
 rcparser.cc: rcfile.yy
-		   $(YACC) $(YFLAGS) --file-prefix=rc -Dapi.prefix=rc --defines=rcparser.hh $<;  \
+		   $(YACC) $(YFLAGS) --file-prefix=rc -Dapi.prefix={rc} --defines=rcparser.hh $<;  \
 		   mv rc.tab.c rcparser.cc
 
 # Almost the same as above, but this time for the RFC 822 parser:
@@ -41,7 +41,7 @@ rfc822.cc: rfc822.ll rfc822parser.hh
 
 rfc822parser.hh: rfc822parser.cc
 rfc822parser.cc: rfc822.yy
-		   $(YACC) $(YFLAGS) --file-prefix=rfc -Dapi.prefix=rfc --defines=rfc822parser.hh $<;  \
+		   $(YACC) $(YFLAGS) --file-prefix=rfc -Dapi.prefix={rfc} --defines=rfc822parser.hh $<;  \
 		   mv rfc.tab.c rfc822parser.cc
 
 CLEANFILES = *.output Makefile.in rcfile.cc rcfile.ll.bak rcparser.cc rcparser.hh rfc822.cc rfc822parser.cc rfc822parser.hh
